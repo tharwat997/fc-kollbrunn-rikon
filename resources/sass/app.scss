@@ -1,0 +1,40 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Oswald:300,400,500,600");
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Typography Adjusting
+@import "style";
+@import "includes/navbar";
+@import "includes/sponsers";
+@import "guest/home";
+@import "guest/team";
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+body{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Adjust font size */
+  font-size: 100%;
+  background-color: $secondary-color !important;
+  -webkit-text-size-adjust: 100%;
+  /* Font varient */
+  font-variant-ligatures: none;
+  -webkit-font-variant-ligatures: none;
+  /* Smoothing */
+  text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+  text-rendering: auto;
+}
+
+ul li{
+  list-style: none !important;
+}
