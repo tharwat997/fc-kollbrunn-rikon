@@ -1,0 +1,32 @@
+#tickerPage{
+  a{
+    text-decoration: none !important;
+  }
+  .tickerMatch{
+    margin-bottom: 2em;
+    border-radius:4px;
+    background-color:$dark-shades;
+    padding:1em;
+    div,
+    h4{
+      color:$light-shades !important;
+    }
+    hr{
+      border-top:1px solid $light-shades;
+    }
+    .tickerMatchTopContainer{
+      margin-bottom: 1.5em;
+    }
+  }
+  .pagination{
+    .page-item.active .page-link{
+      color:$light-shades;
+      background-color: $dark-shades;
+      border-color: transparent;
+    }
+    .page-link:focus{
+      box-shadow: none;
+      -webkit-box-shadow: none;
+    }
+  }
+}

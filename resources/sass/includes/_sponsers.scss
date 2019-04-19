@@ -1,19 +1,19 @@
 #sponsors-section{
+  margin:4em 0;
   #sponsors-section-title{
-    text-align: left;
-    margin-bottom: 1em;
-    margin-top: 1.5em;
-    font-size: 3rem ;
+    text-align: center;
+    font-size: 32px ;
     color: $light-shades;
     font-weight: 400;
-    border-bottom: 1px solid $light-shades;
   }
   .sponsors{
+    border-bottom: 2px solid $light-shades;
+    padding-bottom: 1em;
     .sponsors-title{
       text-align: left;
       margin-bottom: 1.5em;
-      margin-top: 2em;
-      font-size: 2.5rem ;
+      margin-top: 1.5em;
+      font-size: 25px ;
       color: $light-shades;
       font-weight: 300;
     }

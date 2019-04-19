@@ -24,7 +24,7 @@
           font-size: 14px;
           padding: 0 1em;
           font-weight: 400;
-          color:$light-accent;
+          color:$dark-shades;
           text-decoration: none;
           transition: 0.3s;
         }
@@ -40,17 +40,23 @@
       height:100px;
       width: 100px;
     }
+    #adidas-image-container{
+      width: 10vw;
+    }
+    #jeep-image-container{
+      width: 12vw;
+    }
     .headerlogos-first{
       font-family: 'Oswald', sans-serif;
       font-weight: 500;
       color:$light-shades;
-      font-size: 3.5rem ;
+      font-size: 35px ;
     }
     .headerlogos-second{
       font-weight: 200;
       margin-left: 0.5em;
       color:$light-shades;
-      font-size: 3.5rem ;
+      font-size: 35px ;
     }
   }
   #menu-container{
@@ -61,7 +67,7 @@
         list-style:none;
         margin: 0;
         text-align: center;
-        margin-right: 2.5em;
+        margin-right: 25px;
         border-bottom: 2px solid transparent;
         transition: 0.3s;
         a{

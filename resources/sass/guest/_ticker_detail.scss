@@ -1,0 +1,66 @@
+#tickerSectionDetail{
+
+  #tickerSectionDetailHeader{
+
+  }
+  .container{
+    border: 2px solid $light-accent-dark;
+    background-color: lightgray;
+    .border-bottomHr{
+      border-top: 2px solid rgba(0, 0, 0, 0.1) !important;
+
+    }
+
+    #matchResultContainer{
+
+    }
+    #matchAllEvents{
+
+    }
+    #matchComments{
+      a{
+        text-decoration: none;
+        color:unset;
+        .numberOfComments{
+          margin-right: 0.5em;
+          background-color:$dark-shades;
+          color:$light-shades;
+          padding:.5em .6em;
+          text-align:center;
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          border-radius:30px;
+        }
+      }
+    }
+    #matchInformation{
+
+    }
+    #matchReporterInformation{
+
+    }
+    #matchGoalsContainer{
+      .firstTeamMatchGoals{
+        flex: 40%;
+      }
+      .combinedGoals{
+        flex: 20.5%;
+        div{
+          width: 100%;
+        }
+        .leftGoal{
+          text-align: left;
+          width: 100%;
+        }
+        .rightGoal{
+          text-align: right;
+          width: 100%;
+        }
+      }
+      .secondTeamMatchGoals{
+        flex: 40%;
+      }
+    }
+  }
+}

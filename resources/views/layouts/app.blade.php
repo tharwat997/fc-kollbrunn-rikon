@@ -20,9 +20,7 @@
     <div id="app">
         @include('layouts.includes.navbar')
         <main class="">
-          <div class="container-fluid">
-              @yield('content')
-          </div>
+            @yield('content')
         </main>
         @include('layouts.includes.sponsors')
     </div>

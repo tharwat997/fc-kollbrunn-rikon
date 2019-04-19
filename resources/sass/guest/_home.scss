@@ -1,6 +1,4 @@
-.container-fluid{
-  background-color: $secondary-color;
-  #newsTickerSection{
+#newsTickerSection{
     background-color: $light-shades;
     a{
       width: 100%;
@@ -52,44 +50,51 @@
       }
     }
   }
-  #timelineSection{
-    .timeline-section-header{
+#timelineSection {
+  background-color: $light-shades;
+  padding: 1em 0;
+
+  #timeline-section-header-container {
+    margin: 3em 0;
+    .timeline-section-header {
       text-align: center;
-      margin-bottom: 1em;
-      margin-top: 1.5em;
-      font-size: 3.5rem ;
-      color: $light-shades;
+      font-size: 3.3rem;
+      color: $dark-shades;
       font-weight: 400;
     }
-    .timeline{
-      .events-wrapper{
-        a{
-          color: $light-shades;
-        }
-      }
-      .cd-timeline-navigation{
-        a{
-          background-color: $light-accent;
-          border-color: $light-accent;
+  }
+  #timeline{
+    .vue-horizontal-timeline{
+      box-shadow: none;
+      background:none;
+      .timeline{
+        display:flex;
+        align-items:center;
+        padding: 2em 0;
+        ol{
+          padding:25% 0 30% 0;
+          li{
+            background-color: $light-accent-dark !important;
+            .time{
+              min-width: 15em !important;
+            }
+          }
+          li:after{
+            background: $base-color !important;
+          }
+          li:last-child{
+            width: 100%;
+          }
         }
       }
     }
   }
-  .events-content{
-    .event-title{
-      font-size: 3rem;
-      font-weight: 300;
-      color:$light-shades
-    }
-    .event-date{
-      font-size: 2rem;
-      font-weight: 200;
-      color:$light-shades
-    }
-    .event-content{
-      color:$light-accent-dark;
-      font-weight: 200;
-      font-size: 1.9rem;
-    }
+  #timeline > div > section > ol > li:nth-child(1) > a > div > div.d-flex.flex-column > div:nth-child(2) > span{
+    width : 15em;
+    overflow:hidden;
+    display:inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
+

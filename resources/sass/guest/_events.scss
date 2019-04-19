@@ -1,0 +1,47 @@
+#events{
+  .card{
+    width: 100%;
+    .card-title{
+      margin-bottom: 1.5em;
+    }
+    .eventCard{
+      margin-bottom: 1.5em;
+      .card{
+        .card-body{
+          padding:0;
+          .eventCardTop{
+            padding:15px;
+            .eventDateLocationContainer{
+              margin-bottom: 1em;
+              .eventLocation{
+                span{
+                  margin-left: .25em;
+                }
+              }
+            }
+            .eventName{
+              margin-bottom: .5em;
+              font-size: 18px;
+              font-weight: 600;
+            }
+            .eventDescription{
+              font-size: 14px;
+            }
+          }
+          .eventCardBottom{
+            display: flex;
+            flex-direction: column;
+            a:first-child{
+              margin-bottom: 0.5em;
+              border-radius: 0;
+            }
+            a:last-child{
+              margin-bottom: 0;
+              border-radius: 0 0 3px 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

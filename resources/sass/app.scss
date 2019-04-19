@@ -1,38 +1,52 @@
 
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Oswald:300,400,500,600");
-
+$font-family: 'Oswald', sans-serif;
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-// Typography Adjusting
-@import "style";
+// Custom
 @import "includes/navbar";
 @import "includes/sponsers";
+@import "includes/componenets";
 @import "guest/home";
 @import "guest/team";
+@import "guest/events";
+@import "guest/ticker";
+@import "guest/ticker_detail";
+@import "guest/news";
+@import "guest/contact-us";
+
 
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
-
-body{
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* Adjust font size */
-  font-size: 100%;
-  background-color: $secondary-color !important;
+*, html{
+  font-family: $font-family !important;
+  text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+  text-rendering: auto;
+  -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   /* Font varient */
   font-variant-ligatures: none;
   -webkit-font-variant-ligatures: none;
-  /* Smoothing */
-  text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
-  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 100%;
+  box-sizing: border-box;
+}
+body{  /* Adjust font size */
+  background-color: $secondary-color !important;
+  .fc-button:focus,
+  .fc-button-primary:focus,
+  button{
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+  }
 }
 
 ul li{
