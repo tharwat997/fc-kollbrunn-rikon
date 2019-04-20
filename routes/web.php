@@ -44,6 +44,20 @@ Route::get('/agenda/update', 'AgendaController@update')->name('agenda_events_upd
 Route::get('/events/add', 'EventsController@eventsCreate')->name('events_create')->middleware('auth');
 Route::post('/events/store', 'EventsController@store')->name('events_store')->middleware('auth');
 Route::get('/events/manage', 'EventsController@eventsManage')->name('events_manage')->middleware('auth');
-Route::get('/events/update', ['uses' => 'EventsController@update'])->name('events_update')->middleware('auth');
+Route::get('/events/manage/{id}', 'EventsController@show')->name('events_manage_show')->middleware('auth');
+Route::post('/events/update', 'EventsController@update')->name('events_update')->middleware('auth');
+
+//Team Management
+Route::get('/teams/add', 'TeamController@teamCreate')->name('teams_create')->middleware('auth');
+Route::post('/teams/store', 'TeamController@store')->name('teams_store')->middleware('auth');
+Route::get('/teams/manage', 'TeamController@teamManage')->name('teams_manage')->middleware('auth');
+Route::post('/teams/update', 'TeamController@update')->name('teams_update')->middleware('auth');
+
+//Player Management
+Route::get('/players/add', 'PlayerController@playersCreate')->name('players_create')->middleware('auth');
+Route::post('/players/store', 'PlayerController@store')->name('players_store')->middleware('auth');
+Route::get('/players/manage', 'PlayerController@playersManage')->name('players_manage')->middleware('auth');
+Route::post('/players/update', 'PlayerController@update')->name('players_update')->middleware('auth');
+
 
 

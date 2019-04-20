@@ -84,55 +84,17 @@
                                                 <b-nav-item active>{{item.name}}</b-nav-item>
                                             </b-nav>
                                             <div :id="item.id+'Content'" class="mt-4 d-flex flex-wrap">
-                                                <div class=" flex-column align-items-center justify-content-center playerCard">
+
+                                                <div v-show="player.playerPosition === item.id" v-for="(player, index)  in playersArray" :key="index" class="flex-column align-items-center justify-content-center playerCard mb-4">
                                                     <div class="mb-2 d-flex justify-content-center">
-                                                        <img alt="ca" class="img-fluid w-100 h-100" src="https://placeimg.com/150/200/any" />
+                                                        <img v-for="x in player.image" class="img-fluid w-75 h-100" :src="'../storage' + '/' + x.order_column + '/' + x.file_name" />
                                                     </div>
                                                     <div class="d-flex flex-column align-items-center">
-                                                        <div class="playerName">John</div>
-                                                        <div class="playerNumber">35</div>
+                                                        <div class="playerName">{{player.name}}</div>
+                                                        <div class="playerNumber">{{player.playerNumber}}</div>
                                                     </div>
                                                 </div>
 
-                                                <div class=" flex-column align-items-center justify-content-center playerCard">
-                                                    <div class="mb-2 d-flex justify-content-center">
-                                                        <img alt="ca" class="img-fluid w-100 h-100" src="https://placeimg.com/150/200/any" />
-                                                    </div>
-                                                    <div class="d-flex flex-column align-items-center">
-                                                        <div class="playerName">John</div>
-                                                        <div class="playerNumber">35</div>
-                                                    </div>
-                                                </div>
-
-                                                <div class=" flex-column align-items-center justify-content-center playerCard">
-                                                    <div class="mb-2 d-flex justify-content-center">
-                                                        <img alt="ca" class="img-fluid w-100 h-100" src="https://placeimg.com/150/200/any" />
-                                                    </div>
-                                                    <div class="d-flex flex-column align-items-center">
-                                                        <div class="playerName">John</div>
-                                                        <div class="playerNumber">35</div>
-                                                    </div>
-                                                </div>
-
-                                                <div class=" flex-column align-items-center justify-content-center playerCard">
-                                                    <div class="mb-2 d-flex justify-content-center">
-                                                        <img alt="ca" class="img-fluid w-100 h-100" src="https://placeimg.com/150/200/any" />
-                                                    </div>
-                                                    <div class="d-flex flex-column align-items-center">
-                                                        <div class="playerName">John</div>
-                                                        <div class="playerNumber">35</div>
-                                                    </div>
-                                                </div>
-
-                                                <div class=" flex-column align-items-center justify-content-center playerCard">
-                                                    <div class="mb-2 d-flex justify-content-center">
-                                                        <img alt="ca" class="img-fluid w-100 h-100" src="https://placeimg.com/150/200/any" />
-                                                    </div>
-                                                    <div class="d-flex flex-column align-items-center">
-                                                        <div class="playerName">John</div>
-                                                        <div class="playerNumber">35</div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -147,28 +109,30 @@
 </template>
 
 <script>
+
     export default {
         name: "team",
         props:{
             teamName:String,
-            boardOfDirectors:Boolean
+            boardOfDirectors:Boolean,
+            playersArray:Array
         },
         data(){
             return {
                 playerPositionsTabsArray:[
                     {name:'All', selected:true},
-                    {name:'Goal Keepers', selected:false, id:"goalKeepers"},
-                    {name:'Defenders', selected:false, id:"defenders"},
-                    {name:'Midfielders' ,selected:false, id:"midfielders"},
-                    {name:'Attackers', selected:false, id:"attackers"}
+                    {name:'Goal Keepers', selected:false, id:"goalkeeper"},
+                    {name:'Defenders', selected:false, id:"defender"},
+                    {name:'Midfielders' ,selected:false, id:"midfielder"},
+                    {name:'Attackers', selected:false, id:"attacker"}
 
                 ],
                playerPositions:[
-                   {name:'All', selected:true, id:"goalKeepers"},
-                   {name:'Goal Keepers', selected:false, id:"goalKeepers"},
-                   {name:'Defenders', selected:false, id:"defenders"},
-                   {name:'Midfielders' ,selected:false, id:"midfielders"},
-                   {name:'Attackers', selected:false, id:"attackers"}
+                   {name:'All', selected:true, id:"all"},
+                   {name:'Goal Keepers', selected:false, id:"goalkeeper"},
+                   {name:'Defenders', selected:false, id:"defender"},
+                   {name:'Midfielders' ,selected:false, id:"midfielder"},
+                   {name:'Attackers', selected:false, id:"attacker"}
                ],
                 viewAllPositions:true
             }
@@ -194,7 +158,6 @@
                 this.playerPositionsTabsArray[position].selected = true;
                 this.playerPositionsFilter(position);
             },
-
         }
     }
 </script>

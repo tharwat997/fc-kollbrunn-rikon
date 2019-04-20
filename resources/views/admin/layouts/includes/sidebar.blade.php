@@ -79,59 +79,89 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+                <a class="nav-link dropdown-toggle text-nowrap px-3 {{request()->is('events*') ? 'active' : ''}}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
                     <i class="material-icons">event</i>
                     <span class="d-none d-md-inline-block">Events</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-small">
-                    <a class="dropdown-item" href="{{route('events_create')}}">
+                    <a class="dropdown-item {{request()->is('events/add') ? 'active' : ''}}" href="{{route('events_create')}}">
                         <i class="material-icons">add_circle</i>
                         Add event
                     </a>
-                    <a class="dropdown-item" href="{{route('events_manage')}}">
+                    <a class="dropdown-item {{request()->is('events/manage') ? 'active' : ''}}" href="{{route('events_manage')}}">
                         <i class="material-icons">control_camera</i>
                         Manage events
                     </a>
                 </div>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
-                    <i class="material-icons">people</i>
-                    <span class="d-none d-md-inline-block">Teams</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-small">
-                    <a class="dropdown-item" href="">
-                        <i class="material-icons">add_circle</i>
-                        Add team
+            @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-nowrap px-3 {{request()->is('manage*') ? 'active' : ''}}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+                        <i class="material-icons">people</i>
+                        <span class="d-none d-md-inline-block">Teams</span>
                     </a>
-                    <a class="dropdown-item" href="">
-                        <i class="material-icons">control_camera</i>
-                        Manage teams
+                    <div class="dropdown-menu dropdown-menu-small">
+                        <a class="dropdown-item {{request()->is('teams/add') ? 'active' : ''}}" href="{{route('teams_create')}}">
+                            <i class="material-icons">add_circle</i>
+                            Add team
+                        </a>
+                        <a class="dropdown-item {{request()->is('teams/manage') ? 'active' : ''}}" href="{{route('teams_manage')}}">
+                            <i class="material-icons">control_camera</i>
+                            Manage teams
+                        </a>
+                    </div>
+                </li>
+            @endif
+            @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-nowrap px-3 {{request()->is('players*') ? 'active' : ''}}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+                        <i class="material-icons">person</i>
+                        <span class="d-none d-md-inline-block">Players</span>
                     </a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
-                    <i class="material-icons">person</i>
-                    <span class="d-none d-md-inline-block">Players</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-small">
-                    <a class="dropdown-item" href="">
-                        <i class="material-icons">add_circle</i>
-                        Add player
-                    </a>
-                    <a class="dropdown-item" href="">
-                        <i class="material-icons">control_camera</i>
-                        Manage players
-                    </a>
-                </div>
-            </li>
+                    <div class="dropdown-menu dropdown-menu-small">
+                        <a class="dropdown-item {{request()->is('players/add') ? 'active' : ''}}" href="{{route('players_create')}}">
+                            <i class="material-icons">add_circle</i>
+                            Add player
+                        </a>
+                        <a class="dropdown-item {{request()->is('players/manage') ? 'active' : ''}}" href="{{route('players_manage')}}">
+                            <i class="material-icons">control_camera</i>
+                            Manage players
+                        </a>
+                        <a class="dropdown-item {{request()->is('players/manage') ? 'active' : ''}}" href="{{route('players_manage')}}">
+                            <i class="material-icons">control_camera</i>
+                            Add board of member
+                        </a>
+                        <a class="dropdown-item {{request()->is('players/manage') ? 'active' : ''}}" href="{{route('players_manage')}}">
+                            <i class="material-icons">control_camera</i>
+                            Manage board members
+                        </a>
+                    </div>
+                </li>
+            @endif
             <li class="nav-item">
-                <a class="nav-link " href="">
+                <a class="nav-link " href="" style="padding:15px 16px;">
                     <i class="material-icons">message</i>
                     <span>Messages</span>
                 </a>
             </li>
+            @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+                        <i class="material-icons">person</i>
+                        <span class="d-none d-md-inline-block">Users</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-small">
+                        <a class="dropdown-item" href="">
+                            <i class="material-icons">add_circle</i>
+                            Add user
+                        </a>
+                        <a class="dropdown-item" href="">
+                            <i class="material-icons">control_camera</i>
+                            Manage users
+                        </a>
+                    </div>
+                </li>
+            @endif
         </ul>
     </div>
 </aside>

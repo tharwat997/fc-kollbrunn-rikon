@@ -17,6 +17,7 @@ class CreatePlayersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->integer('playerNumber');
+            $table->string('playerPosition');
             $table->integer('age');
             $table->integer('team_id');
             $table->integer('total_goals');

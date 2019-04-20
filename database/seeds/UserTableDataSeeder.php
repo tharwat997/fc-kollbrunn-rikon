@@ -16,5 +16,7 @@ class UserTableDataSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => \Illuminate\Support\Facades\Hash::make('password'),
         ]);
+
+        $admin->attachRole('admin');
     }
 }

@@ -18,11 +18,12 @@ class Event extends Model implements HasMedia
 
     public function registerMediaCollections()
     {
-        $this->addMediaCollection('eventsImages')->singleFile()
+        $this->addMediaCollection('eventsImages')
         ->acceptsFile(function (File $file){
-            if ($file->mimeType === 'image/jpeg' || $file->mimeType === 'image/png' || $file->mimeType === 'image/jpg')
+            if ($file->mimeType === 'image/jpeg' || $file->mimeType === 'image/png' || $file->mimeType === 'image/jpg'){
                 if ($file->size < 30000000){
                     return $file;
+                    }
                 }
             })->registerMediaConversions(function (Media $media = null){
                 $this->addMediaConversion('card')

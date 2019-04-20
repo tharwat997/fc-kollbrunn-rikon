@@ -40,7 +40,7 @@ class EventsController extends Controller
         ]);
 
         if($validator->fails()){
-            return redirect()->back()->with('message', 'Image needs to be 1:1 aspect ratio. Example: 400x400')->withInput();
+            return redirect()->back()->with('message', 'Image needs to be 1:1 aspect ratio. Example: 325x325')->withInput();
         } else {
             if ($request->eventImage === null){
                 $event = new Event([
@@ -91,15 +91,16 @@ class EventsController extends Controller
 
     public function update(Request $request){
 
-        if ($request->action === 'update'){
+        if ($request->btnUpdate != null){
 
-            if ($request->newImage != null){
+            if ($request->image != null){
+
                 $validator = Validator::make($request->all(),[
-                    "eventImage" => "required|image|mimes:jpeg,png,jpg|dimensions:ratio=1/1,min_width=325,min_height=325",
+                    "image" => "required|image|mimes:jpeg,png,jpg|dimensions:ratio=1/1,min_width=325,min_height=325",
                 ]);
 
-                if(!$validator->fails()){
-                    return redirect()->back()->with('message', 'Image needs to be 1:1 aspect ratio. Example: 400x400');
+                if($validator->fails()){
+                    return redirect()->back()->with('message', 'Image needs to be 1:1 aspect ratio. Example: 325x325');
                 } else {
 
                     $event = Event::find($request->eventId);
@@ -107,11 +108,13 @@ class EventsController extends Controller
                     $event->description = $request->description;
                     $event->location = $request->location;
                     $event->start_date = $request->start_date;
-                    $event->image = $request->newImage;
+                    $event->image = $request->image;
                     $event->creator_id = $event->creator_id;
                     $event->update();
 
-                    $event->addMedia($event->image)->toMediaCollection('eventsImages')->withResponsiveImages();
+                    $event->addMedia($request->image)
+                        ->withResponsiveImages()
+                        ->toMediaCollection('eventsImages');
 
                     return redirect()->back();
                 }
@@ -129,12 +132,20 @@ class EventsController extends Controller
                 return redirect()->back();
             }
 
-        } else if ($request->action === 'delete') {
+        } else if ($request->btnDelete != null) {
             $event = Event::find($request->eventId);
             $event->delete();
             DB::table('events')->where('id', '=', $request->eventId)->delete();
-            return redirect()->back();
+            return redirect()->route('events_manage');
         }
+    }
+
+    public function show($id){
+        $event = Event::find($id);
+        $user = User::find($event->creator_id);
+        $eventCreatorName = $user->name;
+        $event->image = $event->getMedia('eventsImages');
+        return view('admin.events.manage_events_detail', compact('event', 'eventCreatorName'));
     }
 
     public function eventsAjax(){
