@@ -16,16 +16,17 @@ class CreateTickerEventsTable extends Migration
         Schema::create('ticker_events', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('match_id');
-            $table->boolean('yellow_card');
-            $table->boolean('red_card');
-            $table->boolean('injury');
-            $table->boolean('assist');
-            $table->boolean('goal');
-            $table->boolean('substitute');
             $table->string('title');
-            $table->string('description');
+            $table->longText('description');
             $table->integer('minute_of_event');
-            $table->integer('player_id');
+            $table->integer('player_idHome')->nullable();
+            $table->string('playerNameAway')->nullable();
+            $table->boolean('yellow_card')->nullable();
+            $table->boolean('red_card')->nullable();
+            $table->boolean('injury')->nullable();
+            $table->boolean('assist')->nullable();
+            $table->boolean('goal')->nullable();
+            $table->boolean('substitute')->nullable();
             $table->timestamps();
         });
     }

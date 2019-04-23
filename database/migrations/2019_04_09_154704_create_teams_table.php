@@ -19,6 +19,7 @@ class CreateTeamsTable extends Migration
             $table->integer('totalWins');
             $table->integer('totalMatches');
             $table->integer('totalLoses');
+            $table->integer('totalDraws');
             $table->timestamps();
         });
     }

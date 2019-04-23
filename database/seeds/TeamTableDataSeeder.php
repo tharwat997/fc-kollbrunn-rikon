@@ -16,6 +16,7 @@ class TeamTableDataSeeder extends Seeder
             'totalWins' => 0,
             'totalMatches' => 0,
             'totalLoses' =>0,
+            'totalDraws' =>0,
         ]);
 
         $juniorC = \App\Team::create([
@@ -23,6 +24,7 @@ class TeamTableDataSeeder extends Seeder
             'totalWins' => 0,
             'totalMatches' => 0,
             'totalLoses' =>0,
+            'totalDraws' =>0,
         ]);
 
         $juniorD = \App\Team::create([
@@ -30,6 +32,7 @@ class TeamTableDataSeeder extends Seeder
             'totalWins' => 0,
             'totalMatches' => 0,
             'totalLoses' =>0,
+            'totalDraws' =>0,
         ]);
 
         $juniorE = \App\Team::create([
@@ -37,6 +40,7 @@ class TeamTableDataSeeder extends Seeder
             'totalWins' => 0,
             'totalMatches' => 0,
             'totalLoses' =>0,
+            'totalDraws' =>0,
         ]);
 
         $juniorF = \App\Team::create([
@@ -44,6 +48,7 @@ class TeamTableDataSeeder extends Seeder
             'totalWins' => 0,
             'totalMatches' => 0,
             'totalLoses' =>0,
+            'totalDraws' =>0,
         ]);
 
     }

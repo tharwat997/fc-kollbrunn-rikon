@@ -34,6 +34,7 @@
                                 <th>Name</th>
                                 <th>Total Wins</th>
                                 <th>Total Matches</th>
+                                <th>Total Draws</th>
                                 <th>Total Loses</th>
                                 <th>Created At</th>
                                 <th>Action</th>
@@ -51,6 +52,9 @@
                                         </td>
                                         <td>
                                             <input type="text" form="form{{$team->id}}" name="totalMatches" required class="form-control" value="{{$team->totalMatches}}">
+                                        </td>
+                                        <td>
+                                            <input type="text" form="form{{$team->id}}" name="totalDraws" required class="form-control" value="{{$team->totalDraws}}">
                                         </td>
                                         <td>
                                             <input type="text" form="form{{$team->id}}" name="totalLoses" required class="form-control" value="{{$team->totalLoses}}">

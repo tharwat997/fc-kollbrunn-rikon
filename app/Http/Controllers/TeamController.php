@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\BoardMember;
 use App\Player;
 use App\Team;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class TeamController extends Controller
            'totalWins' => $request->totalWins,
             'totalMatches' => $request->totalMatches,
             'totalLoses' => $request->totalLosses,
+            'totalDraws' => $request->totalDraws,
         ]);
 
         $team->save();
@@ -39,6 +41,7 @@ class TeamController extends Controller
             $team->totalWins = $request->totalWins;
             $team->totalMatches = $request->totalMatches;
             $team->totalLoses = $request->totalLoses;
+            $team->totalDraws = $request->totalDraws;
 
             $team->update();
 
@@ -52,8 +55,6 @@ class TeamController extends Controller
     }
 
     public function show($team){
-
-        $boardOfDirectors = "boardOfDirectors";
 
        if ($team === "first-team"){
 
@@ -123,6 +124,18 @@ class TeamController extends Controller
 
            return view('team', compact('juniorF'));
        } else if ($team === 'board-of-directors'){
+
+           $boardOfDirectors = BoardMember::all();
+           $boardMembersCount = 0;
+           foreach ($boardOfDirectors as $member){
+
+               $boardOfDirectors->forget($boardMembersCount);
+               $memberMod = BoardMember::find($member->id);
+               $memberMod->image =  $memberMod->getMedia('boardMembersImages');
+               $boardOfDirectors->add($memberMod);
+               $boardMembersCount++;
+           }
+
            return view('team', compact('boardOfDirectors'));
        }
 

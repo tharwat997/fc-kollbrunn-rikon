@@ -1,8 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <section id="tickerSectionDetail">
-
-        <div class="container-fluid">
+        <div class="container p-0 border-0" style="border-radius: 4px;">
             <b-card>
                 <div class="row mt-xl-3 d-flex align-items-center mb-4" id="tickerSectionDetailHeader">
                     <div class="col-sm-6">

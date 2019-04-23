@@ -23,7 +23,8 @@ class MatchTableDataSeeder extends Seeder
             'teamB_name' => 'Testing Team',
             'teamB_score' => 0,
             'start_date_time' => $dateNow,
-            'reporter_id' => 1 ,
+            'reporter_id' => 2,
+            'completed' => 0,
         ]);
 
         $sampleMatch = \App\Match::create([
@@ -34,7 +35,8 @@ class MatchTableDataSeeder extends Seeder
             'teamB_name' => 'Testing Team',
             'teamB_score' => 0,
             'start_date_time' => $dateNow,
-            'reporter_id' => 1 ,
+            'reporter_id' => 2,
+            'completed' => 0,
         ]);
         $sampleMatch = \App\Match::create([
             'match_type' => 'League',
@@ -44,7 +46,8 @@ class MatchTableDataSeeder extends Seeder
             'teamB_name' => 'Testing Team',
             'teamB_score' => 0,
             'start_date_time' => $dateNow,
-            'reporter_id' => 1 ,
+            'reporter_id' => 2,
+            'completed' => 0,
         ]);
         $sampleMatch = \App\Match::create([
             'match_type' => 'League',
@@ -54,7 +57,8 @@ class MatchTableDataSeeder extends Seeder
             'teamB_name' => 'Testing Team',
             'teamB_score' => 0,
             'start_date_time' => $dateNow,
-            'reporter_id' => 1 ,
+            'reporter_id' => 2,
+            'completed' => 0,
         ]);
         $sampleMatch = \App\Match::create([
             'match_type' => 'League',
@@ -64,7 +68,8 @@ class MatchTableDataSeeder extends Seeder
             'teamB_name' => 'Testing Team',
             'teamB_score' => 0,
             'start_date_time' => $dateNow,
-            'reporter_id' => 1 ,
+            'reporter_id' => 2,
+            'completed' => 0,
         ]);
 
 

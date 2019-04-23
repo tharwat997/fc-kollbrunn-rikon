@@ -47,18 +47,22 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+                <a class="nav-link dropdown-toggle text-nowrap px-3 {{request()->is('match*') ? 'active' : ''}}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
                     <i class="material-icons">live_tv</i>
                     <span class="d-none d-md-inline-block">Live Ticker</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-small">
-                    <a class="dropdown-item" href="">
+                    <a class="dropdown-item {{request()->is('match/add') ? 'active' : ''}}" href="{{route('match_create')}}">
                         <i class="material-icons">add_circle</i>
                         Add match
                     </a>
-                    <a class="dropdown-item" href="">
+                    <a class="dropdown-item {{request()->is('match/manage') ? 'active' : ''}}" href="{{route('matches_manage')}}">
                         <i class="material-icons">control_camera</i>
                         Manage matches
+                    </a>
+                    <a class="dropdown-item {{request()->is('matches*') ? 'active' : ''}}" href="{{route('matches')}}">
+                        <i class="material-icons">event</i>
+                        Match events
                     </a>
                 </div>
             </li>
@@ -127,11 +131,19 @@
                             <i class="material-icons">control_camera</i>
                             Manage players
                         </a>
-                        <a class="dropdown-item {{request()->is('players/manage') ? 'active' : ''}}" href="{{route('players_manage')}}">
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-nowrap px-3 {{request()->is('board*') ? 'active' : ''}}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+                        <i class="material-icons">people</i>
+                        <span class="d-none d-md-inline-block">Board members</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-small">
+                        <a class="dropdown-item {{request()->is('board/add') ? 'active' : ''}}" href="{{route('board_create')}}">
                             <i class="material-icons">control_camera</i>
-                            Add board of member
+                            Add board member
                         </a>
-                        <a class="dropdown-item {{request()->is('players/manage') ? 'active' : ''}}" href="{{route('players_manage')}}">
+                        <a class="dropdown-item {{request()->is('board/manage') ? 'active' : ''}}" href="{{route('board_manage')}}">
                             <i class="material-icons">control_camera</i>
                             Manage board members
                         </a>

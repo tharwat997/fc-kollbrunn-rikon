@@ -18,5 +18,13 @@ class UserTableDataSeeder extends Seeder
         ]);
 
         $admin->attachRole('admin');
+
+        $reporter = \App\User::create([
+            'name' => 'reporter',
+            'email' => 'reporter@gmail.com',
+            'password' => \Illuminate\Support\Facades\Hash::make('password'),
+        ]);
+
+        $reporter->attachRole('reporter');
     }
 }

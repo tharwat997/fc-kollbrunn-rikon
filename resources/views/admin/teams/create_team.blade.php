@@ -40,6 +40,12 @@
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-append">
+                                <span class="input-group-text">Total Draws</span>
+                            </div>
+                            <input type="number" name="totalDraws" class="form-control" required aria-label="" aria-describedby="basic-addon2" value="0">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
                                 <span class="input-group-text">Total loses</span>
                             </div>
                             <input type="number" name="totalLosses" class="form-control" required aria-label="" aria-describedby="basic-addon2" value="0">

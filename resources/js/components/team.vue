@@ -16,58 +16,19 @@
                         </div>
                         <div class="card-body">
                             <div v-show="boardOfDirectors">
+                                <div  class="mt-4 d-flex flex-wrap align-items-center">
 
-                                <div  class="mt-4 d-flex flex-wrap justify-content-between align-items-center">
-                                    <div class=" flex-column align-items-center justify-content-center playerCard">
+                                    <div v-for="(member, index)  in playersArray" :key="index" class=" flex-column align-items-center justify-content-center playerCard">
                                         <div class="mb-2 d-flex justify-content-center">
-                                            <img alt="ca" class="img-fluid w-100 h-100" src="../../../public/images/teams/first_team/silvio.jpg" />
+                                            <img v-for="x in member.image"  class="img-fluid w-50 h-50" :src="'../storage' + '/' + x.order_column + '/' + x.file_name" />
                                         </div>
                                         <div class="d-flex flex-column align-items-center">
-                                            <div class="playerName">Silvio Fernandes</div>
-                                            <div class="playerNumber mb-2">President</div>
+                                            <div class="playerName">{{member.name}}</div>
+                                            <div class="playerNumber mb-2">{{member.title}}</div>
                                             <div><a href="/contact-us" class="btn btn-primary btn-block">Contact Me</a></div>
                                         </div>
                                     </div>
 
-                                    <div class=" flex-column align-items-center justify-content-center playerCard">
-                                        <div class="mb-2 d-flex justify-content-center">
-                                            <img alt="ca" class="img-fluid w-100 h-100" src="https://placeimg.com/150/200/any" />
-                                        </div>
-                                        <div class="d-flex flex-column align-items-center">
-                                            <div class="playerName">John</div>
-                                            <div class="playerNumber">35</div>
-                                        </div>
-                                    </div>
-
-                                    <div class=" flex-column align-items-center justify-content-center playerCard">
-                                        <div class="mb-2 d-flex justify-content-center">
-                                            <img alt="ca" class="img-fluid w-100 h-100" src="https://placeimg.com/150/200/any" />
-                                        </div>
-                                        <div class="d-flex flex-column align-items-center">
-                                            <div class="playerName">John</div>
-                                            <div class="playerNumber">35</div>
-                                        </div>
-                                    </div>
-
-                                    <div class=" flex-column align-items-center justify-content-center playerCard">
-                                        <div class="mb-2 d-flex justify-content-center">
-                                            <img alt="ca" class="img-fluid w-100 h-100" src="https://placeimg.com/150/200/any" />
-                                        </div>
-                                        <div class="d-flex flex-column align-items-center">
-                                            <div class="playerName">John</div>
-                                            <div class="playerNumber">35</div>
-                                        </div>
-                                    </div>
-
-                                    <div class=" flex-column align-items-center justify-content-center playerCard">
-                                        <div class="mb-2 d-flex justify-content-center">
-                                            <img alt="ca" class="img-fluid w-100 h-100" src="https://placeimg.com/150/200/any" />
-                                        </div>
-                                        <div class="d-flex flex-column align-items-center">
-                                            <div class="playerName">John</div>
-                                            <div class="playerNumber">35</div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div v-show="!boardOfDirectors">

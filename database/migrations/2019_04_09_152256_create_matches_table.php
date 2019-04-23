@@ -23,6 +23,7 @@ class CreateMatchesTable extends Migration
             $table->integer('teamB_score');
             $table->dateTime('start_date_time');
             $table->integer('reporter_id');
+            $table->boolean('completed');
             $table->timestamps();
         });
     }

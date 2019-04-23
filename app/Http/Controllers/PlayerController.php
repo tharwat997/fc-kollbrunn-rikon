@@ -18,11 +18,11 @@ class PlayerController extends Controller
     public function store(Request $request){
 
         $validator = Validator::make($request->all(),[
-            "image" => "required|image|mimes:jpeg,png,jpg,webp|dimensions:min_width=320,min_height=320|max:300000",
+            "image" => "required|image|mimes:jpeg,png,jpg,webp|dimensions:ratio=1/1,min_width=320,min_height=320|max:300000",
         ]);
 
         if($validator->fails()){
-            return redirect()->back()->with('message', 'Image must be .jpeg, .png, .jpg type, under 30MB, minimum width and height 320')->withInput();
+            return redirect()->back()->with('message', 'Image must be .jpeg, .png, .jpg type, under 30MB, minimum width and height 320, aspect ratio 1:1')->withInput();
         } else {
             if ($request->image === null){
                 $player = new Player([
@@ -88,11 +88,11 @@ class PlayerController extends Controller
             if ($request->image != null){
 
                 $validator = Validator::make($request->all(),[
-                    "image" => "required|image|mimes:jpeg,png,jpg,webp|dimensions:min_width=320,min_height=320|max:300000",
+                    "image" => "required|image|mimes:jpeg,png,jpg,webp|dimensions:ratio=1/1,min_width=320,min_height=320|max:300000",
                 ]);
 
                 if($validator->fails()){
-                    return redirect()->back()->with('message', 'Image must be .jpeg, .png, .jpg type, under 30MB, minimum width and height 320');
+                    return redirect()->back()->with('message', 'Image must be .jpeg, .png, .jpg type, under 30MB, minimum width and height 320, aspect ratio 1:1');
                 } else {
 
                     $player = Player::find($request->playerId);
@@ -137,7 +137,7 @@ class PlayerController extends Controller
             }
 
         } else if ($request->deleteBtn != null) {
-            $player = Player::find($request->eventId);
+            $player = Player::find($request->playerId);
             $player->delete();
             DB::table('players')->where('id', '=', $request->playerId)->delete();
             return redirect()->route('players_manage');

@@ -34,7 +34,7 @@
                     @if(Session::has('message'))
                         <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
                     @endif
-                    <div class="overflow-scroll">
+                    <div class="">
                         <table id="manageEventsTable" class="display" style="width:100%">
                             <thead>
                             <tr>
@@ -206,20 +206,15 @@
             $('#manageEventsTable').DataTable({
                 "columnDefs": [
                     {
-                        "className": "dt-center",
-                        "width" : "100%",
-                        "targets": "_all"
+                        "className": "dt-center"
                     }
                 ],
-                "scrollX": true,
-                "autoWidth": false
+                "scrollX": true
             });
             $('#searchPlayersTable').DataTable({
                 "columnDefs": [
                     {
-                        "className": "dt-center",
-                        "width" : "100%",
-                        "targets": "_all"
+                        "className": "dt-center"
                     }
                 ],
                 "scrollX": true,

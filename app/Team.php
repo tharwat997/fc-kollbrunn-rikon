@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     protected $fillable = [
-        'name', 'totalWins', 'totalMatches', 'totalLoses'
+        'name', 'totalWins', 'totalMatches', 'totalLoses', 'totalDraws'
     ];
 }
