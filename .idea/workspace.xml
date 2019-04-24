@@ -2,38 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14f08b3d-5735-4e7d-b4ac-4d4113d5cfa0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/BoardMemberController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/BoardMemberTableDataSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/board/create_board_member.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/board/manage_board_members.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/ticker/create_match.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/ticker/create_match_event.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/ticker/manage_match_events.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/ticker/manage_match_events_detail.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/ticker/manage_matches.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/ticker/matches_management.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LiveTickerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LiveTickerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PlayerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PlayerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TeamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TeamController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Team.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Team.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/TickerEvents.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/TickerEvents.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_04_09_152256_create_matches_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_04_09_152256_create_matches_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_04_09_154704_create_teams_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_04_09_154704_create_teams_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_04_17_053426_create_ticker_events_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_04_17_053426_create_ticker_events_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/MatchTableDataSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/MatchTableDataSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/TeamTableDataSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/TeamTableDataSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UserTableDataSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserTableDataSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/team.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/team.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/includes/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/includes/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/players/manage_players.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/players/manage_players.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/teams/create_team.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/teams/create_team.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/teams/manage_teams.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/teams/manage_teams.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/live_ticker_details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/live_ticker_details.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/ticker/create_match_event.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/ticker/create_match_event.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/ticker/manage_match_events.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/ticker/manage_match_events.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/ticker/manage_match_events_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/ticker/manage_match_events_detail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/.gitignore" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,17 +37,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LiveTickerController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="952" column="48" lean-forward="true" selection-start-line="952" selection-start-column="48" selection-end-line="952" selection-end-column="48" />
+            <state relative-caret-position="393">
+              <caret line="513" column="24" selection-start-line="513" selection-start-column="24" selection-end-line="513" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_17_053426_create_ticker_events_table.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/ticker/create_match_event.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="28" column="39" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="39" />
+            <state relative-caret-position="187">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
             </state>
           </provider>
         </entry>
@@ -81,8 +55,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/ticker/manage_match_events_detail.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="72" column="110" selection-start-line="72" selection-start-column="110" selection-end-line="72" selection-end-column="110" />
+            <state relative-caret-position="391">
+              <caret line="113" column="66" selection-start-line="113" selection-start-column="59" selection-end-line="113" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/ticker/manage_match_events.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="96" column="76" selection-start-line="96" selection-start-column="58" selection-end-line="96" selection-end-column="76" />
+              <folding>
+                <element signature="e#4775#4796#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,8 +76,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="79" column="102" selection-start-line="79" selection-start-column="84" selection-end-line="79" selection-end-column="102" />
+            <state relative-caret-position="427">
+              <caret line="79" column="96" selection-start-line="79" selection-start-column="79" selection-end-line="79" selection-end-column="96" />
               <folding>
                 <element signature="e#7#389#0#PHP" expanded="true" />
                 <element signature="e#391#427#0#PHP" expanded="true" />
@@ -111,8 +97,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>categp</find>
-      <find>actions</find>
       <find>your post tit</find>
       <find>cat</find>
       <find>words can</find>
@@ -141,6 +125,8 @@
       <find>1</find>
       <find>!=null</find>
       <find>event-&gt;yellow_cards</find>
+      <find>matchEvents</find>
+      <find>playerNameAway</find>
     </findStrings>
     <replaceStrings>
       <replace>000136</replace>
@@ -211,7 +197,6 @@
         <option value="$PROJECT_DIR$/database/seeds/UserTableDataSeeder.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/ticker/create_match.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/ticker/matches_management.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/ticker/create_match_event.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_04_17_053426_create_ticker_events_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_04_09_154704_create_teams_table.php" />
         <option value="$PROJECT_DIR$/database/seeds/TeamTableDataSeeder.php" />
@@ -223,8 +208,9 @@
         <option value="$PROJECT_DIR$/database/migrations/2019_04_09_152256_create_matches_table.php" />
         <option value="$PROJECT_DIR$/database/seeds/MatchTableDataSeeder.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/ticker/manage_matches.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/ticker/manage_match_events.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/ticker/manage_match_events.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/ticker/create_match_event.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/ticker/manage_match_events_detail.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/LiveTickerController.php" />
       </list>
@@ -518,12 +504,12 @@
       <workItem from="1554998180177" duration="8730000" />
       <workItem from="1555323053211" duration="1637000" />
       <workItem from="1555405342895" duration="177515000" />
-      <workItem from="1556042775830" duration="11717000" />
+      <workItem from="1556042775830" duration="26441000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="372733000" />
+    <option name="totallyTimeSpent" value="387457000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -904,30 +890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/ticker/manage_matches.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="69" column="99" selection-end-line="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/ticker/manage_match_events.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="42" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
-          <folding>
-            <element signature="e#2506#2527#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/ticker/create_match_event.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2108">
-          <caret line="124" column="61" selection-end-line="169" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_04_17_053426_create_ticker_events_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
@@ -935,10 +897,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/ticker/manage_matches.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="10" lean-forward="true" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/ticker/manage_match_events.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="96" column="76" selection-start-line="96" selection-start-column="58" selection-end-line="96" selection-end-column="76" />
+          <folding>
+            <element signature="e#4775#4796#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="79" column="102" selection-start-line="79" selection-start-column="84" selection-end-line="79" selection-end-column="102" />
+        <state relative-caret-position="427">
+          <caret line="79" column="96" selection-start-line="79" selection-start-column="79" selection-end-line="79" selection-end-column="96" />
           <folding>
             <element signature="e#7#389#0#PHP" expanded="true" />
             <element signature="e#391#427#0#PHP" expanded="true" />
@@ -946,17 +925,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/ticker/create_match_event.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/ticker/manage_match_events_detail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="72" column="110" selection-start-line="72" selection-start-column="110" selection-end-line="72" selection-end-column="110" />
+        <state relative-caret-position="391">
+          <caret line="113" column="66" selection-start-line="113" selection-start-column="59" selection-end-line="113" selection-end-column="66" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LiveTickerController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="952" column="48" lean-forward="true" selection-start-line="952" selection-start-column="48" selection-end-line="952" selection-end-column="48" />
+        <state relative-caret-position="393">
+          <caret line="513" column="24" selection-start-line="513" selection-start-column="24" selection-end-line="513" selection-end-column="24" />
         </state>
       </provider>
     </entry>

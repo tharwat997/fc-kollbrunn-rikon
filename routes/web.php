@@ -77,6 +77,7 @@ Route::get('/matches/{id}/event/create', 'LiveTickerController@matchEventCreate'
 Route::post('/match/event/store', 'LiveTickerController@matchEventStore')->name('match_event_store')->middleware('auth');
 Route::get('/matches/{id}/events', 'LiveTickerController@matchEvents')->name('matches_events')->middleware('auth');
 Route::get('/matches/{matchId}/events/{eventId}/manage', 'LiveTickerController@matchEventsManage')->name('match_event_manage')->middleware('auth');
+Route::get('/matches/{matchId}/events/{eventId}/delete', 'LiveTickerController@matchEventsDelete')->name('match_event_delete')->middleware('auth');
 Route::post('/match/event/update', 'LiveTickerController@matchEventsUpdate')->name('match_event_update')->middleware('auth');
 Route::post('/match/end/{id}', 'LiveTickerController@matchEnd')->name('match_end')->middleware('auth');
 

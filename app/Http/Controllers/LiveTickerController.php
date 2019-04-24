@@ -346,13 +346,13 @@ class LiveTickerController extends Controller
 
         foreach ($eventsUnformatted as $event){
             $playerName = Player::find($event->player_idHome);
-            $playerName = $playerName->name;
-
+            $playerName = $playerName['name'];
             $event->player_idHome = $playerName;
+
             array_push($events, $event);
         }
 
-        return view('admin.ticker.manage_match_events', compact('events'));
+        return view('admin.ticker.manage_match_events', compact('events', 'match'));
     }
     public function matchEventsManage($matchId, $eventId){
         $match = Match::find($matchId);
@@ -360,730 +360,1239 @@ class LiveTickerController extends Controller
         $players = Player::all();
         return view('admin.ticker.manage_match_events_detail', compact('match', 'event', 'players'));
     }
+
+    public function matchEventsDelete($matchId, $eventId){
+        $event = TickerEvents::find($eventId);
+
+        if ($event->player_idHome != null && $event->goal === 1){
+            $player = Player::find($event->player_idHome);
+            $player->total_goals = $player->total_goals - 1;
+            $player->update();
+dd($matchId);
+            $match = Match::find($matchId);
+            $match->teamA_score = $match->teamA_score - 1;
+        } else {
+            $match = Match::find($matchId);
+            $match->teamB_score = $match->teamB_score - 1;
+        }
+
+        if($event->player_idHome != null && $event->assist === 1){
+            $player = Player::find($event->player_idHome);
+            $player->assists = $player->assists - 1;
+            $player->update();
+        }
+
+        if($event->player_idHome != null && $event->yellow_card === 1){
+            $player = Player::find($event->player_idHome);
+            $player->yellow_cards = $player->yellow_cards - 1;
+            $player->update();
+        }
+
+        if($event->player_idHome != null && $event->red_card === 1){
+            $player = Player::find($event->player_idHome);
+            $player->red_cards = $player->red_cards - 1;
+            $player->update();
+        }
+
+        $event->delete();
+        return redirect()->back();
+    }
+
     public function matchEventsUpdate(Request $request){
-        $yes = 'yes';
-        $no = 'no';
+        if ($request->btnUpdate != null){
 
-        if ($request->eventType === "goal"){
+            if ($request->eventType === "goal"){
 
-            if ($request->homePlayer === "on"){
+                if ($request->homePlayer === "on"){
 
-                $event = TickerEvents::find($request->eventId);
-                $event->title = $request->title;
-                $event->description = $request->description;
-                $event->minute_of_event = $request->eventMinute;
+                    $event = TickerEvents::find($request->eventId);
+                    $event->title = $request->title;
+                    $event->description = $request->description;
+                    $event->minute_of_event = $request->eventMinute;
 
-                $event->injury = null;
-                $event->goal = null;
-                $event->substitute = null;
+                    $event->goal = null;
+                    $event->goal = 1;
 
-                $event->goal = 1;
-
-                $playerOld = Player::find($event->player_idHome);
-                $playerNew = Player::find($request->homePlayerName);
-
-
-                if ($event->assist === 1 && $event->playerNameAway  === null){
-                    $playerOld->assists = $playerOld->assists - 1 ;
-                    $playerOld->update();
-
-                    $playerNew->total_goals = $playerNew->total_goals + 1;
-                    $playerNew->update();
-
-                } else if ($event->assist === 1 && $event->playerNameAway  != null){
-                    $playerNew->total_goals = $playerNew->total_goals + 1;
-                    $playerNew->update();
-
-                } else {
-                    $event->assist = null;
-                }
-
-                if ($event->yellow_card === 1 && $event->playerNameAway  === null){
-                    $playerOld->yellow_cards = $playerOld->yellow_cards - 1 ;
-                    $playerOld->update();
-
-                    $playerNew->total_goals = $playerNew->total_goals + 1;
-                    $playerNew->update();
-
-                } else if ($event->yellow_card === 1 && $event->playerNameAway  != null){
-                    $playerNew->total_goals = $playerNew->total_goals + 1;
-                    $playerNew->update();
-
-                } else {
-                    $event->yellow_card = null;
-                }
-
-                if ($event->red_card === 1 && $event->playerNameAway  === null){
-                    $playerOld->red_cards = $playerOld->red_cards - 1;
-                    $playerOld->update();
-
-                    $playerNew->total_goals = $playerNew->total_goals + 1;
-                    $playerNew->update();
-
-                } else if ($event->red_card === 1 && $event->playerNameAway  != null){
-                    $playerNew->total_goals = $playerNew->total_goals + 1;
-                    $playerNew->update();
-
-                } else {
-                    $event->red_card = null;
-                }
-
-                if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway === null
-                    && $event->assist === null && $event->yellow_card === null && $event->red_card === null){
-                    $playerOld->total_goals =  $playerOld->total_goals - 1;
-                    $playerOld->update();
-
-
-                    $playerNew->total_goals = $playerNew->total_goals + 1;
-                    $playerNew->update();
-
-                } else if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway != null
-                    && $event->assist === null && $event->yellow_card === null && $event->red_card === null){
-                    $player = Player::find($request->homePlayerName);
-                    $player->total_goals = $player->total_goals + 1;
-                    $player->update();
-                }
-
-                $event->assist = null;
-                $event->yellow_card = null;
-                $event->red_card = null;
-                $event->player_idHome = null;
-                $event->player_idHome = $request->homePlayerName;
-
-                if($event->playerNameAway != null){
+                    $playerOld = Player::find($event->player_idHome);
+                    $playerNew = Player::find($request->homePlayerName);
                     $match = Match::find($request->matchId);
-                    $match->teamB_score = $match->teamB_score - 1;
-                    $match->teamA_score = $match->teamA_score + 1;
-                    $match->update();
+
+                    if ($event->assist === 1 && $event->playerNameAway  === null){
+                        $playerOld->assists = $playerOld->assists - 1 ;
+                        $playerOld->update();
+
+                        $playerNew->total_goals = $playerNew->total_goals + 1;
+                        $playerNew->update();
+
+                        $match->teamA_score = $match->teamA_score + 1;
+                        $match->update();
+
+                    } else if ($event->assist === 1 && $event->playerNameAway  != null){
+                        $playerNew->total_goals = $playerNew->total_goals + 1;
+                        $playerNew->update();
+
+                        $match->teamA_score = $match->teamA_score + 1;
+                        $match->update();
+
+                    } else {
+                        $event->assist = null;
+                    }
+
+                    if ($event->yellow_card === 1 && $event->playerNameAway  === null){
+                        $playerOld->yellow_cards = $playerOld->yellow_cards - 1 ;
+                        $playerOld->update();
+
+                        $playerNew->total_goals = $playerNew->total_goals + 1;
+                        $playerNew->update();
+
+                        $match->teamA_score = $match->teamA_score + 1;
+                        $match->update();
+
+                    } else if ($event->yellow_card === 1 && $event->playerNameAway  != null){
+                        $playerNew->total_goals = $playerNew->total_goals + 1;
+                        $playerNew->update();
+
+                        $match->teamA_score = $match->teamA_score + 1;
+                        $match->update();
+
+                    } else {
+                        $event->yellow_card = null;
+                    }
+
+                    if ($event->red_card === 1 && $event->playerNameAway  === null){
+                        $playerOld->red_cards = $playerOld->red_cards - 1;
+                        $playerOld->update();
+
+                        $playerNew->total_goals = $playerNew->total_goals + 1;
+                        $playerNew->update();
+
+                        $match->teamA_score = $match->teamA_score + 1;
+                        $match->update();
+
+                    } else if ($event->red_card === 1 && $event->playerNameAway  != null){
+                        $playerNew->total_goals = $playerNew->total_goals + 1;
+                        $playerNew->update();
+
+                        $match->teamA_score = $match->teamA_score + 1;
+                        $match->update();
+
+                    } else {
+                        $event->red_card = null;
+                    }
+
+                    if ($event->substitute === 1 && $event->playerNameAway  === null){
+
+                        $playerNew->total_goals = $playerNew->total_goals + 1;
+                        $playerNew->update();
+
+                        $match->teamA_score = $match->teamA_score + 1;
+                        $match->update();
+
+                    } else if ($event->substitute === 1 && $event->playerNameAway  != null){
+
+                        $playerNew->total_goals = $playerNew->total_goals + 1;
+                        $playerNew->update();
+
+                        $match->teamA_score = $match->teamA_score + 1;
+                        $match->update();
+                    } else {
+                        $event->substitute = null;
+                    }
+
+                    if ($event->injury === 1 && $event->playerNameAway  === null){
+
+                        $playerNew->total_goals = $playerNew->total_goals + 1;
+                        $playerNew->update();
+
+                        $match->teamA_score = $match->teamA_score + 1;
+                        $match->update();
+
+                    } else if ($event->injury === 1 && $event->playerNameAway  != null){
+
+                        $playerNew->total_goals = $playerNew->total_goals + 1;
+                        $playerNew->update();
+
+                        $match->teamA_score = $match->teamA_score + 1;
+                        $match->update();
+                    } else {
+                        $event->injury = null;
+                    }
+
+                    if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway === null
+                        && $event->assist === null && $event->yellow_card === null && $event->red_card === null
+                        && $event->injury === null && $event->substitute === null){
+                        $playerOld->total_goals =  $playerOld->total_goals - 1;
+                        $playerOld->update();
+
+
+                        $playerNew->total_goals = $playerNew->total_goals + 1;
+                        $playerNew->update();
+
+                    } else if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway != null
+                        && $event->assist === null && $event->yellow_card === null && $event->red_card === null
+                        && $event->injury === null && $event->substitute === null){
+                        $player = Player::find($request->homePlayerName);
+                        $player->total_goals = $player->total_goals + 1;
+                        $player->update();
+                    }
+
+                    if($event->playerNameAway != null  && $event->assist === null && $event->yellow_card === null && $event->red_card === null
+                        && $event->injury === null && $event->substitute === null){
+                        $match->teamB_score = $match->teamB_score - 1;
+                        $match->teamA_score = $match->teamA_score + 1;
+                        $match->update();
+                    }
+
+                    $event->substitute = null;
+                    $event->injury = null;
+                    $event->assist = null;
+                    $event->yellow_card = null;
+                    $event->red_card = null;
+                    $event->player_idHome = null;
+                    $event->player_idHome = $request->homePlayerName;
+
+                    $event->playerNameAway = null;
+
+                    $event->update();
+
+                    return redirect()->back();
+
+                } else if ($request->awayPlayer === "on"){
+
+                    $event = TickerEvents::find($request->eventId);
+                    $event->title = $request->title;
+                    $event->description = $request->description;
+                    $event->minute_of_event = $request->eventMinute;
+
+
+                    if($event->player_idHome != null){
+
+                        $match = Match::find($request->matchId);
+                        $player = Player::find($event->player_idHome);
+
+                        if ($event->goal === 1){
+                            $player->total_goals = $player->total_goals - 1;
+                            $player->update();
+
+                            $match->teamA_score = $match->teamA_score - 1;
+                            $match->teamB_score = $match->teamB_score + 1;
+                            $match->update();
+
+                        } else {
+                            $event->goal = null;
+                            $event->goal = 1;
+                        }
+
+                        if ($event->assist === 1){
+                            $player->assists = $player->assists - 1 ;
+                            $player->update();
+
+                            $match->teamB_score = $match->teamB_score + 1;
+                            $match->update();
+
+                            $event->assist = null;
+                        } else {
+                            $event->assist = null;
+                        }
+
+                        if ($event->yellow_card === 1){
+                            $player->yellow_cards = $player->yellow_cards - 1 ;
+                            $player->update();
+
+                            $match->teamB_score = $match->teamB_score + 1;
+                            $match->update();
+
+                            $event->yellow_card = null;
+                        } else {
+                            $event->yellow_card = null;
+                        }
+
+                        if ($event->red_card === 1){
+                            $player->red_cards = $player->red_cards - 1 ;
+                            $player->update();
+
+                            $match->teamB_score = $match->teamB_score + 1;
+                            $match->update();
+
+                            $event->red_card = null;
+                        } else {
+                            $event->red_card = null;
+                        }
+
+                        if ($event->injury === 1){
+                            $match->teamB_score = $match->teamB_score + 1;
+                            $match->update();
+                        }
+
+                        if ($event->substitute === 1){
+                            $match->teamB_score = $match->teamB_score + 1;
+                            $match->update();
+                        }
+
+                    } else if ($event->player_idHome === null) {
+                        $match = Match::find($request->matchId);
+
+                        if ($event->goal === 1){
+                            $match->teamB_score = $match->teamB_score + 1;
+                            $match->update();
+                        }
+
+                        if ($event->assist === 1){
+                            $match->teamB_score = $match->teamB_score + 1;
+                            $match->update();
+
+                        }
+
+                        if ($event->yellow_card === 1){
+                            $match->teamB_score = $match->teamB_score + 1;
+                            $match->update();
+
+                        }
+
+                        if ($event->red_card === 1){
+                            $match->teamB_score = $match->teamB_score + 1;
+                            $match->update();
+
+                        }
+
+                        if ($event->injury === 1){
+                            $match->teamB_score = $match->teamB_score + 1;
+                            $match->update();
+                        }
+
+                        if ($event->substitute === 1){
+                            $match->teamB_score = $match->teamB_score + 1;
+                            $match->update();
+                        }
+                    }
+
+                    $event->playerNameAway = null;
+                    $event->playerNameAway = $request->awayPlayerName;
+                    $event->injury = null;
+                    $event->substitute = null;
+                    $event->goal = null;
+                    $event->goal = 1;
+                    $event->yellow_card = null;
+                    $event->red_card = null;
+                    $event->assist = null;
+                    $event->player_idHome = null;
+
+                    $event->update();
+
+                    return redirect()->back();
                 }
+            } else if ($request->eventType === "assist"){
 
-                $event->playerNameAway = null;
+                if ($request->homePlayer === "on"){
 
-                $event->update();
+                    $event = TickerEvents::find($request->eventId);
+                    $event->title = $request->title;
+                    $event->description = $request->description;
+                    $event->minute_of_event = $request->eventMinute;
 
-                return redirect()->back();
 
-            } else if ($request->awayPlayer === "on"){
+                    $event->assist = null;
+                    $event->assist = 1;
 
-                $event = TickerEvents::find($request->eventId);
-                $event->title = $request->title;
-                $event->description = $request->description;
-                $event->minute_of_event = $request->eventMinute;
-
-                $event->playerNameAway = null;
-                $event->injury = null;
-                $event->substitute = null;
-                $event->playerNameAway = $request->awayPlayerName;
-
-                if($event->player_idHome != null){
+                    $playerOld = Player::find($event->player_idHome);
+                    $playerNew = Player::find($request->homePlayerName);
                     $match = Match::find($request->matchId);
-                    $match->teamA_score = $match->teamA_score - 1;
-                    $match->teamB_score = $match->teamB_score + 1;
-                    $match->update();
 
-                    $player = Player::find($event->player_idHome);
+                    if ($event->goal === 1 && $event->playerNameAway  === null){
+                        $playerOld->total_goals = $playerOld->total_goals - 1 ;
+                        $playerOld->update();
 
-                    if ($event->goal === 1){
-                        $player->total_goals = $player->total_goals - 1;
-                        $player->update();
+                        $playerNew->assists = $playerNew->assists + 1;
+                        $playerNew->update();
 
-                        $event->goal = null;
-                        $event->goal = 1;
+                        $match->teamA_score = $match->teamA_score - 1;
+                        $match->update();
+
+                    } else if ($event->goal === 1 && $event->playerNameAway  != null){
+
+                        $playerNew->assists = $playerNew->assists + 1;
+                        $playerNew->update();
+
+                        $match->teamB_score = $match->teamB_score - 1;
+                        $match->update();
+
                     } else {
                         $event->goal = null;
-                        $event->goal = 1;
                     }
 
-                    if ($event->assist === 1){
-                        $player->assists = $player->assists - 1 ;
-                        $player->update();
-                        $event->assist = null;
-                    } else {
-                        $event->assist = null;
-                    }
+                    if ($event->yellow_card === 1 && $event->playerNameAway  === null){
+                        $playerOld->yellow_cards = $playerOld->yellow_cards - 1 ;
+                        $playerOld->update();
 
-                    if ($event->yellow_card === 1){
-                        $player->yellow_cards = $player->yellow_cards - 1 ;
-                        $player->update();
-                        $event->yellow_card = null;
+                        $playerNew->assists = $playerOld->assists + 1;
+                        $playerNew->update();
+
+                    } else if ($event->yellow_card === 1 && $event->playerNameAway  != null){
+
+                        $playerNew->assists = $playerOld->assists + 1;
+                        $playerNew->update();
                     } else {
                         $event->yellow_card = null;
                     }
 
-                    if ($event->red_card === 1){
-                        $player->red_cards = $player->red_cards - 1 ;
-                        $player->update();
-                        $event->red_card = null;
+                    if ($event->red_card === 1 && $event->playerNameAway  === null){
+                        $playerOld->red_cards = $playerOld->red_cards - 1 ;
+                        $playerOld->update();
+
+                        $playerNew->assists = $playerNew->assists + 1;
+                        $playerNew->update();
+
+                    } else if ($event->red_card === 1 && $event->playerNameAway  != null){
+                        $playerNew->assists = $playerNew->assists + 1;
+                        $playerNew->update();
                     } else {
                         $event->red_card = null;
                     }
-                }
 
-                $event->goal = null;
-                $event->goal = 1;
-                $event->yellow_card = null;
-                $event->red_card = null;
-                $event->assist = null;
-                $event->player_idHome = null;
+                    if ($event->substitute === 1 && $event->playerNameAway  === null){
 
-                $event->update();
+                        $playerNew->assists = $playerNew->assists + 1;
+                        $playerNew->update();
 
-                return redirect()->back();
-            }
-        } else if ($request->eventType === "assist"){
+                    } else if ($event->substitute === 1 && $event->playerNameAway  != null){
 
-            if ($request->homePlayer === "on"){
+                        $playerNew->assists = $playerNew->assists + 1;
+                        $playerNew->update();
+                    } else {
+                        $event->substitute = null;
+                    }
 
-                $event = TickerEvents::find($request->eventId);
-                $event->title = $request->title;
-                $event->description = $request->description;
-                $event->minute_of_event = $request->eventMinute;
+                    if ($event->injury === 1 && $event->playerNameAway  === null){
 
-                $event->injury = null;
-                $event->assist = null;
-                $event->substitute = null;
+                        $playerNew->assists = $playerNew->assists + 1;
+                        $playerNew->update();
 
-                $event->assist = 1;
+                    } else if ($event->injury === 1 && $event->playerNameAway  != null){
 
-                $playerOld = Player::find($event->player_idHome);
-                $playerNew = Player::find($request->homePlayerName);
+                        $playerNew->assists = $playerNew->assists + 1;
+                        $playerNew->update();
+                    } else {
+                        $event->injury = null;
+                    }
 
+                    if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway  === null
+                        && $event->goal === null && $event->yellow_card === null && $event->red_card === null
+                        && $event->injury === null && $event->substitute === null){
 
-                if ($event->goal === 1 && $event->playerNameAway  === null){
-                    $playerOld->total_goals = $playerOld->total_goals - 1 ;
-                    $playerOld->update();
+                        $playerOld->assists = $playerOld->assists - 1;
+                        $playerOld->update();
 
-                    $playerNew->assists = $playerNew->assists + 1;
-                    $playerNew->update();
-                } else if ($event->goal === 1 && $event->playerNameAway  != null){
+                        $playerNew->assists = $playerNew->assists + 1;
+                        $playerNew->update();
 
-                    $playerNew->assists = $playerNew->assists + 1;
-                    $playerNew->update();
-                } else {
+                    } else if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway != null
+                        && $event->goal === null && $event->yellow_card === null && $event->red_card === null
+                        && $event->injury === null && $event->substitute === null) {
+                        $player = Player::find($request->homePlayerName);
+                        $player->assists = $player->assists + 1;
+                        $player->update();
+                    }
+
+                    $event->substitute = null;
+                    $event->injury = null;
                     $event->goal = null;
-                }
-
-                if ($event->yellow_card === 1 && $event->playerNameAway  === null){
-                    $playerOld->yellow_cards = $playerOld->yellow_cards - 1 ;
-                    $playerOld->update();
-
-                    $playerNew->assists = $playerOld->assists + 1;
-                    $playerNew->update();
-
-                } else if ($event->yellow_card === 1 && $event->playerNameAway  != null){
-
-                    $playerNew->assists = $playerOld->assists + 1;
-                    $playerNew->update();
-                } else {
                     $event->yellow_card = null;
-                }
-
-                if ($event->red_card === 1 && $event->playerNameAway  === null){
-                    $playerOld->red_cards = $playerOld->red_cards - 1 ;
-                    $playerOld->update();
-
-                    $playerNew->assists = $playerNew->assists + 1;
-                    $playerNew->update();
-
-                } else if ($event->red_card === 1 && $event->playerNameAway  != null){
-                    $playerNew->assists = $playerNew->assists + 1;
-                    $playerNew->update();
-                } else {
                     $event->red_card = null;
-                }
+                    $event->player_idHome = null;
+                    $event->player_idHome = $request->homePlayerName;
+                    $event->playerNameAway = null;
 
-                if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway  === null
-                    && $event->goal === null && $event->yellow_card === null && $event->red_card === null){
+                    $event->update();
 
-                    $playerOld->assists = $playerOld->assists - 1;
-                    $playerOld->update();
+                    return redirect()->back();
 
-                    $playerNew->assists = $playerNew->assists + 1;
-                    $playerNew->update();
+                } else if ($request->awayPlayer === "on"){
 
-                } else if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway != null
-                    && $event->goal === null && $event->yellow_card === null && $event->red_card === null) {
-                    $player = Player::find($request->homePlayerName);
-                    $player->assists = $player->assists + 1;
-                    $player->update();
-                }
+                    $event = TickerEvents::find($request->eventId);
+                    $event->title = $request->title;
+                    $event->description = $request->description;
+                    $event->minute_of_event = $request->eventMinute;
 
-                $event->goal = null;
-                $event->yellow_card = null;
-                $event->red_card = null;
-                $event->player_idHome = null;
-                $event->player_idHome = $request->homePlayerName;
-                $event->playerNameAway = null;
-
-                $event->update();
-
-                return redirect()->back();
-
-            } else if ($request->awayPlayer === "on"){
-
-                $event = TickerEvents::find($request->eventId);
-                $event->title = $request->title;
-                $event->description = $request->description;
-                $event->minute_of_event = $request->eventMinute;
-
-                $event->injury = null;
-                $event->substitute = null;
+                    $event->injury = null;
+                    $event->substitute = null;
 
 
-                $event->playerNameAway = $request->awayPlayerName;
+                    $event->playerNameAway = $request->awayPlayerName;
+                    $match = Match::find($request->matchId);
 
-                if($event->player_idHome != null){
-                    $player = Player::find($event->player_idHome);
+                    if($event->player_idHome != null){
+                        $player = Player::find($event->player_idHome);
 
-                    if ($event->assist === 1){
-                        $player->assists = $player->assists - 1;
-                        $player->update();
+                        if ($event->assist === 1){
+                            $player->assists = $player->assists - 1;
+                            $player->update();
 
-                        $event->assist = null;
-                        $event->assist = 1;
-                    } else{
-                        $event->assist = null;
-                        $event->assist = 1;
+                            $event->assist = null;
+                            $event->assist = 1;
+                        } else{
+                            $event->assist = null;
+                            $event->assist = 1;
+                        }
+
+                        if ($event->goal === 1){
+                            $player->total_goals = $player->total_goals - 1 ;
+                            $player->update();
+
+                            $match->teamA_score = $match->teamA_score - 1;
+                            $match->update();
+
+                            $event->goal = null;
+                        } else {
+                            $event->goal = null;
+                        }
+
+                        if ($event->yellow_card === 1){
+                            $player->yellow_cards = $player->yellow_cards - 1 ;
+                            $player->update();
+                            $event->yellow_card = null;
+                        } else {
+                            $event->yellow_card = null;
+                        }
+
+                        if ($event->red_card === 1){
+                            $player->red_cards = $player->red_cards - 1 ;
+                            $player->update();
+                            $event->red_card = null;
+                        } else {
+                            $event->red_card = null;
+                        }
+
                     }
 
-                    if ($event->goal === 1){
-                        $player->total_goals = $player->total_goals - 1 ;
-                        $player->update();
-                        $event->goal = null;
-                    } else {
-                        $event->goal = null;
+                    if ($event->goal === 1 && $event->player_idHome === null){
+                        $match->teamB_score = $match->teamB_score - 1;
+                        $match->update();
                     }
 
-                    if ($event->yellow_card === 1){
-                        $player->yellow_cards = $player->yellow_cards - 1 ;
-                        $player->update();
-                        $event->yellow_card = null;
-                    } else {
-                        $event->yellow_card = null;
-                    }
-
-                    if ($event->red_card === 1){
-                        $player->red_cards = $player->red_cards - 1 ;
-                        $player->update();
-                        $event->red_card = null;
-                    } else {
-                        $event->red_card = null;
-                    }
-
-                }
-
-                $event->assist = null;
-                $event->assist = 1;
-                $event->goal = null;
-                $event->yellow_card = null;
-                $event->red_card = null;
-                $event->player_idHome = null;
-
-                $event->update();
-
-                return redirect()->back();
-            }
-
-        } else if ($request->eventType === "yellowCard"){
-
-            if ($request->homePlayer === "on"){
-
-                $event = TickerEvents::find($request->eventId);
-                $event->title = $request->title;
-                $event->description = $request->description;
-                $event->minute_of_event = $request->eventMinute;
-
-                $event->yellow_card = null;
-                $event->injury = null;
-                $event->substitute = null;
-                $event->yellow_card = 1;
-
-                $playerOld = Player::find($event->player_idHome);
-                $playerNew = Player::find($request->homePlayerName);
-
-                if ($event->goal === 1 && $event->playerNameAway  === null){
-                    $playerOld->total_goals = $playerOld->total_goals - 1 ;
-                    $playerOld->update();
-
-                    $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
-                    $playerNew->update();
-
-                } else if ($event->goal === 1 && $event->playerNameAway  != null){
-
-                    $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
-                    $playerNew->update();
-
-                } else {
-                    $event->goal = null;
-                }
-
-                if ($event->assist === 1 && $event->playerNameAway  === null){
-                    $playerOld->assists = $playerOld->assists - 1 ;
-                    $playerOld->update();
-
-                    $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
-                    $playerNew->update();
-
-                } else if ($event->assist === 1 && $event->playerNameAway  != null){
-
-                    $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
-                    $playerNew->update();
-
-                } else {
                     $event->assist = null;
-                }
-
-                if ($event->red_card === 1 && $event->playerNameAway  === null){
-                    $playerOld->red_cards = $playerOld->red_cards - 1 ;
-                    $playerOld->update();
-
-                    $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
-                    $playerNew->update();
-
-                } else if ($event->red_card === 1 && $event->playerNameAway  != null){
-
-                    $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
-                    $playerNew->update();
-                } else {
-                    $event->red_card = null;
-                }
-
-                if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway  === null
-                    && $event->goal === null && $event->assist === null && $event->red_card === null){
-
-                    $playerOld->yellow_cards = $playerOld->yellow_cards - 1;
-                    $playerOld->update();
-
-                    $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
-                    $playerNew->update();
-
-
-                } else if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway  != null
-                    && $event->goal === null && $event->assist === null && $event->red_card === null){
-                    $player = Player::find($request->homePlayerName);
-                    $player->yellow_cards = $player->yellow_cards + 1;
-                    $player->update();
-                }
-                $event->goal = null;
-                $event->red_card = null;
-                $event->assist = null;
-                $event->playerNameAway = null;
-                $event->player_idHome = $request->homePlayerName;
-                $event->update();
-
-                return redirect()->back();
-
-            } else if ($request->awayPlayer === "on"){
-
-                $event = TickerEvents::find($request->eventId);
-                $event->title = $request->title;
-                $event->description = $request->description;
-                $event->minute_of_event = $request->eventMinute;
-
-
-                $event->injury = null;
-                $event->substitute = null;
-
-                $event->playerNameAway = $request->awayPlayerName;
-
-                if($event->player_idHome != null){
-
-                    $player = Player::find($event->player_idHome);
-
-                    if ($event->yellow_card === 1){
-                        $player->yellow_cards = $player->yellow_cards - 1;
-                        $player->update();
-
-                        $event->yellow_card = null;
-                        $event->yellow_card = 1;
-                    } else{
-                        $event->yellow_card = null;
-                        $event->yellow_card = 1;
-                    }
-
-                    if ($event->goal === 1){
-                        $player->total_goals = $player->total_goals - 1 ;
-                        $player->update();
-                        $event->goal = null;
-                    } else {
-                        $event->goal = null;
-                    }
-
-                    if ($event->assist === 1){
-                        $player->assists = $player->assists - 1 ;
-                        $player->update();
-                        $event->assist = null;
-                    } else {
-                        $event->assist = null;
-                    }
-
-                    if ($event->red_card === 1){
-                        $player->red_cards = $player->red_cards - 1 ;
-                        $player->update();
-                        $event->red_card = null;
-                    } else {
-                        $event->red_card = null;
-                    }
-                }
-
-                $event->yellow_card = null;
-                $event->yellow_card = 1;
-                $event->red_card = null;
-                $event->assist = null;
-                $event->goal = null;
-                $event->player_idHome = null;
-
-                $event->update();
-
-                return redirect()->back();
-            }
-
-        } else if ($request->eventType === "redCard"){
-
-            if ($request->homePlayer === "on"){
-
-                $event = TickerEvents::find($request->eventId);
-                $event->title = $request->title;
-                $event->description = $request->description;
-                $event->minute_of_event = $request->eventMinute;
-
-                $event->red_card = null;
-                $event->injury = null;
-                $event->substitute = null;
-
-                $event->red_card = 1;
-
-                $playerOld = Player::find($event->player_idHome);
-                $playerNew = Player::find($request->homePlayerName);
-
-
-                if ($event->goal === 1 && $event->playerNameAway  === null){
-                    $playerOld->total_goals = $playerOld->total_goals - 1 ;
-                    $playerOld->update();
-
-                    $playerNew->red_cards = $playerNew->red_cards + 1 ;
-                    $playerNew->update();
-
-                } else if ($event->goal === 1 && $event->playerNameAway  != null){
-                    $playerNew->red_cards = $playerNew->red_cards + 1 ;
-                    $playerNew->update();
-
-                } else {
+                    $event->assist = 1;
                     $event->goal = null;
-                }
-
-                if ($event->assist === 1 && $event->playerNameAway  === null){
-                    $playerOld->assists = $playerOld->assists - 1 ;
-                    $playerOld->update();
-
-                    $playerNew->red_cards = $playerNew->red_cards + 1 ;
-                    $playerNew->update();
-
-                } else if ($event->assist === 1 && $event->playerNameAway  != null){
-                    $playerNew->red_cards = $playerNew->red_cards + 1 ;
-                    $playerNew->update();
-
-                } else {
-                    $event->assist = null;
-                }
-
-                if ($event->yellow_card === 1 && $event->playerNameAway  === null){
-                    $playerOld->yellow_cards = $playerOld->yellow_cards - 1 ;
-                    $playerOld->update();
-
-                    $playerNew->red_cards = $playerNew->red_cards + 1 ;
-                    $playerNew->update();
-
-                } else if ($event->yellow_card === 1 && $event->playerNameAway  != null){
-                    $playerNew->red_cards = $playerNew->red_cards + 1 ;
-                    $playerNew->update();
-
-                } else {
                     $event->yellow_card = null;
+                    $event->red_card = null;
+                    $event->player_idHome = null;
+
+                    $event->update();
+
+                    return redirect()->back();
                 }
 
-                if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway  === null
-                    && $event->goal === null && $event->assist === null && $event->yellow_card === null){
-                    $playerOld->red_cards = $playerOld->red_cards - 1;
-                    $playerOld->update();
+            } else if ($request->eventType === "yellowCard"){
 
-                    $playerNew->red_cards = $playerNew->red_cards + 1;
-                    $playerNew->update();
+                if ($request->homePlayer === "on"){
 
-                } else if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway  != null
-                    && $event->goal === null && $event->assist === null && $event->yellow_card === null){
-                    $player = Player::find($request->homePlayerName);
-                    $player->red_cards = $player->red_cards + 1;
-                    $player->update();
-                }
+                    $event = TickerEvents::find($request->eventId);
+                    $event->title = $request->title;
+                    $event->description = $request->description;
+                    $event->minute_of_event = $request->eventMinute;
 
-                $event->goal = null;
-                $event->yellow_card = null;
-                $event->assist = null;
-                $event->playerNameAway = null;
-                $event->player_idHome = $request->homePlayerName;
-                $event->update();
+                    $event->yellow_card = null;
+                    $event->yellow_card = 1;
 
-                return redirect()->back();
+                    $playerOld = Player::find($event->player_idHome);
+                    $playerNew = Player::find($request->homePlayerName);
+                    $match = Match::find($request->matchId);
 
-            } else if ($request->awayPlayer === "on"){
+                    if ($event->goal === 1 && $event->playerNameAway  === null){
+                        $playerOld->total_goals = $playerOld->total_goals - 1 ;
+                        $playerOld->update();
 
-                $event = TickerEvents::find($request->eventId);
-                $event->title = $request->title;
-                $event->description = $request->description;
-                $event->minute_of_event = $request->eventMinute;
+                        $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
+                        $playerNew->update();
 
+                        $match->teamA_score = $match->teamA_score - 1;
+                        $match->update();
 
-                $event->injury = null;
-                $event->substitute = null;
+                    } else if ($event->goal === 1 && $event->playerNameAway  != null){
 
+                        $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
+                        $playerNew->update();
 
-                $event->playerNameAway = $request->awayPlayerName;
+                        $match->teamB_score = $match->teamB_score - 1;
+                        $match->update();
 
-                if($event->player_idHome != null){
-                    $player = Player::find($event->player_idHome);
-
-                    if ($event->red_card === 1){
-                        $player->red_cards = $player->red_cards - 1;
-                        $player->update();
-
-                        $event->red_card = null;
-                        $event->red_card = 1;
-                    } else {
-                        $event->red_card = null;
-                        $event->red_card = 1;
-                    }
-
-                    if ($event->goal === 1){
-                        $player->total_goals = $player->total_goals - 1 ;
-                        $player->update();
-                        $event->goal = null;
                     } else {
                         $event->goal = null;
                     }
 
-                    if ($event->assist === 1){
-                        $player->assists = $player->assists - 1 ;
-                        $player->update();
-                        $event->assist = null;
+                    if ($event->assist === 1 && $event->playerNameAway  === null){
+                        $playerOld->assists = $playerOld->assists - 1 ;
+                        $playerOld->update();
+
+                        $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
+                        $playerNew->update();
+
+                    } else if ($event->assist === 1 && $event->playerNameAway  != null){
+
+                        $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
+                        $playerNew->update();
+
                     } else {
                         $event->assist = null;
                     }
 
-                    if ($event->yellow_card === 1){
-                        $player->yellow_cards = $player->yellow_cards - 1 ;
-                        $player->update();
-                        $event->yellow_card = null;
+                    if ($event->red_card === 1 && $event->playerNameAway  === null){
+                        $playerOld->red_cards = $playerOld->red_cards - 1 ;
+                        $playerOld->update();
+
+                        $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
+                        $playerNew->update();
+
+                    } else if ($event->red_card === 1 && $event->playerNameAway  != null){
+
+                        $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
+                        $playerNew->update();
                     } else {
-                        $event->yellow_card = null;
+                        $event->red_card = null;
                     }
+
+                    if ($event->substitute === 1 && $event->playerNameAway  === null){
+
+                        $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
+                        $playerNew->update();
+
+                    } else if ($event->substitute === 1 && $event->playerNameAway  != null){
+
+                        $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
+                        $playerNew->update();
+                    } else {
+                        $event->substitute = null;
+                    }
+
+                    if ($event->injury === 1 && $event->playerNameAway  === null){
+
+                        $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
+                        $playerNew->update();
+
+                    } else if ($event->injury === 1 && $event->playerNameAway  != null){
+
+                        $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
+                        $playerNew->update();
+                    } else {
+                        $event->injury = null;
+                    }
+
+                    if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway  === null
+                        && $event->goal === null && $event->assist === null && $event->red_card === null
+                        && $event->injury === null && $event->substitute === null){
+
+                        $playerOld->yellow_cards = $playerOld->yellow_cards - 1;
+                        $playerOld->update();
+
+                        $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
+                        $playerNew->update();
+
+
+                    } else if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway  != null
+                        && $event->goal === null && $event->assist === null && $event->red_card === null
+                        && $event->injury === null && $event->substitute === null){
+                        $player = Player::find($request->homePlayerName);
+                        $player->yellow_cards = $player->yellow_cards + 1;
+                        $player->update();
+                    }
+
+                    $event->injury = null;
+                    $event->substitute = null;
+                    $event->goal = null;
+                    $event->red_card = null;
+                    $event->assist = null;
+                    $event->playerNameAway = null;
+                    $event->player_idHome = $request->homePlayerName;
+                    $event->update();
+
+                    return redirect()->back();
+
+                } else if ($request->awayPlayer === "on"){
+
+                    $event = TickerEvents::find($request->eventId);
+                    $event->title = $request->title;
+                    $event->description = $request->description;
+                    $event->minute_of_event = $request->eventMinute;
+
+
+                    $event->injury = null;
+                    $event->substitute = null;
+
+                    $event->playerNameAway = $request->awayPlayerName;
+                    $match = Match::find($request->matchId);
+
+                    if($event->player_idHome != null){
+
+                        $player = Player::find($event->player_idHome);
+
+                        if ($event->yellow_card === 1){
+                            $player->yellow_cards = $player->yellow_cards - 1;
+                            $player->update();
+
+                            $event->yellow_card = null;
+                            $event->yellow_card = 1;
+                        } else{
+                            $event->yellow_card = null;
+                            $event->yellow_card = 1;
+                        }
+
+                        if ($event->goal === 1){
+                            $player->total_goals = $player->total_goals - 1 ;
+                            $player->update();
+
+                            $match->teamA_score = $match->teamA_score - 1;
+                            $match->update();
+
+                            $event->goal = null;
+                        } else {
+                            $event->goal = null;
+                        }
+
+                        if ($event->assist === 1){
+                            $player->assists = $player->assists - 1 ;
+                            $player->update();
+                            $event->assist = null;
+                        } else {
+                            $event->assist = null;
+                        }
+
+                        if ($event->red_card === 1){
+                            $player->red_cards = $player->red_cards - 1 ;
+                            $player->update();
+                            $event->red_card = null;
+                        } else {
+                            $event->red_card = null;
+                        }
+                    }
+
+                    if ($event->goal === 1 && $event->player_idHome === null){
+                        $match->teamB_score = $match->teamB_score - 1;
+                        $match->update();
+                    }
+
+                    $event->yellow_card = null;
+                    $event->yellow_card = 1;
+                    $event->red_card = null;
+                    $event->assist = null;
+                    $event->goal = null;
+                    $event->player_idHome = null;
+
+                    $event->update();
+
+                    return redirect()->back();
                 }
 
-                $event->red_card = null;
-                $event->red_card = 1;
-                $event->yellow_card = null;
-                $event->assist = null;
-                $event->goal = null;
-                $event->player_idHome = null;
-                $event->update();
+            } else if ($request->eventType === "redCard"){
 
-                return redirect()->back();
+                if ($request->homePlayer === "on"){
+
+                    $event = TickerEvents::find($request->eventId);
+                    $event->title = $request->title;
+                    $event->description = $request->description;
+                    $event->minute_of_event = $request->eventMinute;
+
+                    $event->red_card = null;
+                    $event->red_card = 1;
+
+                    $playerOld = Player::find($event->player_idHome);
+                    $playerNew = Player::find($request->homePlayerName);
+                    $match = Match::find($request->matchId);
+
+
+                    if ($event->goal === 1 && $event->playerNameAway  === null){
+                        $playerOld->total_goals = $playerOld->total_goals - 1 ;
+                        $playerOld->update();
+
+                        $playerNew->red_cards = $playerNew->red_cards + 1 ;
+                        $playerNew->update();
+
+                        $match->teamA_score = $match->teamA_score - 1;
+                        $match->update();
+
+                    } else if ($event->goal === 1 && $event->playerNameAway  != null){
+                        $playerNew->red_cards = $playerNew->red_cards + 1 ;
+                        $playerNew->update();
+
+                        $match->teamB_score = $match->teamB_score - 1;
+                        $match->update();
+                    } else {
+                        $event->goal = null;
+                    }
+
+                    if ($event->assist === 1 && $event->playerNameAway  === null){
+                        $playerOld->assists = $playerOld->assists - 1 ;
+                        $playerOld->update();
+
+                        $playerNew->red_cards = $playerNew->red_cards + 1 ;
+                        $playerNew->update();
+
+                    } else if ($event->assist === 1 && $event->playerNameAway  != null){
+                        $playerNew->red_cards = $playerNew->red_cards + 1 ;
+                        $playerNew->update();
+
+                    } else {
+                        $event->assist = null;
+                    }
+
+                    if ($event->yellow_card === 1 && $event->playerNameAway  === null){
+                        $playerOld->yellow_cards = $playerOld->yellow_cards - 1 ;
+                        $playerOld->update();
+
+                        $playerNew->red_cards = $playerNew->red_cards + 1 ;
+                        $playerNew->update();
+
+                    } else if ($event->yellow_card === 1 && $event->playerNameAway  != null){
+                        $playerNew->red_cards = $playerNew->red_cards + 1 ;
+                        $playerNew->update();
+
+                    } else {
+                        $event->yellow_card = null;
+                    }
+
+                    if ($event->substitute === 1 && $event->playerNameAway  === null){
+
+                        $playerNew->red_cards = $playerNew->red_cards + 1;
+                        $playerNew->update();
+
+                    } else if ($event->substitute === 1 && $event->playerNameAway  != null){
+
+                        $playerNew->red_cards = $playerNew->red_cards + 1;
+                        $playerNew->update();
+                    } else {
+                        $event->substitute = null;
+                    }
+
+                    if ($event->injury === 1 && $event->playerNameAway  === null){
+
+                        $playerNew->red_cards = $playerNew->red_cards + 1;
+                        $playerNew->update();
+
+                    } else if ($event->injury === 1 && $event->playerNameAway  != null){
+
+                        $playerNew->red_cards = $playerNew->red_cards + 1;
+                        $playerNew->update();
+                    } else {
+                        $event->injury = null;
+                    }
+
+                    if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway  === null
+                        && $event->goal === null && $event->assist === null && $event->yellow_card === null
+                        && $event->injury === null && $event->substitute === null){
+                        $playerOld->red_cards = $playerOld->red_cards - 1;
+                        $playerOld->update();
+
+                        $playerNew->red_cards = $playerNew->red_cards + 1;
+                        $playerNew->update();
+
+                    } else if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway  != null
+                        && $event->goal === null && $event->assist === null && $event->yellow_card === null
+                        && $event->injury === null && $event->substitute === null){
+                        $player = Player::find($request->homePlayerName);
+                        $player->red_cards = $player->red_cards + 1;
+                        $player->update();
+                    }
+
+                    $event->injury = null;
+                    $event->substitute = null;
+                    $event->goal = null;
+                    $event->yellow_card = null;
+                    $event->assist = null;
+                    $event->playerNameAway = null;
+                    $event->player_idHome = $request->homePlayerName;
+                    $event->update();
+
+                    return redirect()->back();
+
+                } else if ($request->awayPlayer === "on"){
+
+                    $event = TickerEvents::find($request->eventId);
+                    $event->title = $request->title;
+                    $event->description = $request->description;
+                    $event->minute_of_event = $request->eventMinute;
+
+                    $event->injury = null;
+                    $event->substitute = null;
+
+
+                    $event->playerNameAway = $request->awayPlayerName;
+                    $match = Match::find($request->matchId);
+
+                    if($event->player_idHome != null){
+                        $player = Player::find($event->player_idHome);
+
+                        if ($event->red_card === 1){
+                            $player->red_cards = $player->red_cards - 1;
+                            $player->update();
+
+                            $event->red_card = null;
+                            $event->red_card = 1;
+                        } else {
+                            $event->red_card = null;
+                            $event->red_card = 1;
+                        }
+
+                        if ($event->goal === 1){
+                            $player->total_goals = $player->total_goals - 1 ;
+                            $player->update();
+
+                            $match->teamA_score = $match->teamA_score - 1;
+                            $match->update();
+
+                            $event->goal = null;
+                        } else {
+                            $event->goal = null;
+                        }
+
+                        if ($event->assist === 1){
+                            $player->assists = $player->assists - 1 ;
+                            $player->update();
+                            $event->assist = null;
+                        } else {
+                            $event->assist = null;
+                        }
+
+                        if ($event->yellow_card === 1){
+                            $player->yellow_cards = $player->yellow_cards - 1 ;
+                            $player->update();
+                            $event->yellow_card = null;
+                        } else {
+                            $event->yellow_card = null;
+                        }
+                    }
+
+                    if ($event->goal === 1 && $event->player_idHome === null){
+                        $match->teamB_score = $match->teamB_score - 1;
+                        $match->update();
+                    }
+
+                    $event->red_card = null;
+                    $event->red_card = 1;
+                    $event->yellow_card = null;
+                    $event->assist = null;
+                    $event->goal = null;
+                    $event->player_idHome = null;
+                    $event->update();
+
+                    return redirect()->back();
+
+                }
+
+            } else if ($request->eventType === "injury"){
+
+                if ($request->homePlayer === "on"){
+
+                    $event = TickerEvents::find($request->eventId);
+                    $event->title = $request->title;
+                    $event->description = $request->description;
+                    $event->minute_of_event = $request->eventMinute;
+
+                    $playerOld = Player::find($event->player_idHome);
+                    $match = Match::find($request->matchId);
+
+                    if ($event->goal === 1 && $event->playerNameAway  === null){
+                        $playerOld->total_goals = $playerOld->total_goals - 1 ;
+                        $playerOld->update();
+
+                        $match->teamA_score = $match->teamA_score - 1;
+                        $match->update();
+
+                    } else if ($event->goal === 1 && $event->playerNameAway  != null){
+
+                        $match->teamB_score = $match->teamB_score - 1;
+                        $match->update();
+
+                        $event->goal = null;
+                    }
+
+                    if ($event->assist === 1 && $event->playerNameAway  === null){
+                        $playerOld->assists = $playerOld->assists - 1 ;
+                        $playerOld->update();
+
+                    }  else {
+                        $event->assist = null;
+                    }
+
+                    if ($event->yellow_card === 1 && $event->playerNameAway  === null){
+                        $playerOld->yellow_cards = $playerOld->yellow_cards - 1 ;
+                        $playerOld->update();
+
+                    } else {
+                        $event->yellow_card = null;
+                    }
+
+                    if ($event->red_card === 1 && $event->playerNameAway  === null){
+                        $playerOld->red_cards = $playerOld->red_cards - 1 ;
+                        $playerOld->update();
+                    } else {
+                        $event->yellow_card = null;
+                    }
+
+                    $event->playerNameAway = null;
+                    $event->yellow_card = null;
+                    $event->red_card = null;
+                    $event->injury = null;
+                    $event->assist = null;
+                    $event->goal = null;
+                    $event->substitute = null;
+                    $event->injury = 1;
+                    $event->player_idHome = $request->homePlayerName;
+                    $event->update();
+                    return redirect()->back();
+
+                } else if ($request->awayPlayer === "on"){
+
+                    $event = TickerEvents::find($request->eventId);
+                    $event->title = $request->title;
+                    $event->description = $request->description;
+                    $event->minute_of_event = $request->eventMinute;
+
+                    if($event->player_idHome != null){
+                        $player = Player::find($event->player_idHome);
+                        $match = Match::find($request->matchId);
+
+
+                        if ($event->red_card === 1){
+                            $player->red_cards = $player->red_cards - 1;
+                            $player->update();
+
+                            $event->red_card = null;
+                            $event->red_card = 1;
+                        } else {
+                            $event->red_card = null;
+                            $event->red_card = 1;
+                        }
+
+                        if ($event->yellow_card === 1){
+                            $player->yellow_cards = $player->yellow_cards - 1;
+                            $player->update();
+
+                            $event->yellow_card = null;
+                            $event->yellow_card = 1;
+                        } else {
+                            $event->yellow_card = null;
+                            $event->yellow_card = 1;
+                        }
+
+                        if ($event->goal === 1){
+                            $player->total_goals = $player->total_goals - 1 ;
+                            $player->update();
+
+                            $match->teamA_score = $match->teamA_score - 1;
+                            $match->update();
+
+                            $event->goal = null;
+                        } else {
+                            $event->goal = null;
+                        }
+
+                        if ($event->assist === 1){
+                            $player->assists = $player->assists - 1 ;
+                            $player->update();
+                            $event->assist = null;
+                        } else {
+                            $event->assist = null;
+                        }
+
+                    }
+
+                    if ($event->goal === 1 && $event->player_idHome === null){
+                        $match = Match::find($request->matchId);
+                        $match->teamB_score = $match->teamB_score - 1;
+                        $match->update();
+                    }
+
+                    $event->player_idHome = null;
+                    $event->injury = null;
+                    $event->injury = 1;
+                    $event->assist = null;
+                    $event->goal = null;
+                    $event->yellow_card = null;
+                    $event->red_card = null;
+                    $event->substitute = null;
+                    $event->playerNameAway = $request->awayPlayerName;
+                    $event->update();
+
+                    return redirect()->back();
+                }
+
+            } else if ($request->eventType === "substitution"){
+
+                if ($request->homePlayer === "on"){
+
+                    $event = TickerEvents::find($request->eventId);
+                    $event->title = $request->title;
+                    $event->description = $request->description;
+                    $event->minute_of_event = $request->eventMinute;
+
+
+                    $playerOld = Player::find($event->player_idHome);
+                    $match = Match::find($request->matchId);
+
+                    if ($event->goal === 1 && $event->playerNameAway  === null){
+                        $playerOld->total_goals = $playerOld->total_goals - 1 ;
+                        $playerOld->update();
+
+                        $match->teamA_score = $match->teamA_score - 1;
+                        $match->update();
+
+                    } else if ($event->goal === 1 && $event->playerNameAway  != null) {
+
+                        $match->teamB_score = $match->teamB_score - 1;
+                        $match->update();
+                        $event->goal = null;
+                    }
+
+                    if ($event->assist === 1 && $event->playerNameAway  === null){
+                        $playerOld->assists = $playerOld->assists - 1 ;
+                        $playerOld->update();
+
+                    }  else {
+                        $event->assist = null;
+                    }
+
+                    if ($event->yellow_card === 1 && $event->playerNameAway  === null){
+                        $playerOld->yellow_cards = $playerOld->yellow_cards - 1 ;
+                        $playerOld->update();
+
+                    } else {
+                        $event->yellow_card = null;
+                    }
+
+                    if ($event->red_card === 1 && $event->playerNameAway  === null){
+                        $playerOld->red_cards = $playerOld->red_cards - 1 ;
+                        $playerOld->update();
+                    } else {
+                        $event->yellow_card = null;
+                    }
+
+
+                    $event->playerNameAway = null;
+                    $event->yellow_card = null;
+                    $event->red_card = null;
+                    $event->injury = null;
+                    $event->assist = null;
+                    $event->goal = null;
+                    $event->substitute = null;
+                    $event->substitute = 1;
+                    $event->player_idHome = $request->homePlayerName;
+                    $event->update();
+
+                    return redirect()->back();
+
+                } else if ($request->awayPlayer === "on"){
+
+                    $event = TickerEvents::find($request->eventId);
+                    $event->title = $request->title;
+                    $event->description = $request->description;
+                    $event->minute_of_event = $request->eventMinute;
+
+                    if($event->player_idHome != null){
+                        $player = Player::find($event->player_idHome);
+                        $match = Match::find($request->matchId);
+
+                        if ($event->red_card === 1){
+                            $player->red_cards = $player->red_cards - 1;
+                            $player->update();
+
+                            $event->red_card = null;
+                            $event->red_card = 1;
+                        } else {
+                            $event->red_card = null;
+                            $event->red_card = 1;
+                        }
+
+                        if ($event->yellow_card === 1){
+                            $player->yellow_cards = $player->yellow_cards - 1;
+                            $player->update();
+
+                            $event->yellow_card = null;
+                            $event->yellow_card = 1;
+                        } else {
+                            $event->yellow_card = null;
+                            $event->yellow_card = 1;
+                        }
+
+                        if ($event->goal === 1){
+                            $player->total_goals = $player->total_goals - 1 ;
+                            $player->update();
+
+                            $match->teamA_score = $match->teamA_score - 1;
+                            $match->update();
+
+                            $event->goal = null;
+                        } else {
+                            $event->goal = null;
+                        }
+
+                        if ($event->assist === 1){
+                            $player->assists = $player->assists - 1 ;
+                            $player->update();
+                            $event->assist = null;
+                        } else {
+                            $event->assist = null;
+                        }
+
+                    }
+
+                    if ($event->goal === 1 && $event->player_idHome === null){
+                        $match = Match::find($request->matchId);
+                        $match->teamB_score = $match->teamB_score - 1;
+                        $match->update();
+                    }
+
+                    $event->player_idHome = null;
+                    $event->substitute = null;
+                    $event->substitute = 1;
+                    $event->injury = null;
+                    $event->assist = null;
+                    $event->goal = null;
+                    $event->yellow_card = null;
+                    $event->red_card = null;
+
+                    $event->playerNameAway = $request->awayPlayerName;
+                    $event->update();
+
+                    return redirect()->back();
+                }
 
             }
+        }
 
-        } else if ($request->eventType === "injury"){
+        else if ($request->btnDelete != null){
 
-            if ($request->homePlayer === "on"){
+            $event = TickerEvents::find($request->eventId);
 
-                $event = TickerEvents::find($request->eventId);
-                $event->title = $request->title;
-                $event->description = $request->description;
-                $event->minute_of_event = $request->eventMinute;
+            if ($event->player_idHome != null && $event->goal === 1){
+                $player = Player::find($event->player_idHome);
+                $player->total_goals = $player->total_goals - 1;
+                $player->update();
 
-                $event->playerNameAway = null;
-                $event->yellow_card = null;
-                $event->red_card = null;
-                $event->injury = null;
-                $event->assist = null;
-                $event->goal = null;
-                $event->substitute = null;
-
-                $event->injury = 1;
-
-                $event->player_idHome = $request->homePlayerName;
-                $event->update();
-                return redirect()->back();
-
-            } else if ($request->awayPlayer === "on"){
-
-                $event = TickerEvents::find($request->eventId);
-                $event->title = $request->title;
-                $event->description = $request->description;
-                $event->minute_of_event = $request->eventMinute;
-
-                $event->player_idHome = null;
-                $event->yellow_card = null;
-                $event->red_card = null;
-                $event->injury = null;
-                $event->assist = null;
-                $event->goal = null;
-                $event->substitute = null;
-
-                $event->injury = 1;
-
-                $event->playerNameAway = $request->awayPlayerName;
-                $event->update();
-
-                return redirect()->back();
+                $match = Match::find($request->matchId);
+                $match->teamA_score = $match->teamA_score - 1;
+            } else {
+                $match = Match::find($request->matchId);
+                $match->teamB_score = $match->teamB_score - 1;
             }
 
-        } else if ($request->eventType === "substitution"){
-
-            if ($request->homePlayer === "on"){
-
-                $event = TickerEvents::find($request->eventId);
-                $event->title = $request->title;
-                $event->description = $request->description;
-                $event->minute_of_event = $request->eventMinute;
-
-                $event->playerNameAway = null;
-                $event->yellow_card = null;
-                $event->red_card = null;
-                $event->injury = null;
-                $event->assist = null;
-                $event->goal = null;
-                $event->substitute = null;
-
-                $event->substitute = 1;
-
-                $event->player_idHome = $request->homePlayerName;
-                $event->update();
-
-                return redirect()->back();
-
-            } else if ($request->awayPlayer === "on"){
-
-                $event = TickerEvents::find($request->eventId);
-                $event->title = $request->title;
-                $event->description = $request->description;
-                $event->minute_of_event = $request->eventMinute;
-
-                $event->player_idHome = null;
-                $event->yellow_card = null;
-                $event->red_card = null;
-                $event->injury = null;
-                $event->assist = null;
-                $event->goal = null;
-                $event->substitute = null;
-
-                $event->substitute = 1;
-
-                $event->playerNameAway = $request->awayPlayerName;
-                $event->update();
-
-                return redirect()->back();
+            if($event->player_idHome != null && $event->assist === 1){
+                $player = Player::find($event->player_idHome);
+                $player->assists = $player->assists - 1;
+                $player->update();
             }
 
+            if($event->player_idHome != null && $event->yellow_card === 1){
+                $player = Player::find($event->player_idHome);
+                $player->yellow_cards = $player->yellow_cards - 1;
+                $player->update();
+            }
+
+            if($event->player_idHome != null && $event->red_card === 1){
+                $player = Player::find($event->player_idHome);
+                $player->red_cards = $player->red_cards - 1;
+                $player->update();
+            }
+
+            $event->delete();
+            return redirect()->back();
         }
 
     }

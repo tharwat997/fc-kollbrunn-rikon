@@ -1,13 +1,22 @@
 @extends('admin.layouts.app')
 @section('css')
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        .arrowBack{
+            font-size: 20px;
+        }
+    </style>
 @endsection
 @section('content')
     <!-- Page Header -->
-    <div class="page-header row no-gutters py-4">
-        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+    <div class="page-header row no-gutters py-2 pt-4  d-flex flex-column">
+        <div class="col-12 col-sm-4 text-center text-sm-left mb-2">
             <span class="text-uppercase page-subtitle">Matches' events</span>
             <h4 class="page-title">Manage matches' events</h4>
+        </div>
+        <div class="breadcrumb">
+            <a class="breadcrumb-item" href="{{route('matches')}}">Matches</a>
+            <a class="breadcrumb-item" href="{{\Illuminate\Support\Facades\Request::url()}}">Match {{$match->id}} events</a>
         </div>
     </div>
     <!-- End Page Header -->
@@ -15,7 +24,7 @@
         <div class="col-12">
             <div class="card  mb-4">
                 <div class="card-header border-bottom">
-                    <h6 class="m-0">Select match</h6>
+                    <h6 class="m-0">Select event</h6>
                 </div>
                 <div class="card-body">
 
@@ -85,6 +94,7 @@
                                 <td>
                                     <div>
                                         <a href="{{route('match_event_manage', ['matchId' => $event->match_id, 'eventId' => $event->id])}}" class="btn btn-primary btn-block" style="color: white;">Edit event</a>
+                                        <a href="{{route('match_event_delete', ['matchId' => $event->match_id, 'eventId' => $event->id])}}" class="btn btn-danger btn-block" style="color: white;">Delete event</a>
                                     </div>
                                 </td>
                             </tr>

@@ -9,10 +9,15 @@
 @endsection
 @section('content')
 
-    <div class="page-header row no-gutters py-4">
-        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+    <div class="page-header row no-gutters py-2 pt-4  d-flex flex-column">
+        <div class="col-12 col-sm-4 text-center text-sm-left mb-2">
             <span class="text-uppercase page-subtitle">{{$match->type_name}} event management</span>
             <h3 class="page-title">Manage event</h3>
+        </div>
+        <div class="breadcrumb">
+            <a class="breadcrumb-item" href="{{route('matches')}}">Matches</a>
+            <a class="breadcrumb-item" href="javascript:history.back()">Match {{$match->id}} events</a>
+            <a class="breadcrumb-item" href="{{\Illuminate\Support\Facades\Request::url()}}">Event {{$event->id}}</a>
         </div>
     </div>
     <form id="eventManagementForm" action="{{route('match_event_update')}}" method="POST">
@@ -102,7 +107,8 @@
                                 </div>
 
                                 <div class="input-group mb-3">
-                                    <button type="submit" class="btn btn-primary btn-block">Update</button>
+                                    <button type="submit" name="btnUpdate" value="btnUpdate" class="btn btn-primary btn-block">Update</button>
+                                    <button type="submit" value="btnDelete" name="btnDelete" class="btn btn-danger btn-block">Delete</button>
                                 </div>
 
                                 <input type="hidden" name="matchId" value="{{$match->id}}">

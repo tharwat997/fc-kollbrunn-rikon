@@ -9,10 +9,14 @@
 @endsection
 @section('content')
 
-    <div class="page-header row no-gutters py-4">
-        <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+    <div class="page-header row no-gutters py-2 pt-4  d-flex flex-column">
+        <div class="col-12 col-sm-4 text-center text-sm-left mb-2">
             <span class="text-uppercase page-subtitle">{{$match->type_name}} events creation</span>
             <h3 class="page-title">Add event</h3>
+        </div>
+        <div class="breadcrumb">
+            <a class="breadcrumb-item" href="{{route('matches')}}">Matches</a>
+            <a class="breadcrumb-item" href="{{\Illuminate\Support\Facades\Request::url()}}">Add Event</a>
         </div>
     </div>
     <form id="eventManagementForm" action="{{route('match_event_store')}}" method="POST">
