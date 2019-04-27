@@ -7,11 +7,18 @@
                         <div class="col-sm-12">
                             <h1>Agenda</h1>
                         </div>
+
                     </div>
                     <div class="card-body">
-                        <FullCalendar defaultView="timeGridWeek"
+                        <FullCalendar :defaultView="calendarView"
                                       :plugins="calendarPlugins"
                                       :events="events"
+                                      defaultView="dayGridMonth"
+                                      :header="{
+                                      left: 'prev,next today',
+                                      center: 'title',
+                                      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                                      }"
                         />
                     </div>
                 </b-card>
@@ -25,6 +32,7 @@
     import axios from 'axios'
     import FullCalendar from '@fullcalendar/vue'
     import timeGridPlugin from '@fullcalendar/timegrid'
+    import dayGridPlugin from '@fullcalendar/daygrid'
     export default {
         name: "agenda",
         components: {
@@ -32,21 +40,13 @@
         },
         data() {
             return {
-                calendarPlugins: [ timeGridPlugin ],
+                calendarView:'dayGridMonth',
+                calendarPlugins: [ timeGridPlugin, dayGridPlugin ],
                 timeZone: 'Europe/Zurich',
                 unFormattedEvents:[],
                 events:[
-                    {
-                        title: 'The Title',
-                        start: '2019-04-20T08:00:00',
-                        end: '2019-04-20T98:00:00'
-                    }
-                ],
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'timeGridWeek,timeGridDay'
-                }
+
+                ]
             }
         },
         methods:{
@@ -67,6 +67,14 @@
                     })
                 })
 
+            },
+            switchViews(view){
+                if (view === "week"){
+                    this.calendarView = "timeGridWeek";
+
+                } else if(view === "month"){
+                    this.calendarView = "dayGridMonth";
+                }
             }
         },
         created() {

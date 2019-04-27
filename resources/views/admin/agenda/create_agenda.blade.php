@@ -38,6 +38,42 @@
                             </div>
                             <input type="datetime-local" required name="endDateTime" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon2" value="">
                         </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span class="input-group-text">On going events</span>
+                            </div>
+                           <div class="d-flex align-items-center">
+                               <div class="mr-3">
+
+                               </div>
+                               <div class="checkbox">
+                                   <label class="mb-0">
+                                       <input type="hidden" checked name="recursiveOn" value="0">
+                                       <input type="checkbox" id="recursiveOn" name="recursiveOn" value="1">On going
+                                   </label>
+                               </div>
+                           </div>
+                        </div>
+                        <div class="input-group mb-3" style="display: none;">
+                            <div class="input-group-append">
+                                <span class="input-group-text">Recursive day</span>
+                            </div>
+                            <select name="dayOfWeek" id="dayOfWeek" class="form-control">
+                                <option value="0">Monday</option>
+                                <option value="1">Tuesday</option>
+                                <option value="2">Wednesday</option>
+                                <option value="3">Thursday</option>
+                                <option value="4">Friday</option>
+                                <option value="5">Saturday</option>
+                                <option value="6">Sunday</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3" style="display: none">
+                            <div class="input-group-append">
+                                <span class="input-group-text">Duration of event</span>
+                            </div>
+                            <input type="number" class="form-control" id="durationOfEvent" name="durationOfEvent">
+                        </div>
                         <div class="input-group d-flex align-items-center justify-content-end">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
@@ -46,4 +82,22 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    <script type="text/javascript">
+        $('#recursiveOn').change(function() {
+            if($(this).is(":checked")) {
+                $('#durationOfEvent').prop('required',true);
+                $('#durationOfEvent').prop('required',true);
+                $('#dayOfWeek').prop('required',true);
+                $('#durationOfEvent').parent().toggle();
+                $('#dayOfWeek').parent().toggle();
+            }else{
+                $('#durationOfEvent').parent().toggle();
+                $('#durationOfEvent').prop('required',false);
+                $('#dayOfWeek').prop('required',false);
+                $('#dayOfWeek').parent().toggle();
+            }
+        });
+    </script>
 @endsection

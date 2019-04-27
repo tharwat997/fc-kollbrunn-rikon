@@ -1,34 +1,111 @@
 @extends('layouts.app')
+@section('css')
+    <style type="text/css">
+        #newsSectionOne img{
+            object-fit: cover;
+            height: auto !important;
+            vertical-align: top;
+        }
+        .VueCarousel-pagination{
+            background: #000136;
+        }
+        .vuejs-countdown{
+            text-align: center;
+        }
+        .vuejs-countdown .text{
+            font-size: 2em !important;
+        }
+        .vuejs-countdown .digit{
+            font-size: 5em !important;
+        }
+        .vuejs-countdown li:after{
+            font-size: 4em !important;
+        }
+        #newsTickerContainer > div{
+            height: 100%;
+        }
+        #newsTickerContainer > div > div.VueCarousel-wrapper > div{
+            height: 100% !important;
+        }
+        #newsTickerContainer > div > div.VueCarousel-wrapper{
+            height: 100% !important;
+        }
+        #newsTickerContainer .VueCarousel-slide{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        #newsSectionOne > div > div.VueCarousel-wrapper > div > div.VueCarousel-slide > div > a{
+            width: 100%;
+            position: absolute;
+            font-size: 3em;
+            bottom: 20%;
+            text-align: center;
+            height: unset;
+            color:white;
+            text-decoration: none;
+            z-index: 999999;
+        }
+        #newsSectionOne > div > div.VueCarousel-wrapper > div > div.VueCarousel-slide > div > a:hover{
+            color:lightgray;
+        }
+    </style>
+@endsection
 @section('content')
     <section id="newsTickerSection">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6" id="newsSectionOne">
                     <carousel :autoplay="true" pagination-active-color="#FFD950" :per-page="1">
-                        <slide>
-                            <a href="#"> </a>
-                            <img alt="ca" class="img-fluid" src="https://placeimg.com/640/480/any" />
-                        </slide>
-                        <slide>
-                            <a href=""></a>
-                            <img alt="ca" class="img-fluid" src="https://placeimg.com/640/480/any" />
-                        </slide>
+                        @foreach($posts4 as $post)
+                            @foreach($post->getMedia('postsImages') as $image)
+                                <slide>
+                                    <div class="d-flex newsImageContainer">
+                                        <img alt="ca" class="img-fluid" srcset="{{$image->getUrl('newsHome')}}" />
+                                        <a href="{{route('news_show', ['id' => $post->id])}}">{{$post->title}}</a>
+                                    </div>
+
+                                </slide>
+                            @endforeach
+                        @endforeach
                     </carousel>
                 </div>
                 <div class="col-sm-6" id="newsTickerContainer">
-                    <div class="d-flex flex-column align-items-center">
-                        <div id="tickerSection">
-                            <a href=""><img alt="ca" class="img-fluid" src="https://placeimg.com/640/240/any" /></a>
-                        </div>
-                        <div id="newsSectionTwo" class="d-flex justify-content-center align-items-center">
-                            <div>
-                                <a href=""><img alt="ca" class="img-fluid" src="https://placeimg.com/640/480/any" /></a>
+                    <carousel :autoplay="true" pagination-active-color="#FFD950" :per-page="1">
+                        @foreach($matches as $match)
+                        <slide>
+                            <div class="tickerMatch d-flex p-4 flex-column">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <div>{{$match->match_type}}</div>
+                                    <div>{{$match->start_date_time}}</div>
+                                </div>
+                                <div>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <h3>{{$match->teamA_name}}</h3>
+                                        </div>
+                                        <div>
+                                            <h3>{{$match->teamA_score}}</h3>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <h3>{{$match->teamB_name}}</h3>
+                                        </div>
+                                        <div>
+                                            <h3>{{$match->teamB_score}}</h3>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <a href=""><img alt="ca" class="img-fluid" src="https://placeimg.com/640/480/any" /></a>
+                            <div class="h-100 d-flex align-items-center justify-content-center">
+                                <Countdown end="{{$match->start_date_time}}"></Countdown>
+                                <count :matches="{{$matches2}}"></count>
                             </div>
-                        </div>
-                    </div>
+                        </slide>
+                        @endforeach
+                    </carousel>
                 </div>
             </div>
         </div>
@@ -50,14 +127,4 @@
 @endsection
 
 @section('js')
-
-
 @endsection
-{{--@section('js')--}}
-    {{--<script>--}}
-        {{--import HomeTimeline from "../js/components/home-timeline";--}}
-        {{--export default {--}}
-            {{--components: {HomeTimeline}--}}
-        {{--}--}}
-    {{--</script>--}}
-{{--@endsection--}}

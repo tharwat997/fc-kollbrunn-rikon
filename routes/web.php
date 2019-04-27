@@ -13,7 +13,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use Spatie\Honeypot\ProtectAgainstSpam;
 
 Auth::routes();
 Route::get('/home', 'HomeController@redirectToDashboard')->name('redirect_to_dashboard')->middleware('auth');
@@ -28,8 +28,11 @@ Route::get('/events', 'EventsController@index')->name('events');
 Route::get('/live-ticker', 'LiveTickerController@index')->name('live_ticker');
 Route::get('/live-ticker/matches', 'LiveTickerController@matches')->name('live_ticker_matches');
 Route::get('/live-ticker/{id}', 'LiveTickerController@show')->name('live_ticker_details');
-Route::get('/news', 'NewsController@index')->name('news');
+Route::post('/comments/store', 'CommentController@store')->name('comments_store')->middleware(ProtectAgainstSpam::class);
+Route::get('/news', 'PostsController@index')->name('news');
+Route::get('/news/{id}', 'PostsController@show')->name('news_show');
 Route::get('/contact-us', 'ContactUsController@index')->name('contact_us');
+Route::get('/contact-us/events', 'ContactUsController@eventsAjax')->name('contact_us_events');
 
 // Admin Routes
 Route::get('/dashboard', 'AdminController@index')->name('dashboard');
@@ -38,7 +41,7 @@ Route::get('/dashboard', 'AdminController@index')->name('dashboard');
 Route::get('/agenda/add', 'AgendaController@agendaEventsCreate')->name('agenda_events_create')->middleware('auth');
 Route::post('/agenda/store', 'AgendaController@store')->name('agenda_events_store')->middleware('auth');
 Route::get('/agenda/manage', 'AgendaController@agendaEventsManage')->name('agenda_events_manage')->middleware('auth');
-Route::get('/agenda/update', 'AgendaController@update')->name('agenda_events_update')->middleware('auth');
+Route::post('/agenda/update', 'AgendaController@update')->name('agenda_events_update')->middleware('auth');
 
 //Event Management
 Route::get('/events/add', 'EventsController@eventsCreate')->name('events_create')->middleware('auth');
@@ -80,4 +83,26 @@ Route::get('/matches/{matchId}/events/{eventId}/manage', 'LiveTickerController@m
 Route::get('/matches/{matchId}/events/{eventId}/delete', 'LiveTickerController@matchEventsDelete')->name('match_event_delete')->middleware('auth');
 Route::post('/match/event/update', 'LiveTickerController@matchEventsUpdate')->name('match_event_update')->middleware('auth');
 Route::post('/match/end/{id}', 'LiveTickerController@matchEnd')->name('match_end')->middleware('auth');
+
+//News posts Management
+Route::get('/post/add', 'PostsController@postCreate')->name('post_create')->middleware('auth');
+Route::post('/post/store', 'PostsController@store')->name('post_store')->middleware('auth');
+Route::get('/posts/manage', 'PostsController@postManage')->name('posts_manage')->middleware('auth');
+Route::get('/posts/manage/{id}', 'PostsController@postManageShow')->name('posts_manage_show')->middleware('auth');
+Route::post('/post/update', 'PostsController@update')->name('post_update')->middleware('auth');
+
+//Messages Management
+Route::post('/message/submit', 'MessageController@submit')->name('message_submit');
+Route::get('/messages', 'MessageController@index')->name('messages')->middleware('auth');
+Route::get('/message/view/{id}', 'MessageController@messageShow')->name('message_view')->middleware('auth');
+Route::post('/message/update', 'MessageController@messageUpdate')->name('message_update')->middleware('auth');
+Route::post('/message/update/assigned/user', 'MessageController@messageUpdateAssignedUser')->name('message_update_assigned_user')->middleware('auth');
+
+// User management
+Route::get('/user/add', 'UserController@userCreate')->name('user_create')->middleware('auth');
+Route::post('/user/store', 'UserController@userStore')->name('user_store')->middleware('auth');
+Route::get('/user/manage', 'UserController@userManage')->name('user_manage')->middleware('auth');
+Route::post('/user/update', 'UserController@userUpdate')->name('user_update')->middleware('auth');
+
+
 

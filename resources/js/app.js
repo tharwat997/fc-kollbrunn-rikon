@@ -39,7 +39,13 @@ Vue.use(Vuelidate);
 Vue.component('pagination', require('laravel-vue-pagination'));
 
 import VueHorizontalTimeline from 'vue-horizontal-timeline'
-Vue.use(VueHorizontalTimeline)
+Vue.use(VueHorizontalTimeline);
+
+Vue.component('vue-recaptcha', require('vue-recaptcha'));
+
+import CountDown from 'vuejs-countdown'
+Vue.use(CountDown);
+Vue.component('Countdown', CountDown);
 
 
 /**
@@ -59,6 +65,7 @@ import Agenda from "./components/agenda.vue";
 import Contact from "./components/contact.vue";
 import Ticker from "./components/ticker.vue";
 import HomeTimeline from "./components/home-timeline";
+import Count from './components/count.vue'
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -73,6 +80,8 @@ const app = new Vue({
         Agenda,
         Contact,
         Ticker,
-        HomeTimeline
+        HomeTimeline,
+        CountDown,
+        Count
     }
 });

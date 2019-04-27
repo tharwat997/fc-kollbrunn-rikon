@@ -16,7 +16,8 @@ class CreateCommentsTable extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('match_id');
-            $table->string('comment');
+            $table->string('name');
+            $table->longText('comment');
             $table->timestamps();
         });
     }

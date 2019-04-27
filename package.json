@@ -32,7 +32,9 @@
         "vue-awesome": "^3.5.1",
         "vue-carousel": "^0.18.0",
         "vue-horizontal-timeline": "^0.3.0",
+        "vue-recaptcha": "^1.1.1",
         "vue2-google-maps": "^0.10.6",
+        "vuejs-countdown": "^0.2.1",
         "vuelidate": "^0.7.4"
     }
 }

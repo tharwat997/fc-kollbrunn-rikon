@@ -68,7 +68,6 @@ class TeamController extends Controller
                $firstTeamUnformatted->add($playerMod);
                $firstTeamUnformattedCount ++;
            }
-
            return  view('team')->with('firstTeamUnformatted', $firstTeamUnformatted);
        } else if ($team === 'junior-c'){
 

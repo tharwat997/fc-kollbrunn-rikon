@@ -10963,7 +10963,7 @@ a.text-dark:focus {
   width: 100%;
 }
 
-#timelineSection #timeline > div > section > ol > li:nth-child(1) > a > div > div.d-flex.flex-column > div:nth-child(2) > span {
+#timelineSection #timeline > div > section > ol > li > a > div > div.d-flex.flex-column > div:nth-child(2) > span {
   width: 15em;
   overflow: hidden;
   display: inline-block;
@@ -11114,38 +11114,43 @@ a.text-dark:focus {
   margin-right: 0.5em;
   background-color: #1F1B23;
   color: #f8f8f8;
-  padding: 0.5em 0.6em;
+  width: 2em;
+  height: 2em;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 30px;
+  border-radius: 25px;
 }
 
 #tickerSectionDetail .container #matchGoalsContainer .firstTeamMatchGoals {
-  flex: 40%;
+  flex: 30%;
 }
 
 #tickerSectionDetail .container #matchGoalsContainer .combinedGoals {
-  flex: 20.5%;
+  flex: 40%;
 }
 
-#tickerSectionDetail .container #matchGoalsContainer .combinedGoals div {
+#tickerSectionDetail .container #matchGoalsContainer .combinedGoals .leftSectionGoals {
   width: 100%;
 }
 
-#tickerSectionDetail .container #matchGoalsContainer .combinedGoals .leftGoal {
+#tickerSectionDetail .container #matchGoalsContainer .combinedGoals .leftSectionGoals .leftGoal {
+  width: 100%;
   text-align: left;
+}
+
+#tickerSectionDetail .container #matchGoalsContainer .combinedGoals .rightSectionGoals {
   width: 100%;
 }
 
-#tickerSectionDetail .container #matchGoalsContainer .combinedGoals .rightGoal {
-  text-align: right;
+#tickerSectionDetail .container #matchGoalsContainer .combinedGoals .rightSectionGoals .rightGoal {
   width: 100%;
+  text-align: right;
 }
 
 #tickerSectionDetail .container #matchGoalsContainer .secondTeamMatchGoals {
-  flex: 40%;
+  flex: 30%;
 }
 
 #newsPage .newsItem .newsItemTitleContainer span {

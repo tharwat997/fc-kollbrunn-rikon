@@ -17,7 +17,7 @@
                     <div class="d-flex flex-column m-auto">
                         <div class="stats-small__data text-center">
                             <span class="stats-small__label text-uppercase">Players</span>
-                            <h6 class="stats-small__value count my-3">0</h6>
+                            <h6 class="stats-small__value count my-3">{{$players}}</h6>
                         </div>
                     </div>
                     <canvas height="120" class="blog-overview-stats-small-1"></canvas>
@@ -30,7 +30,7 @@
                     <div class="d-flex flex-column m-auto">
                         <div class="stats-small__data text-center">
                             <span class="stats-small__label text-uppercase">Teams</span>
-                            <h6 class="stats-small__value count my-3">0</h6>
+                            <h6 class="stats-small__value count my-3">{{$teams}}</h6>
                         </div>
                     </div>
                     <canvas height="120" class="blog-overview-stats-small-2"></canvas>
@@ -43,7 +43,7 @@
                     <div class="d-flex flex-column m-auto">
                         <div class="stats-small__data text-center">
                             <span class="stats-small__label text-uppercase">News Posts</span>
-                            <h6 class="stats-small__value count my-3">0</h6>
+                            <h6 class="stats-small__value count my-3">{{$posts}}</h6>
                         </div>
                     </div>
                     <canvas height="120" class="blog-overview-stats-small-3"></canvas>
@@ -69,7 +69,7 @@
                     <div class="d-flex flex-column m-auto">
                         <div class="stats-small__data text-center">
                             <span class="stats-small__label text-uppercase">Events</span>
-                            <h6 class="stats-small__value count my-3">0</h6>
+                            <h6 class="stats-small__value count my-3">{{$events}}</h6>
                         </div>
                     </div>
                     <canvas height="120" class="blog-overview-stats-small-5"></canvas>

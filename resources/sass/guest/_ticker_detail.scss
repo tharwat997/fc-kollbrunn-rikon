@@ -25,12 +25,13 @@
           margin-right: 0.5em;
           background-color:$dark-shades;
           color:$light-shades;
-          padding:.5em .6em;
+          width:2em;
+          height: 2em;
           text-align:center;
           display:flex;
           justify-content:center;
           align-items:center;
-          border-radius:30px;
+          border-radius:25px;
         }
       }
     }
@@ -42,25 +43,31 @@
     }
     #matchGoalsContainer{
       .firstTeamMatchGoals{
-        flex: 40%;
+        flex: 30%;
       }
       .combinedGoals{
-        flex: 20.5%;
-        div{
+        flex: 40%;
+        .leftSectionGoals{
           width: 100%;
+          .leftGoal{
+            width: 100%;
+            text-align:left;
+          }
         }
-        .leftGoal{
-          text-align: left;
+        .rightSectionGoals{
           width: 100%;
-        }
-        .rightGoal{
-          text-align: right;
-          width: 100%;
+          .rightGoal{
+            width: 100%;
+            text-align:right;
+          }
         }
       }
       .secondTeamMatchGoals{
-        flex: 40%;
+        flex: 30%;
       }
+    }
+    #commentSectionForm{
+
     }
   }
 }

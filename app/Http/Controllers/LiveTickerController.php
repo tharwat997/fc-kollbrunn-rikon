@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Match;
 use App\Player;
 use App\Team;
@@ -20,7 +21,26 @@ class LiveTickerController extends Controller
 
     public function show($id){
         $match = Match::find($id);
-        return view ('live_ticker_details')->with('match', $match);
+        $eventsUnformatted = DB::table('ticker_events')->where('match_id', '=', $match->id)
+            ->orderBy('minute_of_event', 'desc')->get();
+
+        $events = [];
+
+        foreach ($eventsUnformatted as $event){
+            $playerName = Player::find($event->player_idHome);
+            $playerName = $playerName['name'];
+            $event->player_idHome = $playerName;
+
+            array_push($events, $event);
+        }
+
+        $reporterId = $match->reporter_id;
+        $reporterName = User::find($reporterId)->name;
+        $reporterEmail = User::find($reporterId)->email;
+
+        $comments = Comment::where('match_id', '=', $match->id)->orderBy('created_at', 'desc')->get();
+
+        return view ('live_ticker_details', compact('match', 'events', 'reporterName', 'reporterEmail', 'comments'));
     }
 
     public function matches(){
@@ -43,6 +63,7 @@ class LiveTickerController extends Controller
 
         return view('admin.ticker.create_match', compact('teams', 'reporters'));
     }
+
 
     public function matchStore(Request $request){
 
@@ -368,12 +389,15 @@ class LiveTickerController extends Controller
             $player = Player::find($event->player_idHome);
             $player->total_goals = $player->total_goals - 1;
             $player->update();
-dd($matchId);
+
             $match = Match::find($matchId);
             $match->teamA_score = $match->teamA_score - 1;
+            $match->update();
         } else {
+
             $match = Match::find($matchId);
             $match->teamB_score = $match->teamB_score - 1;
+            $match->update();
         }
 
         if($event->player_idHome != null && $event->assist === 1){
@@ -1568,9 +1592,11 @@ dd($matchId);
 
                 $match = Match::find($request->matchId);
                 $match->teamA_score = $match->teamA_score - 1;
+                $match->update();
             } else {
                 $match = Match::find($request->matchId);
                 $match->teamB_score = $match->teamB_score - 1;
+                $match->update();
             }
 
             if($event->player_idHome != null && $event->assist === 1){

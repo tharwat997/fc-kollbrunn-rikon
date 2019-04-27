@@ -10,85 +10,21 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-3 col-md-4 col-sm-6 col-xs-12 mb-4 eventCard">
-                        <b-card  img-src="https://placeimg.com/250/250/any"  img-alt="Image" img-top>
-                            <div class="eventCardTop">
-                                <div class="mb-2 eventName">Article Title</div>
-                                <div class="eventDescription">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos eveniet non numquam sit. Aperiam autem consequatur, doloremque ducimus esse excepturi ipsum itaque laudantium magni quidem saepe temporibus velit? Consequuntur, mollitia!
+                    @foreach($posts as $post)
+                        @foreach($post->image as $image)
+                        <div class="col-3 col-md-4 col-sm-6 col-xs-12 mb-4 eventCard">
+                            <b-card  img-src="{{$image->getUrl('card')}}"  img-alt="Image" img-top>
+                                <div class="eventCardTop d-flex justify-content-between">
+                                    <div class="mb-2 eventName">{{$post->title}}</div>
+                                    <div>{{$post->created_at}}</div>
                                 </div>
-                            </div>
-                            <div class="eventCardBottom mt-4">
-                                <a href="#" class="btn btn-primary btn-block">View</a>
-                            </div>
-                        </b-card>
-                    </div>
-                    <div class="col-3 col-md-4 col-sm-6 col-xs-12 mb-4 eventCard">
-                        <b-card  img-src="https://placeimg.com/250/250/any"  img-alt="Image" img-top>
-                            <div class="eventCardTop">
-                                <div class="mb-2 eventName">Article Title</div>
-                                <div class="eventDescription">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos eveniet non numquam sit. Aperiam autem consequatur, doloremque ducimus esse excepturi ipsum itaque laudantium magni quidem saepe temporibus velit? Consequuntur, mollitia!
+                                <div class="eventCardBottom mt-4">
+                                    <a href="{{route('news_show', ['id' => $post->id])}}" class="btn btn-primary btn-block">View</a>
                                 </div>
-                            </div>
-                            <div class="eventCardBottom mt-4">
-                                <a href="#" class="btn btn-primary btn-block">View</a>
-                            </div>
-                        </b-card>
-                    </div>
-                    <div class="col-3 col-md-4 col-sm-6 col-xs-12 mb-4 eventCard">
-                        <b-card  img-src="https://placeimg.com/250/250/any"  img-alt="Image" img-top>
-                            <div class="eventCardTop">
-                                <div class="mb-2 eventName">Article Title</div>
-                                <div class="eventDescription">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos eveniet non numquam sit. Aperiam autem consequatur, doloremque ducimus esse excepturi ipsum itaque laudantium magni quidem saepe temporibus velit? Consequuntur, mollitia!
-                                </div>
-                            </div>
-                            <div class="eventCardBottom mt-4">
-                                <a href="#" class="btn btn-primary btn-block">View</a>
-                            </div>
-                        </b-card>
-                    </div>
-                    <div class="col-3 col-md-4 col-sm-6 col-xs-12 mb-4 eventCard">
-                        <b-card  img-src="https://placeimg.com/250/250/any"  img-alt="Image" img-top>
-                            <div class="eventCardTop">
-                                <div class="mb-2 eventName">Article Title</div>
-                                <div class="eventDescription">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos eveniet non numquam sit. Aperiam autem consequatur, doloremque ducimus esse excepturi ipsum itaque laudantium magni quidem saepe temporibus velit? Consequuntur, mollitia!
-                                </div>
-                            </div>
-                            <div class="eventCardBottom mt-4">
-                                <a href="#" class="btn btn-primary btn-block">View</a>
-                            </div>
-                        </b-card>
-                    </div>
-                    <div class="col-3 col-md-4 col-sm-6 col-xs-12 mb-4 eventCard">
-                        <b-card  img-src="https://placeimg.com/250/250/any"  img-alt="Image" img-top>
-                            <div class="eventCardTop">
-                                <div class="mb-2 eventName">Article Title</div>
-                                <div class="eventDescription">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos eveniet non numquam sit. Aperiam autem consequatur, doloremque ducimus esse excepturi ipsum itaque laudantium magni quidem saepe temporibus velit? Consequuntur, mollitia!
-                                </div>
-                            </div>
-                            <div class="eventCardBottom mt-4">
-                                <a href="#" class="btn btn-primary btn-block">View</a>
-                            </div>
-                        </b-card>
-                    </div>
-                    <div class="col-3 col-md-4 col-sm-6 col-xs-12 mb-4 eventCard">
-                        <b-card  img-src="https://placeimg.com/250/250/any"  img-alt="Image" img-top>
-                            <div class="eventCardTop">
-                                <div class="mb-2 eventName">Article Title</div>
-                                <div class="eventDescription">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos eveniet non numquam sit. Aperiam autem consequatur, doloremque ducimus esse excepturi ipsum itaque laudantium magni quidem saepe temporibus velit? Consequuntur, mollitia!
-                                </div>
-                            </div>
-                            <div class="eventCardBottom mt-4">
-                                <a href="#" class="btn btn-primary btn-block">View</a>
-                            </div>
-                        </b-card>
-                    </div>
-
+                            </b-card>
+                        </div>
+                        @endforeach
+                    @endforeach
                 </div>
             </b-card>
         </div>

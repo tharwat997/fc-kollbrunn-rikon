@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Agenda;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -21,14 +23,38 @@ class AgendaController extends Controller
             return redirect()->back()->withInput();
         }
 
-        $agenda_event = new Agenda([
-            'title' => $request->get('event-title'),
-            'start_date'=> $request->get('startDateTime'),
-            'end_date'=> $request->get('endDateTime')
-        ]);
+        $filtered = null;
 
-        $agenda_event->save();
+        if ($request->recursiveOn == 1){
+            $period = CarbonPeriod::create($request->startDateTime, $request->endDateTime);
+            $dates = $period->toArray();
+            $filtered = array_filter($dates, function($date) use ($request){
+                return $date->dayOfWeek == $request->dayOfWeek;
+            });
+
+            foreach ($filtered as $date){
+                $dateAfterHour = $date->copy();
+                $dateAfterHour->addHours($request->durationOfEvent);
+
+                Agenda::create([
+                    'title' => $request->get('event-title'),
+                    'start_date'=> $date,
+                    'end_date'=> $dateAfterHour,
+                ]);
+            }
+
+        } else{
+            $agenda_event = new Agenda([
+                'title' => $request->get('event-title'),
+                'start_date'=> $request->get('startDateTime'),
+                'end_date'=> $request->get('endDateTime')
+            ]);
+
+            $agenda_event->save();
+        }
+
         return redirect()->back();
+
     }
 
     public function delete(){

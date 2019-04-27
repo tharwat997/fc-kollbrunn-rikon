@@ -23,7 +23,8 @@
                     @endif
                     <div class="d-none">
                         @foreach($agendaEvents as $event)
-                        <form id="form-{{$event->id}}" action="{{route('agenda_events_update')}}" type="POST">
+                        <form id="form-{{$event->id}}" action="{{route('agenda_events_update')}}" method="post">
+                            @csrf
                         </form>
                         @endforeach
                     </div>

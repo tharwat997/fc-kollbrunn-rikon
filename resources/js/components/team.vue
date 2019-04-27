@@ -53,6 +53,7 @@
                                                     <div class="d-flex flex-column align-items-center">
                                                         <div class="playerName">{{player.name}}</div>
                                                         <div class="playerNumber">{{player.playerNumber}}</div>
+                                                        <div class="playerNumber">Goals: {{player.total_goals}}</div>
                                                     </div>
                                                 </div>
 

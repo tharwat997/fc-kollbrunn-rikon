@@ -2,7 +2,7 @@
 <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
     <div class="main-navbar">
         <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
-            <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
+            <a class="navbar-brand w-100 mr-0" href="{{route('dashboard')}}" style="line-height: 25px;">
                 <div class="d-table m-auto">
                     <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="{{asset('images/FC_Fußball-01.png')}}" alt="Fc-Kollbrunn-Rikon">
                     <span class="d-none d-md-inline ml-1">Fc-Kollbrunn-Rikon</span>
@@ -31,16 +31,16 @@
                 </a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+                <a class="nav-link dropdown-toggle text-nowrap px-3 {{request()->is('post*') ? 'active' : ''}}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
                     <i class="material-icons">vertical_split</i>
                     <span class="d-none d-md-inline-block">News</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-small">
-                    <a class="dropdown-item" href="">
+                    <a class="dropdown-item {{request()->is('post/add') ? 'active' : ''}}" href="{{route('post_create')}}">
                         <i class="material-icons">add_circle</i>
                         Add post
                     </a>
-                    <a class="dropdown-item" href="">
+                    <a class="dropdown-item {{request()->is('posts/manage') ? 'active' : ''}}" href="{{route('posts_manage')}}">
                         <i class="material-icons">control_camera</i>
                         Manage posts
                     </a>
@@ -140,7 +140,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-small">
                         <a class="dropdown-item {{request()->is('board/add') ? 'active' : ''}}" href="{{route('board_create')}}">
-                            <i class="material-icons">control_camera</i>
+                            <i class="material-icons">add_circle</i>
                             Add board member
                         </a>
                         <a class="dropdown-item {{request()->is('board/manage') ? 'active' : ''}}" href="{{route('board_manage')}}">
@@ -151,23 +151,24 @@
                 </li>
             @endif
             <li class="nav-item">
-                <a class="nav-link " href="" style="padding:15px 16px;">
+                <a class="nav-link {{request()->is('message*') ? 'active' : ''}}" href="{{route('messages')}}" style="padding:15px 16px;">
                     <i class="material-icons">message</i>
                     <span>Messages</span>
                 </a>
             </li>
+
             @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+                    <a class="nav-link dropdown-toggle text-nowrap px-3 {{request()->is('user*') ? 'active' : ''}}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
                         <i class="material-icons">person</i>
                         <span class="d-none d-md-inline-block">Users</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-small">
-                        <a class="dropdown-item" href="">
+                        <a class="dropdown-item {{request()->is('user/add') ? 'active' : ''}}" href="{{route('user_create')}}">
                             <i class="material-icons">add_circle</i>
                             Add user
                         </a>
-                        <a class="dropdown-item" href="">
+                        <a class="dropdown-item {{request()->is('user/manage') ? 'active' : ''}}" href="{{route('user_manage')}}">
                             <i class="material-icons">control_camera</i>
                             Manage users
                         </a>

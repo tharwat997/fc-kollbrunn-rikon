@@ -44,6 +44,21 @@
                         </b-form-group>
 
                         <b-form-group
+                                id="input-fax-group"
+                                label="fax"
+                                label-for="input-fax"
+                                v-show="false"
+                        >
+                            <b-form-input
+                                    id="input-fax"
+                                    v-model="form.fax"
+                                    type="text"
+                                    name="fax"
+                                    placeholder="Enter your email"
+                            ></b-form-input>
+                        </b-form-group>
+
+                        <b-form-group
                                 id="input-mobileNumber-group"
                                 label="Mobile Number"
                                 label-for="input-mobileNumber"
@@ -84,7 +99,7 @@
                                        label-for="input-joinEventName"
                         >
                             <select name="joinEvent" v-model="form.eventSelected" class="form-control" id="input-joinEventName">
-                                <option :value="event.value" v-for="event in eventOptions">{{event.text}}</option>
+                                <option :value="event.id" v-for="event in eventsOptions">{{event.title}}</option>
                             </select>
                         </b-form-group>
 
@@ -113,7 +128,10 @@
                             ></b-form-textarea>
                         </b-form-group>
 
+                        <!--<vue-recaptcha sitekey="6LcMFKAUAAAAACN1KArylMkZd-lIaZWuHlb5APVl">-->
+                        <!--</vue-recaptcha>-->
 
+                        <b-alert variant="success" v-show="success" show>Message sent Successfully</b-alert>
                         <b-button type="submit" variant="primary">Submit</b-button>
                     </b-form>
                 </div>
@@ -122,13 +140,23 @@
     </div>
 </template>
 <script>
+    import axios from 'axios'
+    axios.defaults.headers.common = {
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-TOKEN': window.csrf_token
+    };
     export default {
         name: "contact",
+        mounted(){
+            this.getEvents();
+        },
         data() {
             return {
+                success:false,
                 form: {
                     email: '',
                     name: '',
+                    fax:'',
                     mobileNumber: '',
                     purposeOfContact: 1,
                     teamSelected: 1,
@@ -148,13 +176,7 @@
                     {value:4, text:'Junior E'},
                     {value:5, text:'Junior F'}
                 ],
-                eventOptions: [
-                    {value:1, text: 'Event 1'},
-                    {value:2, text: 'Event 2'},
-                    {value:3, text: 'Event 3'},
-                    {value:4, text: 'Event 4'},
-                    {value:5, text: 'Event 5'},
-                ],
+                eventsOptions: [],
                 joinEventOptions: [
                     {value:1 , text:'Participant'},
                     {value:2 , text:'Volunteer'}
@@ -165,7 +187,15 @@
         methods: {
             onSubmit(evt) {
                 evt.preventDefault();
-                alert(JSON.stringify(this.form))
+                let data = JSON.stringify(this.form);
+                axios.post('./message/submit', this.form).then(
+                    this.success = true)
+                location.reload();
+            },
+            getEvents(){
+                axios.get('contact-us/events').then( (response) => {
+                        this.eventsOptions = response.data;
+                });
             }
         }
     }

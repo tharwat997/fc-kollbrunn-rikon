@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
+use App\Player;
+use App\Post;
+use App\Team;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -18,7 +22,12 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('admin.dashboard');
+        $players = Player::all()->count();
+        $teams = Team::all()->count();
+        $posts = Post::all()->count();
+        $events = Event::all()->count();
+
+        return view('admin.dashboard', compact('players', 'teams', 'posts', 'events'));
     }
 
 }

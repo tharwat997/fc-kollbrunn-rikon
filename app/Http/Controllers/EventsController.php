@@ -149,10 +149,8 @@ class EventsController extends Controller
     }
 
     public function eventsAjax(){
-        $nextWeekDate = date("Y-m-d", strtotime("+1 week"));
-        $today = date("Y-m-d");
-        $eventsUnformatted = DB::table('events')->where('start_date', '<', $nextWeekDate)
-            ->where('start_date', '>=', $today)->get();
+
+        $eventsUnformatted = Event::orderBy('start_date', 'desc')->take(5)->get();
         $formattedEvents = [];
 
         foreach ($eventsUnformatted as $event){

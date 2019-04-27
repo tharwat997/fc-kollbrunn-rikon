@@ -9,10 +9,10 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto list-unstyled m-0">
                     <li class="nav-item">
-                        <a href="#" class="pl-0">clubcorner.ch</a>
+                        <a href="https://clubcorner.ch" class="pl-0">clubcorner.ch</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#">fvrz.ch</a>
+                        <a href="https://www.fvrz.ch">fvrz.ch</a>
                     </li>
                 </ul>
 
@@ -45,8 +45,8 @@
         </div>
 
     <b-container fluid class="p-0" id="menu-container">
-        <div  class="container h-100 d-flex align-items-center">
-            <ul class="navbar-nav mr-auto list-unstyled d-flex align-items-center flex-row">
+        <div  class="container h-100 d-flex align-items-center justify-content-center">
+            <ul class="navbar-nav list-unstyled d-flex align-items-center flex-row">
                 <li class="nav-item {{Request::is('/') ? 'active' : ''}}">
                     <a href="{{route('home')}}" class="{{Request::is('/') ? 'active-link' : ''}}">Home</a>
                 </li>
