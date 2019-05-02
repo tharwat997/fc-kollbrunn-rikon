@@ -48,6 +48,9 @@ Vue.use(CountDown);
 Vue.component('Countdown', CountDown);
 
 
+Vue.component('counti', CountI);
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -65,7 +68,8 @@ import Agenda from "./components/agenda.vue";
 import Contact from "./components/contact.vue";
 import Ticker from "./components/ticker.vue";
 import HomeTimeline from "./components/home-timeline";
-import Count from './components/count.vue'
+import Count from './components/count.vue';
+import CountI from './components/counti.vue'
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -82,6 +86,7 @@ const app = new Vue({
         Ticker,
         HomeTimeline,
         CountDown,
-        Count
+        Count,
+        CountI
     }
 });

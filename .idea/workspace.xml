@@ -2,413 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14f08b3d-5735-4e7d-b4ac-4d4113d5cfa0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/CommentController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Message.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Post.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_04_24_210020_create_posts_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_04_26_184121_create_messages_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/ticker_icons/first-aid-kit.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/ticker_icons/football-ball.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/ticker_icons/football-boots.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/ticker_icons/football-shirt.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/ticker_icons/football.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/ticker_icons/red-card.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/ticker_icons/yellow-card.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/summernote/font/summernote.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/summernote/font/summernote.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/summernote/font/summernote.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/summernote/summernote-bs4.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/summernote/summernote-bs4.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/count.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/messages/manage_messages.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/messages/message_detail_view.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/messages/messages.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/news/create_post.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/news/manage_post_detail.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/news/manage_posts.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/user/user_create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/user/user_manage.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/news_detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/FC-Kollbrunn-Rikon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/FC-Kollbrunn-Rikon.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/counti.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AgendaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AgendaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ContactUsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ContactUsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EventsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EventsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LiveTickerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LiveTickerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NewsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TeamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TeamController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_04_10_004417_create_comments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_04_10_004417_create_comments_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/agenda.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/agenda.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/contact.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/contact.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/team.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/team.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/guest/_home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/guest/_home.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/sass/guest/_ticker_detail.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/guest/_ticker_detail.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/agenda/create_agenda.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/agenda/create_agenda.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/agenda/manage_agenda.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/agenda/manage_agenda.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/includes/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/includes/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/contact_us.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/contact_us.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/count.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/count.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/includes/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/includes/navbar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/live_ticker_details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/live_ticker_details.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/news.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/news.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/1/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/1/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/1/placeholder.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/placeholder.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/1/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/1/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/1/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/10/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/10/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/10/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/10/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/10/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/10/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/11/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/11/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/11/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/11/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/11/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/11/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/12/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/12/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/12/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/12/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/12/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/12/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/13/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/13/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/13/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/13/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/13/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/13/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/14/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/14/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/14/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/14/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/14/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/14/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/15/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/15/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/15/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/15/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/15/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/15/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/16/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/16/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/16/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/16/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/16/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/16/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/17/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/17/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/17/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/17/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/17/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/17/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/18/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/18/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/18/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/18/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/18/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/18/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/19/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/19/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/19/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/19/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/19/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/19/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/2/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/2/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/2/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/2/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/2/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/2/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/20/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/20/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/20/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/20/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/20/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/20/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/21/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/21/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/21/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/21/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/21/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/21/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/22/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/22/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/22/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/22/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/22/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/22/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/23/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/23/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/23/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/23/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/23/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/23/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/24/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/24/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/24/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/24/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/24/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/24/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/25/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/25/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/25/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/25/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/25/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/25/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/26/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/26/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/26/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/26/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/26/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/26/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/27/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/27/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/27/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/27/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/27/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/27/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/28/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/28/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/28/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/28/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/28/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/28/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/29/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/29/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/29/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/29/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/29/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/29/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/3/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/3/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/3/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/3/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/3/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/3/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/30/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/30/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/30/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/30/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/30/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/30/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/31/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/31/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/31/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/31/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/31/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/31/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/32/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/32/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/32/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/32/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/32/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/32/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/33/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/33/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/33/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/33/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/33/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/33/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/34/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/34/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/34/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/34/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/34/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/34/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/35/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/35/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/35/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/35/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/35/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/35/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/36/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/36/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/36/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/36/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/36/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/36/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/37/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/37/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/37/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/37/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/37/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/37/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/38/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/38/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/38/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/38/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/38/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/38/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/39/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/39/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/39/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/39/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/39/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/39/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/4/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/4/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/4/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/4/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/4/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/4/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/40/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/40/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/40/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/40/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/40/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/40/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/41/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/41/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/41/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/41/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/41/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/41/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/42/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/42/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/42/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/42/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/42/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/42/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/43/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/43/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/43/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/43/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/43/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/43/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/44/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/44/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/44/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/44/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/44/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/44/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/45/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/45/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/45/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/45/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/45/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/45/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/46/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/46/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/46/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/46/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/46/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/46/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/47/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/47/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/47/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/47/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/47/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/47/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/48/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/48/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/48/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/48/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/48/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/48/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/49/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/49/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/49/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/49/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/49/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/49/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/5/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/5/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/5/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/5/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/5/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/5/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/50/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/50/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/50/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/50/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/50/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/50/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/51/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/51/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/51/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/51/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/51/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/51/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/52/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/52/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/52/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/52/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/52/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/52/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/53/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/53/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/53/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/53/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/53/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/53/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/54/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/54/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/54/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/54/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/54/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/54/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/55/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/55/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/55/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/55/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/55/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/55/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/56/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/56/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/56/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/56/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/56/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/56/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/6/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/6/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/6/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/6/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/6/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/6/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/7/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/7/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/7/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/7/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/7/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/7/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/8/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/8/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/8/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/8/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/8/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/8/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/9/conversions/placeholder-card.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/9/conversions/placeholder-thumb.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/9/placeholder.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/9/responsive-images/placeholder___card_325_325.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/9/responsive-images/placeholder___medialibrary_original_320_320.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/app/public/9/responsive-images/placeholder___thumb_65_65.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -438,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="27" column="78" lean-forward="true" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="78" />
+            <state relative-caret-position="272">
+              <caret line="27" column="78" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="78" />
               <folding>
                 <element signature="e#7#389#0#PHP" expanded="true" />
                 <element signature="e#391#427#0#PHP" expanded="true" />
@@ -449,49 +50,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LiveTickerController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="66" selection-start-line="66" selection-end-line="66" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/messages/messages.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
+            <state relative-caret-position="1666">
               <caret line="98" column="53" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
-              <folding>
-                <element signature="e#4772#4790#0#HTML" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/counti.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="103" column="60" selection-start-line="103" selection-start-column="51" selection-end-line="103" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="80" column="85" selection-start-line="80" selection-start-column="77" selection-end-line="80" selection-end-column="85" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/count.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+            <state relative-caret-position="697">
+              <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -499,8 +70,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="67" column="21" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
+            <state relative-caret-position="816">
+              <caret line="50" column="30" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/live_ticker_details.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="25" column="52" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1241">
+              <caret line="77" column="9" selection-start-line="77" selection-start-column="9" selection-end-line="77" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -508,7 +97,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/agenda/create_agenda.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
+            <state relative-caret-position="918">
               <caret line="54" column="33" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
             </state>
           </provider>
@@ -525,7 +114,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>player</find>
       <find>match_event_delete</find>
       <find>matchEventsDelete</find>
       <find>['</find>
@@ -555,6 +143,7 @@
       <find>agenda</find>
       <find>index</find>
       <find>stopwatch</find>
+      <find>count</find>
     </findStrings>
     <replaceStrings>
       <replace>000136</replace>
@@ -593,14 +182,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/CommentController.php" />
         <option value="$PROJECT_DIR$/resources/sass/guest/_ticker_detail.scss" />
         <option value="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
         <option value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Routing/Router.php" />
-        <option value="$PROJECT_DIR$/resources/views/live_ticker_details.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/layouts/app.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_04_24_210020_create_posts_table.php" />
         <option value="$PROJECT_DIR$/public/summernote/summernote-bs4.min.js" />
@@ -638,12 +225,14 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/messages/messages.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/count-up.vue" />
-        <option value="$PROJECT_DIR$/resources/js/app.js" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/LiveTickerController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/count.vue" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/counti.vue" />
+        <option value="$PROJECT_DIR$/resources/js/app.js" />
+        <option value="$PROJECT_DIR$/resources/views/live_ticker_details.blade.php" />
       </list>
     </option>
   </component>
@@ -754,7 +343,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -828,6 +416,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -907,18 +496,20 @@
       <workItem from="1556107319568" duration="6215000" />
       <workItem from="1556118936260" duration="67115000" />
       <workItem from="1556299019678" duration="31150000" />
-      <workItem from="1556385160499" duration="18978000" />
+      <workItem from="1556385160499" duration="23922000" />
+      <workItem from="1556479612245" duration="292000" />
+      <workItem from="1556625250028" duration="122000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="515083000" />
+    <option name="totallyTimeSpent" value="520441000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29425114" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30332828" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -967,19 +558,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/vuejs-countdown/dist/vuejs-countdown.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/news/manage_post_detail.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="117" column="105" selection-start-line="117" selection-start-column="105" selection-end-line="117" selection-end-column="105" />
-          <folding>
-            <element signature="e#5379#5433#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/news/create_post.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
@@ -1270,13 +848,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="67" column="21" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MessageController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
@@ -1287,13 +858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/agenda/create_agenda.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="54" column="33" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/team.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -1301,34 +865,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/messages/messages.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="98" column="53" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
-          <folding>
-            <element signature="e#4772#4790#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="80" column="85" selection-start-line="80" selection-start-column="77" selection-end-line="80" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/LiveTickerController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
+        <state>
           <caret line="66" selection-start-line="66" selection-end-line="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/count.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="39" column="29" lean-forward="true" selection-end-line="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="419">
+          <caret line="107" column="38" selection-start-line="107" selection-start-column="38" selection-end-line="107" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="27" column="78" lean-forward="true" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="78" />
+        <state relative-caret-position="272">
+          <caret line="27" column="78" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="78" />
           <folding>
             <element signature="e#7#389#0#PHP" expanded="true" />
             <element signature="e#391#427#0#PHP" expanded="true" />
@@ -1336,17 +897,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/messages/messages.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="103" column="60" selection-start-line="103" selection-start-column="51" selection-end-line="103" selection-end-column="60" />
+        <state relative-caret-position="1666">
+          <caret line="98" column="53" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/count.vue">
+    <entry file="file://$PROJECT_DIR$/resources/js/components/counti.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+        <state relative-caret-position="697">
+          <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="50" column="30" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="77" column="9" selection-start-line="77" selection-start-column="9" selection-end-line="77" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/agenda/create_agenda.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="54" column="33" selection-start-line="54" selection-start-column="33" selection-end-line="54" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/live_ticker_details.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="52" selection-start-line="25" selection-start-column="52" selection-end-line="25" selection-end-column="52" />
         </state>
       </provider>
     </entry>

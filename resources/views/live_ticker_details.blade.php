@@ -22,6 +22,9 @@
                                         {{$match->teamA_name}}
                                     </h4>
                                 </div>
+                                <div>
+                                    <counti :match=""></counti>
+                                </div>
                                 <div class="tickerMatchTeamAScore">
                                     <h4>
                                         {{$match->teamA_score}}

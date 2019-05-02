@@ -47,7 +47,7 @@ class HomeController extends Controller
             array_push($posts4, $post);
         }
 
-        $unFormattedMatches = Match::where('start_date_time', '>', Carbon::now()->setTimezone('Europe/Zurich'))->take(4)->get();
+        $unFormattedMatches = Match::orderBy('start_date_time', 'desc')->take(4)->get();
         $matches = [];
 
         foreach ($unFormattedMatches as $match){
@@ -64,7 +64,7 @@ class HomeController extends Controller
 
         }
 
-        $unFormattedMatches2 = Match::where('created_at', '<=', Carbon::now()->setTimezone('Europe/Zurich'))->take(3)->get();
+        $unFormattedMatches2 = Match::orderBy('start_date_time', 'desc')->take(4)->get();
         $matches2 = [];
 
         foreach ($unFormattedMatches2 as $match2){
@@ -76,7 +76,6 @@ class HomeController extends Controller
 
             array_push($matches2, $match2);
         }
-
 
         return view('home', compact('events', 'dates', 'posts4', 'matches', 'matches2'));
     }

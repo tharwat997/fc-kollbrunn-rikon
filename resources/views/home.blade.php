@@ -100,8 +100,12 @@
                                 </div>
                             </div>
                             <div class="h-100 d-flex align-items-center justify-content-center">
-                                <Countdown end="{{$match->start_date_time}}"></Countdown>
-                                <count :matches="{{$matches2}}"></count>
+
+                                @if(\Illuminate\Support\Carbon::parse($match->start_date_time) == \Carbon\Carbon::today())
+                                    <count :matches="{{json_encode($matches2)}}" :match="{{json_encode($match->id)}}"></count>
+                                @elseif (\Illuminate\Support\Carbon::parse($match->start_date_time) >= \Carbon\Carbon::today())
+                                    <Countdown end="{{$match->start_date_time}}"></Countdown>
+                                @endif
                             </div>
                         </slide>
                         @endforeach
