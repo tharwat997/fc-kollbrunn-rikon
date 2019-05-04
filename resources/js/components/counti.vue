@@ -17,8 +17,7 @@
                 time: 0,
                 matchNumber: null,
                 isRunning: false,
-                interval: null,
-                filteredMatches: null,
+                interval: null
             }
         },
         mounted(){
@@ -40,11 +39,7 @@
                 this.time = parseInt(this.time) + 1;
             },
             filterMatches(){
-                this.matches.forEach( (item) => {
-                    if(item.id === this.matchNumber){
-                        this.time = item.start_date_time;
-                    }
-                })
+                this.time = this.match.start_date_time2;
             }
         }
     }

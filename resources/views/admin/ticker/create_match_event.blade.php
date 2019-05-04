@@ -64,6 +64,7 @@
                                         <option value="redCard">Red card</option>
                                         <option value="injury">Injury</option>
                                         <option value="substitution">Substitution</option>
+                                        <option value="blank">Blank event</option>
                                     </select>
                                 </div>
                                 <div class="input-group mb-3 d-flex flex-column">
@@ -96,13 +97,6 @@
                                         <span class="input-group-text">Player name</span>
                                     </div>
                                     <input type="text"  class="form-control" name="awayPlayerName"  aria-label="creator" aria-describedby="basic-addon1">
-                                </div>
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Event Minute</span>
-                                    </div>
-                                    <input type="number" required maxlength="3" placeholder="0" max="200" class="form-control" name="eventMinute" aria-describedby="basic-addon1">
                                 </div>
 
                                 <div class="input-group mb-3">

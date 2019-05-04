@@ -5,29 +5,39 @@
             <b-card>
                 <div class="row mt-xl-3 d-flex align-items-center mb-4" id="tickerSectionDetailHeader">
                     <div class="col-sm-6">
-                        <h3>{{$match->match_type}}</h3>
+                        <h3>{{$match['match_type']}}</h3>
                     </div>
                     <div class="col-sm-6 text-right">
-                        <h3 >{{$match->start_date_time}}</h3>
+                        <h3 >{{$match['start_date_time']}}</h3>
                     </div>
                 </div>
 
                 <div class="container p-0 mb-5">
-
+                    <div class="row mt-4">
+                        <div class="col-sm-12">
+                             <div class="d-flex justify-content-center align-items-center">
+                                @if($match['start_date_time'] <= \Illuminate\Support\Carbon::now()->setTimezone('Europe/Zurich')
+                                && $match['start_date_time2'] <= 150)
+                                <counti :match="{{json_encode($match)}}"></counti>
+                                @elseif($match['start_date_time'] > \Illuminate\Support\Carbon::now()->setTimezone('Europe/Zurich'))
+                                    <h2>Match has not yet started</h2>
+                                @else
+                                    <h2>Match has ended</h2>
+                                @endif
+                             </div>
+                        </div>
+                    </div>
                     <div class="row pl-5 pr-5 pt-4 pb-4" id="matchResultContainer">
                         <div class="col-sm-12">
                             <div class="d-flex justify-content-between align-items-center tickerMatchBottomContainer">
                                 <div class="tickerMatchTeamAName">
                                     <h4>
-                                        {{$match->teamA_name}}
+                                        {{$match['teamA_name']}}
                                     </h4>
-                                </div>
-                                <div>
-                                    <counti :match=""></counti>
                                 </div>
                                 <div class="tickerMatchTeamAScore">
                                     <h4>
-                                        {{$match->teamA_score}}
+                                        {{$match['teamA_score']}}
                                     </h4>
                                 </div>
                             </div>
@@ -35,12 +45,12 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="tickerMatchTeamBName">
                                     <h4>
-                                        {{$match->teamB_name}}
+                                        {{$match['teamB_name']}}
                                     </h4>
                                 </div>
                                 <div class="tickerMatchTeamBScore">
                                     <h4>
-                                        {{$match->teamB_score}}
+                                        {{$match['teamB_score']}}
                                     </h4>
                                 </div>
                             </div>
@@ -50,7 +60,7 @@
                     <div class="row pl-5 pr-5 pt-4 pb-4" id="matchGoalsContainer">
                         <div class="col-sm-12 d-flex">
                             <div class="d-flex mr-auto flex-column align-items-center justify-content-center firstTeamMatchGoals">
-                                <h1>{{substr($match->teamA_name, 0, 1)}}</h1>
+                                <h1>{{substr($match['teamA_name'], 0, 1)}}</h1>
                             </div>
                             <div class="d-flex combinedGoals justify-content-center">
                                 <div class="leftSectionGoals d-flex flex-column align-items-center">
@@ -70,7 +80,7 @@
                                 </div>
                             </div>
                             <div class="d-flex ml-auto flex-column align-items-center justify-content-center secondTeamMatchGoals">
-                                <h1>{{substr($match->teamB_name, 0, 1)}}</h1>
+                                <h1>{{substr($match['teamB_name'], 0, 1)}}</h1>
                             </div>
                         </div>
                     </div>
@@ -127,7 +137,7 @@
                                                 <div>
                                                     <div class="mb-1">
                                                         <input type="text" autocomplete="off" required name="commentName" class="form-control" placeholder="Enter your name">
-                                                        <input type="hidden"  name="matchId" value="{{$match->id}}">
+                                                        <input type="hidden"  name="matchId" value="{{$match['id']}}">
                                                     </div>
 
                                                     <b-form-textarea
@@ -173,9 +183,9 @@
                                <h3>Information</h3>
                            </div>
                            <div>
-                               <div class="mb-4"><h5>Starts: {{$match->start_date_time}}</h5></div>
-                               <div class="mb-4"><h5>Match type: {{$match->match_type}}</h5></div>
-                               <div class="mb-4"><h5>Last updated: {{$match->updated_at}}</h5></div>
+                               <div class="mb-4"><h5>Starts: {{$match['start_date_time']}}</h5></div>
+                               <div class="mb-4"><h5>Match type: {{$match['match_type']}}</h5></div>
+                               <div class="mb-4"><h5>Last updated: {{$match['updated_at']}}</h5></div>
                            </div>
 
                         </div>

@@ -41,6 +41,7 @@
                             <th>Red card</th>
                             <th>Injury</th>
                             <th>Substitution</th>
+                            <th>Blank</th>
                             <th>Created at</th>
                             <th>Action</th>
                         </tr>
@@ -89,6 +90,11 @@
                                     <td>{{$event->substitute}}</td>
                                 @else
                                     <td>null</td>
+                                @endif
+                                @if($event->blank_event !=null)
+                                <td>{{$event->blank_event}}</td>
+                                @else
+                                <td>null</td>
                                 @endif
                                 <td>{{$event->created_at}}</td>
                                 <td>

@@ -28,7 +28,7 @@
                         <h3 class="text-center">Live Ticker</h3>
                     </div>
                     <div  v-if="all" class="overflow-auto">
-                        <div class="tickerMatch"   v-for="(match, index)  in matches.data">
+                        <div class="tickerMatch" :key="index"  v-for="(match, index)  in matches.data">
                             <a :href="'./live-ticker/' + match.id ">
                                 <div class="d-flex align-items-center justify-content-between tickerMatchTopContainer">
                                     <div class="tickerMatchType">
@@ -68,7 +68,7 @@
                         <pagination :data="matches" @pagination-change-page="getMatches"></pagination>
                     </div>
                     <div  v-if="previous" class="overflow-auto">
-                        <div class="tickerMatch"   v-for="(match, index)  in matchesPrevious.data">
+                        <div class="tickerMatch" :key="index"  v-for="(match, index)  in matchesPrevious.data">
                             <a :href="'./live-ticker/' + match.id ">
                                 <div class="d-flex align-items-center justify-content-between tickerMatchTopContainer">
                                     <div class="tickerMatchType">
@@ -108,7 +108,7 @@
                         <pagination :data="matchesPrevious" @pagination-change-page="getMatchesPrevious"></pagination>
                     </div>
                     <div  v-if="current" class="overflow-auto">
-                        <div class="tickerMatch"   v-for="(match, index)  in matchesCurrent.data">
+                        <div class="tickerMatch" :key="index"  v-for="(match, index)  in matchesCurrent.data">
                             <a :href="'./live-ticker/' + match.id ">
                                 <div class="d-flex align-items-center justify-content-between tickerMatchTopContainer">
                                     <div class="tickerMatchType">
@@ -148,7 +148,7 @@
                         <pagination :data="matchesCurrent" @pagination-change-page="getMatchesCurrent"></pagination>
                     </div>
                     <div  v-if="upComing" class="overflow-auto">
-                        <div  class="tickerMatch"   v-for="(match, index)  in matchesUpcoming.data">
+                        <div  class="tickerMatch"  :key="index" v-for="(match, index)  in matchesUpcoming.data">
                             <a :href="'./live-ticker/' + match.id ">
                                 <div class="d-flex align-items-center justify-content-between tickerMatchTopContainer">
                                     <div class="tickerMatchType">

@@ -20,8 +20,29 @@ class LiveTickerController extends Controller
     }
 
     public function show($id){
-        $match = Match::find($id);
-        $eventsUnformatted = DB::table('ticker_events')->where('match_id', '=', $match->id)
+        $matchUnformatted = Match::find($id);
+
+        $start = Carbon::parse($matchUnformatted->start_date_time);
+        $now = Carbon::now()->setTimezone('Europe/Zurich');
+
+        $match = ([
+            'id' => $matchUnformatted->id,
+            'match_type' => $matchUnformatted->match_type,
+            'type_name' => $matchUnformatted->type_name,
+            'teamA_name' => $matchUnformatted->teamA_name,
+            'teamA_score' => $matchUnformatted->teamA_score,
+            'teamB_name' => $matchUnformatted->teamB_name,
+            'teamB_score' => $matchUnformatted->teamB_score,
+            'start_date_time' => $matchUnformatted->start_date_time,
+            'reporter_id' => $matchUnformatted->reporter_id,
+            'completed' => $matchUnformatted->completed,
+            'created_at' => $matchUnformatted->created_at,
+            'updated_at' => $matchUnformatted->updated_at,
+            'start_date_time2' => $start->diffInMinutes($now),
+        ]);
+
+
+        $eventsUnformatted = DB::table('ticker_events')->where('match_id', '=', $match['id'])
             ->orderBy('minute_of_event', 'desc')->get();
 
         $events = [];
@@ -34,21 +55,26 @@ class LiveTickerController extends Controller
             array_push($events, $event);
         }
 
-        $reporterId = $match->reporter_id;
+        $reporterId = $match['reporter_id'];
         $reporterName = User::find($reporterId)->name;
         $reporterEmail = User::find($reporterId)->email;
 
-        $comments = Comment::where('match_id', '=', $match->id)->orderBy('created_at', 'desc')->get();
+        $comments = Comment::where('match_id', '=', $match['id'])->orderBy('created_at', 'desc')->get();
 
         return view ('live_ticker_details', compact('match', 'events', 'reporterName', 'reporterEmail', 'comments'));
     }
 
     public function matches(){
-        $previousMatches = Match::where('start_date_time', '<' , Carbon::now()->toDateTimeString())->paginate(5);
-        $currentMatches = Match::where('start_date_time', '=' , Carbon::now()->toDateTimeString())->paginate(5);
-        $upComingMatches = Match::where('start_date_time', '>' , Carbon::now()->toDateTimeString())->paginate(5);
-        $matches = Match::orderBy('created_at', 'desc')->paginate(5);
 
+        $previousMatches = Match::where('start_date_time', '<' , Carbon::today()->toDateTimeString())->paginate(5);
+        
+        $currentMatches = Match::where('start_date_time', '<' , Carbon::tomorrow()->toDateTimeString())
+        ->paginate(5);
+
+        $upComingMatches = Match::where('start_date_time', '>', Carbon::today()->modify('+23 hours')->modify('+59 minutes')->toDateTimeString())
+        ->paginate(5);
+        $matches = Match::orderBy('start_date_time', 'desc')->paginate(5);
+//Check the filtering
         return response()->json([
             'matches' => $matches,
             'previous' => $previousMatches,
@@ -168,6 +194,14 @@ class LiveTickerController extends Controller
         return view('admin.ticker.create_match_event', compact('match', 'players'));
     }
     public function matchEventStore(Request $request){
+        $match = Match::find($request->matchId);
+        
+        $start = Carbon::parse($match->start_date_time);
+        $now = Carbon::now()->setTimezone('Europe/Zurich');
+
+        $minute_of_event = $start->diffInMinutes($now);
+
+
         if ($request->eventType === "goal"){
 
             if ($request->homePlayer === "on"){
@@ -176,7 +210,7 @@ class LiveTickerController extends Controller
                    'match_id' => $request->matchId,
                     'title' => $request->title,
                     'description' => $request->description,
-                    'minute_of_event' => $request->eventMinute,
+                    'minute_of_event' => $minute_of_event,
                     'player_idHome' => $request->homePlayerName,
                     'goal' => 1
                 ]);
@@ -197,7 +231,7 @@ class LiveTickerController extends Controller
                     'match_id' => $request->matchId,
                     'title' => $request->title,
                     'description' => $request->description,
-                    'minute_of_event' => $request->eventMinute,
+                    'minute_of_event' => $minute_of_event,
                     'playerNameAway' => $request->awayPlayerName,
                     'goal' => 1
                 ]);
@@ -216,7 +250,7 @@ class LiveTickerController extends Controller
                     'match_id' => $request->matchId,
                     'title' => $request->title,
                     'description' => $request->description,
-                    'minute_of_event' => $request->eventMinute,
+                    'minute_of_event' => $minute_of_event,
                     'player_idHome' => $request->homePlayerName,
                     'assist' => 1
                 ]);
@@ -233,7 +267,7 @@ class LiveTickerController extends Controller
                     'match_id' => $request->matchId,
                     'title' => $request->title,
                     'description' => $request->description,
-                    'minute_of_event' => $request->eventMinute,
+                    'minute_of_event' => $minute_of_event,
                     'playerNameAway' => $request->awayPlayerName,
                     'assist' => 1
                 ]);
@@ -248,7 +282,7 @@ class LiveTickerController extends Controller
                     'match_id' => $request->matchId,
                     'title' => $request->title,
                     'description' => $request->description,
-                    'minute_of_event' => $request->eventMinute,
+                    'minute_of_event' => $minute_of_event,
                     'player_idHome' => $request->homePlayerName,
                     'yellow_card' => 1
                 ]);
@@ -265,7 +299,7 @@ class LiveTickerController extends Controller
                     'match_id' => $request->matchId,
                     'title' => $request->title,
                     'description' => $request->description,
-                    'minute_of_event' => $request->eventMinute,
+                    'minute_of_event' => $minute_of_event,
                     'playerNameAway' => $request->awayPlayerName,
                     'yellow_card' => 1
                 ]);
@@ -280,7 +314,7 @@ class LiveTickerController extends Controller
                     'match_id' => $request->matchId,
                     'title' => $request->title,
                     'description' => $request->description,
-                    'minute_of_event' => $request->eventMinute,
+                    'minute_of_event' => $minute_of_event,
                     'player_idHome' => $request->homePlayerName,
                     'red_card' => 1
                 ]);
@@ -295,7 +329,7 @@ class LiveTickerController extends Controller
                     'match_id' => $request->matchId,
                     'title' => $request->title,
                     'description' => $request->description,
-                    'minute_of_event' => $request->eventMinute,
+                    'minute_of_event' => $minute_of_event,
                     'playerNameAway' => $request->awayPlayerName,
                     'red_card' => 1
                 ]);
@@ -310,7 +344,7 @@ class LiveTickerController extends Controller
                     'match_id' => $request->matchId,
                     'title' => $request->title,
                     'description' => $request->description,
-                    'minute_of_event' => $request->eventMinute,
+                    'minute_of_event' => $minute_of_event,
                     'player_idHome' => $request->homePlayerName,
                     'injury' => 1
                 ]);
@@ -322,7 +356,7 @@ class LiveTickerController extends Controller
                     'match_id' => $request->matchId,
                     'title' => $request->title,
                     'description' => $request->description,
-                    'minute_of_event' => $request->eventMinute,
+                    'minute_of_event' => $minute_of_event,
                     'playerNameAway' => $request->awayPlayerName,
                     'injury' => 1
                 ]);
@@ -337,11 +371,37 @@ class LiveTickerController extends Controller
                     'match_id' => $request->matchId,
                     'title' => $request->title,
                     'description' => $request->description,
-                    'minute_of_event' => $request->eventMinute,
+                    'minute_of_event' => $minute_of_event,
                     'player_idHome' => $request->homePlayerName,
                     'substitute' => 1
                 ]);
-                return redirect()->back();
+                
+            } else if ($request->awayPlayer === "on"){
+
+                TickerEvents::create([
+                    'match_id' => $request->matchId,
+                    'title' => $request->title,
+                    'description' => $request->description,
+                    'minute_of_event' => $minute_of_event,
+                    'playerNameAway' => $request->awayPlayerName,
+                    'substitute' => 1
+                ]);
+            }
+
+            return redirect()->back();
+
+        } else if ($request->eventType === "blank"){
+            
+            if ($request->homePlayer === "on"){
+
+                TickerEvents::create([
+                    'match_id' => $request->matchId,
+                    'title' => $request->title,
+                    'description' => $request->description,
+                    'minute_of_event' => $minute_of_event,
+                    'player_idHome' => $request->homePlayerName,
+                    'blank_event' => 1,
+                ]);
 
             } else if ($request->awayPlayer === "on"){
 
@@ -349,14 +409,14 @@ class LiveTickerController extends Controller
                     'match_id' => $request->matchId,
                     'title' => $request->title,
                     'description' => $request->description,
-                    'minute_of_event' => $request->eventMinute,
+                    'minute_of_event' => $minute_of_event,
                     'playerNameAway' => $request->awayPlayerName,
-                    'substitute' => 1
+                    'blank_event' => 1,
                 ]);
 
-                return redirect()->back();
             }
 
+            return redirect()->back();
         }
     }
 
@@ -375,10 +435,12 @@ class LiveTickerController extends Controller
 
         return view('admin.ticker.manage_match_events', compact('events', 'match'));
     }
+
     public function matchEventsManage($matchId, $eventId){
         $match = Match::find($matchId);
         $event = TickerEvents::find($eventId);
         $players = Player::all();
+
         return view('admin.ticker.manage_match_events_detail', compact('match', 'event', 'players'));
     }
 
@@ -432,7 +494,7 @@ class LiveTickerController extends Controller
                     $event = TickerEvents::find($request->eventId);
                     $event->title = $request->title;
                     $event->description = $request->description;
-                    $event->minute_of_event = $request->eventMinute;
+                    $event->minute_of_event =  $event->minute_of_event;
 
                     $event->goal = null;
                     $event->goal = 1;
@@ -523,6 +585,25 @@ class LiveTickerController extends Controller
                         $event->substitute = null;
                     }
 
+                    if ($event->blank_event == "1" && $event->playerNameAway  === null){
+
+                        $playerNew->total_goals = $playerNew->total_goals + 1;
+                        $playerNew->update();
+
+                        $match->teamA_score = $match->teamA_score + 1;
+                        $match->update();
+
+                    } else if ($event->blank_event == "1" && $event->playerNameAway  != null){
+
+                        $playerNew->total_goals = $playerNew->total_goals + 1;
+                        $playerNew->update();
+
+                        $match->teamA_score = $match->teamA_score + 1;
+                        $match->update();
+                    } else {
+                        $event->blank_event = null;
+                    }
+
                     if ($event->injury === 1 && $event->playerNameAway  === null){
 
                         $playerNew->total_goals = $playerNew->total_goals + 1;
@@ -544,7 +625,7 @@ class LiveTickerController extends Controller
 
                     if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway === null
                         && $event->assist === null && $event->yellow_card === null && $event->red_card === null
-                        && $event->injury === null && $event->substitute === null){
+                        && $event->injury === null && $event->substitute === null && $event->blank_event === null){
                         $playerOld->total_goals =  $playerOld->total_goals - 1;
                         $playerOld->update();
 
@@ -554,20 +635,21 @@ class LiveTickerController extends Controller
 
                     } else if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway != null
                         && $event->assist === null && $event->yellow_card === null && $event->red_card === null
-                        && $event->injury === null && $event->substitute === null){
+                        && $event->injury === null && $event->substitute === null && $event->blank_event === null){
                         $player = Player::find($request->homePlayerName);
                         $player->total_goals = $player->total_goals + 1;
                         $player->update();
                     }
 
                     if($event->playerNameAway != null  && $event->assist === null && $event->yellow_card === null && $event->red_card === null
-                        && $event->injury === null && $event->substitute === null){
+                        && $event->injury === null && $event->substitute === null && $event->blank_event === null){
                         $match->teamB_score = $match->teamB_score - 1;
                         $match->teamA_score = $match->teamA_score + 1;
                         $match->update();
                     }
 
                     $event->substitute = null;
+                    $event->blank_event = null;
                     $event->injury = null;
                     $event->assist = null;
                     $event->yellow_card = null;
@@ -586,7 +668,7 @@ class LiveTickerController extends Controller
                     $event = TickerEvents::find($request->eventId);
                     $event->title = $request->title;
                     $event->description = $request->description;
-                    $event->minute_of_event = $request->eventMinute;
+                    $event->minute_of_event =  $event->minute_of_event;
 
 
                     if($event->player_idHome != null){
@@ -653,6 +735,11 @@ class LiveTickerController extends Controller
                             $match->update();
                         }
 
+                        if ($event->blank_event == "1"){
+                            $match->teamB_score = $match->teamB_score + 1;
+                            $match->update();
+                        }
+
                     } else if ($event->player_idHome === null) {
                         $match = Match::find($request->matchId);
 
@@ -688,6 +775,11 @@ class LiveTickerController extends Controller
                             $match->teamB_score = $match->teamB_score + 1;
                             $match->update();
                         }
+
+                        if ($event->blank_event == "1"){
+                            $match->teamB_score = $match->teamB_score + 1;
+                            $match->update();
+                        }
                     }
 
                     $event->playerNameAway = null;
@@ -697,6 +789,7 @@ class LiveTickerController extends Controller
                     $event->goal = null;
                     $event->goal = 1;
                     $event->yellow_card = null;
+                    $event->blank_event = null;
                     $event->red_card = null;
                     $event->assist = null;
                     $event->player_idHome = null;
@@ -712,7 +805,7 @@ class LiveTickerController extends Controller
                     $event = TickerEvents::find($request->eventId);
                     $event->title = $request->title;
                     $event->description = $request->description;
-                    $event->minute_of_event = $request->eventMinute;
+                    $event->minute_of_event =  $event->minute_of_event;
 
 
                     $event->assist = null;
@@ -786,6 +879,19 @@ class LiveTickerController extends Controller
                         $event->substitute = null;
                     }
 
+                    if ($event->blank_event == "1" && $event->playerNameAway  === null){
+
+                        $playerNew->assists = $playerNew->assists + 1;
+                        $playerNew->update();
+
+                    } else if ($event->blank_event == "1" && $event->playerNameAway  != null){
+
+                        $playerNew->assists = $playerNew->assists + 1;
+                        $playerNew->update();
+                    } else {
+                        $event->blank_event = null;
+                    }
+
                     if ($event->injury === 1 && $event->playerNameAway  === null){
 
                         $playerNew->assists = $playerNew->assists + 1;
@@ -801,7 +907,7 @@ class LiveTickerController extends Controller
 
                     if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway  === null
                         && $event->goal === null && $event->yellow_card === null && $event->red_card === null
-                        && $event->injury === null && $event->substitute === null){
+                        && $event->injury === null && $event->substitute === null && $event->blank_event === null){
 
                         $playerOld->assists = $playerOld->assists - 1;
                         $playerOld->update();
@@ -811,7 +917,7 @@ class LiveTickerController extends Controller
 
                     } else if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway != null
                         && $event->goal === null && $event->yellow_card === null && $event->red_card === null
-                        && $event->injury === null && $event->substitute === null) {
+                        && $event->injury === null && $event->substitute === null && $event->blank_event === null) {
                         $player = Player::find($request->homePlayerName);
                         $player->assists = $player->assists + 1;
                         $player->update();
@@ -822,6 +928,7 @@ class LiveTickerController extends Controller
                     $event->goal = null;
                     $event->yellow_card = null;
                     $event->red_card = null;
+                    $event->blank_event = null;
                     $event->player_idHome = null;
                     $event->player_idHome = $request->homePlayerName;
                     $event->playerNameAway = null;
@@ -835,7 +942,7 @@ class LiveTickerController extends Controller
                     $event = TickerEvents::find($request->eventId);
                     $event->title = $request->title;
                     $event->description = $request->description;
-                    $event->minute_of_event = $request->eventMinute;
+                    $event->minute_of_event =  $event->minute_of_event;
 
                     $event->injury = null;
                     $event->substitute = null;
@@ -886,16 +993,21 @@ class LiveTickerController extends Controller
                             $event->red_card = null;
                         }
 
+                    } else if ($event->player_idHome === null) {
+                        $match = Match::find($request->matchId);
+
+                        if ($event->goal === 1){
+                            $match->teamB_score = $match->teamB_score + 1;
+                            $match->update();
+                        }
                     }
 
-                    if ($event->goal === 1 && $event->player_idHome === null){
-                        $match->teamB_score = $match->teamB_score - 1;
-                        $match->update();
-                    }
+                    
 
                     $event->assist = null;
                     $event->assist = 1;
                     $event->goal = null;
+                    $event->blank_event = null;
                     $event->yellow_card = null;
                     $event->red_card = null;
                     $event->player_idHome = null;
@@ -912,7 +1024,7 @@ class LiveTickerController extends Controller
                     $event = TickerEvents::find($request->eventId);
                     $event->title = $request->title;
                     $event->description = $request->description;
-                    $event->minute_of_event = $request->eventMinute;
+                    $event->minute_of_event =  $event->minute_of_event;
 
                     $event->yellow_card = null;
                     $event->yellow_card = 1;
@@ -987,6 +1099,19 @@ class LiveTickerController extends Controller
                         $event->substitute = null;
                     }
 
+                    if ($event->blank_event == "1" && $event->playerNameAway  === null){
+
+                        $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
+                        $playerNew->update();
+
+                    } else if ($event->blank_event == "1" && $event->playerNameAway  != null){
+
+                        $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
+                        $playerNew->update();
+                    } else {
+                        $event->blank_event = null;
+                    }
+
                     if ($event->injury === 1 && $event->playerNameAway  === null){
 
                         $playerNew->yellow_cards = $playerNew->yellow_cards + 1;
@@ -1002,7 +1127,7 @@ class LiveTickerController extends Controller
 
                     if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway  === null
                         && $event->goal === null && $event->assist === null && $event->red_card === null
-                        && $event->injury === null && $event->substitute === null){
+                        && $event->injury === null && $event->substitute === null && $event->blank_event === null){
 
                         $playerOld->yellow_cards = $playerOld->yellow_cards - 1;
                         $playerOld->update();
@@ -1013,7 +1138,7 @@ class LiveTickerController extends Controller
 
                     } else if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway  != null
                         && $event->goal === null && $event->assist === null && $event->red_card === null
-                        && $event->injury === null && $event->substitute === null){
+                        && $event->injury === null && $event->substitute === null && $event->blank_event === null){
                         $player = Player::find($request->homePlayerName);
                         $player->yellow_cards = $player->yellow_cards + 1;
                         $player->update();
@@ -1023,6 +1148,7 @@ class LiveTickerController extends Controller
                     $event->substitute = null;
                     $event->goal = null;
                     $event->red_card = null;
+                    $event->blank_event = null;
                     $event->assist = null;
                     $event->playerNameAway = null;
                     $event->player_idHome = $request->homePlayerName;
@@ -1035,7 +1161,7 @@ class LiveTickerController extends Controller
                     $event = TickerEvents::find($request->eventId);
                     $event->title = $request->title;
                     $event->description = $request->description;
-                    $event->minute_of_event = $request->eventMinute;
+                    $event->minute_of_event =  $event->minute_of_event;
 
 
                     $event->injury = null;
@@ -1096,6 +1222,7 @@ class LiveTickerController extends Controller
                     $event->yellow_card = null;
                     $event->yellow_card = 1;
                     $event->red_card = null;
+                    $event->blank_event = null;
                     $event->assist = null;
                     $event->goal = null;
                     $event->player_idHome = null;
@@ -1112,7 +1239,7 @@ class LiveTickerController extends Controller
                     $event = TickerEvents::find($request->eventId);
                     $event->title = $request->title;
                     $event->description = $request->description;
-                    $event->minute_of_event = $request->eventMinute;
+                    $event->minute_of_event =  $event->minute_of_event;
 
                     $event->red_card = null;
                     $event->red_card = 1;
@@ -1185,6 +1312,19 @@ class LiveTickerController extends Controller
                         $event->substitute = null;
                     }
 
+                    if ($event->blank_event == "1" && $event->playerNameAway  === null){
+
+                        $playerNew->red_cards = $playerNew->red_cards + 1;
+                        $playerNew->update();
+
+                    } else if ($event->blank_event == "1" && $event->playerNameAway  != null){
+
+                        $playerNew->red_cards = $playerNew->red_cards + 1;
+                        $playerNew->update();
+                    } else {
+                        $event->blank_event = null;
+                    }
+
                     if ($event->injury === 1 && $event->playerNameAway  === null){
 
                         $playerNew->red_cards = $playerNew->red_cards + 1;
@@ -1200,7 +1340,7 @@ class LiveTickerController extends Controller
 
                     if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway  === null
                         && $event->goal === null && $event->assist === null && $event->yellow_card === null
-                        && $event->injury === null && $event->substitute === null){
+                        && $event->injury === null && $event->substitute === null && $event->blank_event === null){
                         $playerOld->red_cards = $playerOld->red_cards - 1;
                         $playerOld->update();
 
@@ -1209,7 +1349,7 @@ class LiveTickerController extends Controller
 
                     } else if ($event->player_idHome != $request->homePlayerName && $event->playerNameAway  != null
                         && $event->goal === null && $event->assist === null && $event->yellow_card === null
-                        && $event->injury === null && $event->substitute === null){
+                        && $event->injury === null && $event->substitute === null && $event->blank_event === null){
                         $player = Player::find($request->homePlayerName);
                         $player->red_cards = $player->red_cards + 1;
                         $player->update();
@@ -1219,6 +1359,7 @@ class LiveTickerController extends Controller
                     $event->substitute = null;
                     $event->goal = null;
                     $event->yellow_card = null;
+                    $event->blank_event = null;
                     $event->assist = null;
                     $event->playerNameAway = null;
                     $event->player_idHome = $request->homePlayerName;
@@ -1231,7 +1372,7 @@ class LiveTickerController extends Controller
                     $event = TickerEvents::find($request->eventId);
                     $event->title = $request->title;
                     $event->description = $request->description;
-                    $event->minute_of_event = $request->eventMinute;
+                    $event->minute_of_event =  $event->minute_of_event;
 
                     $event->injury = null;
                     $event->substitute = null;
@@ -1291,6 +1432,7 @@ class LiveTickerController extends Controller
                     $event->red_card = null;
                     $event->red_card = 1;
                     $event->yellow_card = null;
+                    $event->blank_event = null;
                     $event->assist = null;
                     $event->goal = null;
                     $event->player_idHome = null;
@@ -1307,7 +1449,7 @@ class LiveTickerController extends Controller
                     $event = TickerEvents::find($request->eventId);
                     $event->title = $request->title;
                     $event->description = $request->description;
-                    $event->minute_of_event = $request->eventMinute;
+                    $event->minute_of_event =  $event->minute_of_event;
 
                     $playerOld = Player::find($event->player_idHome);
                     $match = Match::find($request->matchId);
@@ -1357,6 +1499,7 @@ class LiveTickerController extends Controller
                     $event->assist = null;
                     $event->goal = null;
                     $event->substitute = null;
+                    $event->blank_event = null;
                     $event->injury = 1;
                     $event->player_idHome = $request->homePlayerName;
                     $event->update();
@@ -1367,7 +1510,7 @@ class LiveTickerController extends Controller
                     $event = TickerEvents::find($request->eventId);
                     $event->title = $request->title;
                     $event->description = $request->description;
-                    $event->minute_of_event = $request->eventMinute;
+                    $event->minute_of_event =  $event->minute_of_event;
 
                     if($event->player_idHome != null){
                         $player = Player::find($event->player_idHome);
@@ -1432,6 +1575,7 @@ class LiveTickerController extends Controller
                     $event->yellow_card = null;
                     $event->red_card = null;
                     $event->substitute = null;
+                    $event->blank_event = null;
                     $event->playerNameAway = $request->awayPlayerName;
                     $event->update();
 
@@ -1445,7 +1589,7 @@ class LiveTickerController extends Controller
                     $event = TickerEvents::find($request->eventId);
                     $event->title = $request->title;
                     $event->description = $request->description;
-                    $event->minute_of_event = $request->eventMinute;
+                    $event->minute_of_event =  $event->minute_of_event;
 
 
                     $playerOld = Player::find($event->player_idHome);
@@ -1495,6 +1639,7 @@ class LiveTickerController extends Controller
                     $event->injury = null;
                     $event->assist = null;
                     $event->goal = null;
+                    $event->blank_event = null;
                     $event->substitute = null;
                     $event->substitute = 1;
                     $event->player_idHome = $request->homePlayerName;
@@ -1507,7 +1652,7 @@ class LiveTickerController extends Controller
                     $event = TickerEvents::find($request->eventId);
                     $event->title = $request->title;
                     $event->description = $request->description;
-                    $event->minute_of_event = $request->eventMinute;
+                    $event->minute_of_event =  $event->minute_of_event;
 
                     if($event->player_idHome != null){
                         $player = Player::find($event->player_idHome);
@@ -1566,6 +1711,146 @@ class LiveTickerController extends Controller
                     $event->player_idHome = null;
                     $event->substitute = null;
                     $event->substitute = 1;
+                    $event->injury = null;
+                    $event->blank_event = null;
+                    $event->assist = null;
+                    $event->goal = null;
+                    $event->yellow_card = null;
+                    $event->red_card = null;
+
+                    $event->playerNameAway = $request->awayPlayerName;
+                    $event->update();
+
+                    return redirect()->back();
+                }
+
+            } else if ($request->eventType === "blank"){
+
+                if ($request->homePlayer === "on"){
+
+                    $event = TickerEvents::find($request->eventId);
+                    $event->title = $request->title;
+                    $event->description = $request->description;
+                    $event->minute_of_event =  $event->minute_of_event;
+
+                    $playerOld = Player::find($event->player_idHome);
+                    $match = Match::find($request->matchId);
+
+                    if ($event->goal === 1 && $event->playerNameAway  === null){
+                        $playerOld->total_goals = $playerOld->total_goals - 1 ;
+                        $playerOld->update();
+
+                        $match->teamA_score = $match->teamA_score - 1;
+                        $match->update();
+
+                    } else if ($event->goal === 1 && $event->playerNameAway  != null) {
+
+                        $match->teamB_score = $match->teamB_score - 1;
+                        $match->update();
+                        $event->goal = null;
+                    }
+
+                    if ($event->assist === 1 && $event->playerNameAway  === null){
+                        $playerOld->assists = $playerOld->assists - 1 ;
+                        $playerOld->update();
+
+                    }  else {
+                        $event->assist = null;
+                    }
+
+                    if ($event->yellow_card === 1 && $event->playerNameAway  === null){
+                        $playerOld->yellow_cards = $playerOld->yellow_cards - 1 ;
+                        $playerOld->update();
+
+                    } else {
+                        $event->yellow_card = null;
+                    }
+
+                    if ($event->red_card === 1 && $event->playerNameAway  === null){
+                        $playerOld->red_cards = $playerOld->red_cards - 1 ;
+                        $playerOld->update();
+                    } else {
+                        $event->yellow_card = null;
+                    }
+
+
+                    $event->playerNameAway = null;
+                    $event->yellow_card = null;
+                    $event->red_card = null;
+                    $event->injury = null;
+                    $event->assist = null;
+                    $event->goal = null;
+                    $event->substitute = null;
+                    $event->blank_event = 1;
+                    $event->player_idHome = $request->homePlayerName;
+                    $event->update();
+
+                    return redirect()->back();
+
+                } else if ($request->awayPlayer === "on"){
+
+                    $event = TickerEvents::find($request->eventId);
+                    $event->title = $request->title;
+                    $event->description = $request->description;
+                    $event->minute_of_event =  $event->minute_of_event;
+
+                    if($event->player_idHome != null){
+                        $player = Player::find($event->player_idHome);
+                        $match = Match::find($request->matchId);
+
+                        if ($event->red_card === 1){
+                            $player->red_cards = $player->red_cards - 1;
+                            $player->update();
+
+                            $event->red_card = null;
+                            $event->red_card = 1;
+                        } else {
+                            $event->red_card = null;
+                            $event->red_card = 1;
+                        }
+
+                        if ($event->yellow_card === 1){
+                            $player->yellow_cards = $player->yellow_cards - 1;
+                            $player->update();
+
+                            $event->yellow_card = null;
+                            $event->yellow_card = 1;
+                        } else {
+                            $event->yellow_card = null;
+                            $event->yellow_card = 1;
+                        }
+
+                        if ($event->goal === 1){
+                            $player->total_goals = $player->total_goals - 1 ;
+                            $player->update();
+
+                            $match->teamA_score = $match->teamA_score - 1;
+                            $match->update();
+
+                            $event->goal = null;
+                        } else {
+                            $event->goal = null;
+                        }
+
+                        if ($event->assist === 1){
+                            $player->assists = $player->assists - 1 ;
+                            $player->update();
+                            $event->assist = null;
+                        } else {
+                            $event->assist = null;
+                        }
+
+                    }
+
+                    if ($event->goal === 1 && $event->player_idHome === null){
+                        $match = Match::find($request->matchId);
+                        $match->teamB_score = $match->teamB_score - 1;
+                        $match->update();
+                    }
+
+                    $event->player_idHome = null;
+                    $event->substitute = null;
+                    $event->blank_event = 1;
                     $event->injury = null;
                     $event->assist = null;
                     $event->goal = null;

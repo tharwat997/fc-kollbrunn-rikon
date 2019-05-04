@@ -65,6 +65,7 @@
                                         <option {{$event->red_card === 1 ? 'selected' : ''}} value="redCard">Red card</option>
                                         <option {{$event->injury === 1 ? 'selected' : ''}} value="injury">Injury</option>
                                         <option {{$event->substitute === 1 ? 'selected' : ''}} value="substitution">Substitution</option>
+                                        <option {{$event->blank_event === "1" ? 'selected' : ''}} value="blank">Blank event</option>
                                     </select>
                                 </div>
                                 <div class="input-group mb-3 d-flex flex-column">
@@ -97,13 +98,6 @@
                                         <span class="input-group-text">Player name</span>
                                     </div>
                                     <input type="text"  class="form-control" name="awayPlayerName"  value="{{$event->playerNameAway != null ? $event->playerNameAway : ''}}" aria-label="creator" aria-describedby="basic-addon1">
-                                </div>
-
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Event Minute</span>
-                                    </div>
-                                    <input type="number" required maxlength="3" placeholder="0" max="200" class="form-control" name="eventMinute" aria-describedby="basic-addon1" value="{{$event->minute_of_event}}">
                                 </div>
 
                                 <div class="input-group mb-3">

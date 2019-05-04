@@ -27,6 +27,7 @@ class CreateTickerEventsTable extends Migration
             $table->boolean('assist')->nullable();
             $table->boolean('goal')->nullable();
             $table->boolean('substitute')->nullable();
+            $table->string('blank_event')->nullable();
             $table->timestamps();
         });
     }
