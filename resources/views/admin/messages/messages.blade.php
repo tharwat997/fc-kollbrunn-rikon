@@ -30,18 +30,66 @@
                             <th>Join team</th>
                             <th>Join event</th>
                             <th>Join event as</th>
-                            <th>Read</th>
-                           @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
-                                <th>Assigned To</th>
-                            @endif
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($messages as $message)
-                            @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin')
-                            || \Illuminate\Support\Facades\Auth::user()->assigned_message_subject === "join_team")
-                                @if($message->join_team != null)
+
+                            @if($message->join_team != null && \Illuminate\Support\Facades\Auth::user()->hasRole('reporter'))
+                                    <tr>
+                                        <td>{{$message->sender_email}}</td>
+                                        <td>{{$message->sender_name}}</td>
+                                        <td>{{$message->sender_number}}</td>
+                                        <td>{{$message->purpose_of_contact}}</td>
+                                        <td>{{$message->join_team === null ? 'Null' : $message->join_team}}</td>
+                                        <td>{{$message->join_event === null ? 'Null' : $message->join_event}}</td>
+                                        <td>{{$message->reason_of_joining_event === null ? 'Null' : $message->reason_of_joining_event}}</td>
+                                        <td>
+                                            <div class="d-flex flex-column">
+                                                <div>
+                                                    <a href="{{route('message_view', ['id' => $message->id])}}" class="btn btn-block btn-primary">View</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                            @elseif($message->join_event != null && \Illuminate\Support\Facades\Auth::user()->hasRole('reporter'))
+                                    <tr>
+                                        <td>{{$message->sender_email}}</td>
+                                        <td>{{$message->sender_name}}</td>
+                                        <td>{{$message->sender_number}}</td>
+                                        <td>{{$message->purpose_of_contact}}</td>
+                                        <td>{{$message->join_team === null ? 'Null' : $message->join_team}}</td>
+                                        <td>{{$message->join_event === null ? 'Null' : $message->join_event}}</td>
+                                        <td>{{$message->reason_of_joining_event === null ? 'Null' : $message->reason_of_joining_event}}</td>
+                                        <td>
+                                            <div class="d-flex flex-column">
+                                                <div>
+                                                    <a href="{{route('message_view', ['id' => $message->id])}}" class="btn btn-block btn-primary">View</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                            @elseif($message->join_event === null && $message->join_team === null && \Illuminate\Support\Facades\Auth::user()->hasRole('reporter'))
+                                    <tr>
+                                        <td>{{$message->sender_email}}</td>
+                                        <td>{{$message->sender_name}}</td>
+                                        <td>{{$message->sender_number}}</td>
+                                        <td>{{$message->purpose_of_contact}}</td>
+                                        <td>{{$message->join_team === null ? 'Null' : $message->join_team}}</td>
+                                        <td>{{$message->join_event === null ? 'Null' : $message->join_event}}</td>
+                                        <td>{{$message->reason_of_joining_event === null ? 'Null' : $message->reason_of_joining_event}}</td>
+                                        <td>
+                                            <div class="d-flex flex-column">
+                                                <div>
+                                                    <a href="{{route('message_view', ['id' => $message->id])}}" class="btn btn-block btn-primary">View</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @elseif (\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
                                 <tr>
                                     <td>{{$message->sender_email}}</td>
                                     <td>{{$message->sender_name}}</td>
@@ -50,10 +98,6 @@
                                     <td>{{$message->join_team === null ? 'Null' : $message->join_team}}</td>
                                     <td>{{$message->join_event === null ? 'Null' : $message->join_event}}</td>
                                     <td>{{$message->reason_of_joining_event === null ? 'Null' : $message->reason_of_joining_event}}</td>
-                                    <td>{{$message->read === 0 ? 'read' : 'unread'}}</td>
-                                    @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
-                                        <td>{{$message->assigned_id}}</td>
-                                    @endif
                                     <td>
                                         <div class="d-flex flex-column">
                                             <div>
@@ -62,58 +106,6 @@
                                         </div>
                                     </td>
                                 </tr>
-                                @endif
-
-                            @elseif(\Illuminate\Support\Facades\Auth::user()->hasRole('admin')
-                                        || \Illuminate\Support\Facades\Auth::user()->assigned_message_subject === "join_event")
-                                @if($message->join_event != null)
-                                    <tr>
-                                        <td>{{$message->sender_email}}</td>
-                                        <td>{{$message->sender_name}}</td>
-                                        <td>{{$message->sender_number}}</td>
-                                        <td>{{$message->purpose_of_contact}}</td>
-                                        <td>{{$message->join_team === null ? 'Null' : $message->join_team}}</td>
-                                        <td>{{$message->join_event === null ? 'Null' : $message->join_event}}</td>
-                                        <td>{{$message->reason_of_joining_event === null ? 'Null' : $message->reason_of_joining_event}}</td>
-                                        <td>{{$message->read === 0 ? 'read' : 'unread'}}</td>
-                                        @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
-                                            <td>{{$message->assigned_id}}</td>
-                                        @endif
-                                        <td>
-                                            <div class="d-flex flex-column">
-                                                <div>
-                                                    <a href="{{route('message_view', ['id' => $message->id])}}" class="btn btn-block btn-primary">View</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endif
-
-                            @elseif(\Illuminate\Support\Facades\Auth::user()->hasRole('admin')
-                                    || \Illuminate\Support\Facades\Auth::user()->assigned_message_subject === "questions")
-                                @if($message->join_event === null && $message->join_team === null)
-                                    <tr>
-                                        <td>{{$message->sender_email}}</td>
-                                        <td>{{$message->sender_name}}</td>
-                                        <td>{{$message->sender_number}}</td>
-                                        <td>{{$message->purpose_of_contact}}</td>
-                                        <td>{{$message->join_team === null ? 'Null' : $message->join_team}}</td>
-                                        <td>{{$message->join_event === null ? 'Null' : $message->join_event}}</td>
-                                        <td>{{$message->reason_of_joining_event === null ? 'Null' : $message->reason_of_joining_event}}</td>
-                                        <td>{{$message->read === 0 ? 'read' : 'unread'}}</td>
-                                        @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
-                                            <td>{{$message->assigned_id}}</td>
-                                        @endif
-                                        <td>
-                                            <div class="d-flex flex-column">
-                                                <div>
-                                                    <a href="{{route('message_view', ['id' => $message->id])}}" class="btn btn-block btn-primary">View</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endif
-
                             @endif
                         @endforeach
                         </tbody>
@@ -128,67 +120,42 @@
                     </div>
                     <div class="card-body">
                         <div class="d-none">
-                            <form action="{{route('message_update_assigned_user')}}" id="formQuestions" method="post">
-                                @csrf
-                            </form>
-                            <form action="{{route('message_update_assigned_user')}}" id="formEvents" method="post">
-                                @csrf
-                            </form>
-                            <form action="{{route('message_update_assigned_user')}}" id="formTeam" method="post">
-                                @csrf
-                            </form>
+                            @foreach($users as $user)
+                                <form method="POST" id="messageUpdateUserForm{{$user['id']}}" action="{{route('message_update_assigned_user')}}">
+                                    @csrf
+                                </form>
+                            @endforeach
                         </div>
                         <table id="searchMatchesTable2" class="display" style="width:100%">
                             <thead>
                             <tr>
-                                <th>Subject</th>
-                                <th>User</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Assigned Message Subject</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Questions</td>
-                                <td>
-                                    <select class="form-control" form="formQuestions" name="userAssigned" required>
-                                        @foreach($users as $user)
-                                            <option {{$user->assigned_message_subject == "questions" ? 'selected' : ''}} value="{{$user->id}}">{{$user->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                                <td>
-                                    <input form="formQuestions" type="hidden" name="subject" value="questions">
-                                    <button form="formQuestions" type="submit" class="btn btn-primary">Save</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Teams</td>
-                                <td>
-                                    <select class="form-control" form="formEvents" name="userAssigned" required>
-                                        @foreach($users as $user)
-                                            <option {{$user->assigned_message_subject == "questions" ? 'selected' : ''}} value="{{$user->id}}">{{$user->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                                <td>
-                                    <input form="formTeam" type="hidden" name="subject" value="teams">
-                                    <button form="formTeam" type="submit" class="btn btn-primary">Save</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Events</td>
-                                <td>
-                                    <select class="form-control" form="formEvents" name="userAssigned" required>
-                                        @foreach($users as $user)
-                                            <option {{$user->assigned_message_subject == "questions" ? 'selected' : ''}} value="{{$user->id}}">{{$user->name}}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                                <td>
-                                    <input form="formEvents"  type="hidden" name="subject" value="events">
-                                    <button form="formEvents" type="submit" class="btn btn-primary">Save</button>
-                                </td>
-                            </tr>
+                                @foreach($users as $user)
+                                    <tr>
+                                        <td>{{$user['name']}}</td>
+                                        <td>{{$user['email']}}</td>
+                                        <td>{{$user['role']}}</td>
+                                        <td>
+                                            <select form="messageUpdateUserForm{{$user['id']}}" name="subject" class="form-control">
+                                                <option {{$user['assigned_message_subject'] === "questions"? 'selected' : ''}} value="questions">Questions</option>
+                                                <option {{$user['assigned_message_subject'] === "join_event"? 'selected' : ''}} value="events">Join event</option>
+                                                <option {{$user['assigned_message_subject'] === "join_team"? 'selected' : ''}} value="teams">Join Team</option>
+                                                <option {{$user['assigned_message_subject'] === null ? 'selected' : ''}} value="null">Null</option>
+                                            </select>
+                                            <input form="messageUpdateUserForm{{$user['id']}}"  type="hidden" name="id" value="{{$user['id']}}">
+                                        </td>
+                                        <td>
+                                            <button form="messageUpdateUserForm{{$user['id']}}" type="submit" class="btn btn-primary">Update</button>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

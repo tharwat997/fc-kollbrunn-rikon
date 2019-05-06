@@ -28,7 +28,7 @@ Vue.component('v-icon', Icon);
 import * as VueGoogleMaps from 'vue2-google-maps'
 Vue.use(VueGoogleMaps, {
     load: {
-        key: 'AIzaSyAvHc6H9PFceItMpBay5Njk4Fmt6Y7A-ys'
+        key: ''
     }
 });
 
@@ -41,7 +41,7 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 import VueHorizontalTimeline from 'vue-horizontal-timeline'
 Vue.use(VueHorizontalTimeline);
 
-Vue.component('vue-recaptcha', require('vue-recaptcha'));
+// Vue.component('vue-recaptcha', require('vue-recaptcha'));
 
 import CountDown from 'vuejs-countdown'
 Vue.use(CountDown);
