@@ -172,7 +172,19 @@
                             <i class="material-icons">control_camera</i>
                             Manage users
                         </a>
+                        <a class="dropdown-item {{request()->is('user/manage') ? 'active' : ''}}" href="{{route('user_manage')}}">
+                            <i class="material-icons">control_camera</i>
+                            Profile
+                        </a>
                     </div>
+                </li>
+            @endif
+            @if(\Illuminate\Support\Facades\Auth::user()->hasRole('reporter'))
+                <li class="nav-item">
+                    <a class="nav-link {{request()->is('/user/manage') ? 'active' : ''}}" href="{{route('user_manage')}}">
+                        <i class="material-icons">person</i>
+                        <span>Profile</span>
+                    </a>
                 </li>
             @endif
         </ul>

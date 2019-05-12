@@ -11,8 +11,6 @@
                     <span class="d-none d-md-inline-block">{{Auth::user()->name}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-small">
-                    <a class="dropdown-item" href="{{asset('admin_assets/user-profile-lite.html')}}">
-                        <i class="material-icons">&#xE7FD;</i> Profile</a>
                     <a class="dropdown-item text-danger" href="{{url('/logout')}}">
                         <i class="material-icons text-danger">&#xE879;</i> Logout </a>
                 </div>

@@ -62,6 +62,31 @@
   #menu-container{
     background-color: $secondary-color;
     height: 100%;
+    .navbar.navbar-dark{
+      background-color: $secondary-color;
+      #nav-collapse{
+        #teamDropdownFirst,
+        #teamDropDownSecond {
+          a{
+            padding: 0 1em;
+            font-weight: 400;
+            color:$light-accent-dark;
+            text-decoration: none;
+            transition: 0.3s;
+          }
+          a:hover{
+            padding: 0 1em;
+            font-weight: 400;
+            color:$dark-shades;
+            text-decoration: none;
+            transition: 0.3s;
+          }
+        }
+      }
+    }
+    .navbar-dark .navbar-toggler{
+      border-color: transparent;
+    }
     .navbar-nav{
       .nav-item{
         list-style:none;

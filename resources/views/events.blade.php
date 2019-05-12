@@ -18,7 +18,7 @@
                         <div class="row">
                             @foreach($events as $event)
                                 @foreach($event->image as $image)
-                                <div class="col-3 col-md-4 col-sm-6 col-xs-12 mb-4 eventCard">
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-4 eventCard">
                                     <b-card img-src="{{$image->getUrl('card')}}" img-alt="Image" img-top>
                                         <div class="eventCardTop">
                                             <div class="d-flex justify-content-between align-items-center eventDateLocationContainer">

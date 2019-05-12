@@ -35,33 +35,43 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Password</th>
+                                @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
                                 <th>Role</th>
+                                @endif
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($users as $user)
-                                <tr>
-                                    <td>
-                                        <input form="form-{{$user->id}}" type="text" class="form-control" name="name" value="{{$user->name}}">
-                                        <input type="hidden" form="form-{{$user->id}}" name="userId" value="{{$user->id}}">
-                                    </td>
-                                    <td><input form="form-{{$user->id}}" type="email"  class="form-control"  name="email" value="{{$user->email}}"></td>
-                                    <td><input form="form-{{$user->id}}" type="password"  class="form-control"  name="password" value="{{$user->password}}"></td>
-                                    <td>
-                                        <select form="form-{{$user->id}}" name="role" class="form-control">
-                                            @foreach($roles as $role)
-                                                <option {{$role->id  === $user->role_id ? 'selected' : ''}} value="{{$role->id}}">{{ $role->id == 1 ? 'Admin' : 'Reporter' }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex flex-column">
-                                            <button form="form-{{$user->id}}" type="submit" name="btnUpdate" value="btnUpdate" class="btn btn-primary mb-2">Update</button>
-                                            <button form="form-{{$user->id}}" type="submit" name="btnDelete" value="btnDelete" class="btn btn-danger">Delete</button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                @if(\Illuminate\Support\Facades\Auth::user()->hasRole('reporter'))
+                                    @if($user->id == \Illuminate\Support\Facades\Auth::user()->id)
+                                        <tr>
+                                            <td>
+                                                <input form="form-{{$user->id}}" type="text" class="form-control" name="name" value="{{$user->name}}">
+                                                <input type="hidden" form="form-{{$user->id}}" name="userId" value="{{$user->id}}">
+                                            </td>
+                                            <td><input form="form-{{$user->id}}" type="email"  class="form-control"  name="email" value="{{$user->email}}"></td>
+                                            <td><input form="form-{{$user->id}}" type="password"  class="form-control"  name="password" value="{{$user->password}}"></td>
+                                            @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
+                                            <td>
+                                                <select form="form-{{$user->id}}" name="role" class="form-control">
+                                                    @foreach($roles as $role)
+                                                        <option {{$role->id  === $user->role_id ? 'selected' : ''}} value="{{$role->id}}">{{ $role->id == 1 ? 'Admin' : 'Reporter' }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </td>
+                                            @endif
+                                            <td>
+                                                <div class="d-flex flex-column">
+                                                    <button form="form-{{$user->id}}" type="submit" name="btnUpdate" value="btnUpdate" class="btn btn-primary mb-2">Update</button>
+                                                    @if(\Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
+                                                        <button form="form-{{$user->id}}" type="submit" name="btnDelete" value="btnDelete" class="btn btn-danger">Delete</button>
+                                                    @endif
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                @endif
                             @endforeach
                             </tbody>
                         </table>

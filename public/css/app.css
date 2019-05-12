@@ -10729,6 +10729,32 @@ a.text-dark:focus {
   height: 100%;
 }
 
+#navigation #menu-container .navbar.navbar-dark {
+  background-color: #000136;
+}
+
+#navigation #menu-container .navbar.navbar-dark #nav-collapse #teamDropdownFirst a,
+#navigation #menu-container .navbar.navbar-dark #nav-collapse #teamDropDownSecond a {
+  padding: 0 1em;
+  font-weight: 400;
+  color: #B2B2BB;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+#navigation #menu-container .navbar.navbar-dark #nav-collapse #teamDropdownFirst a:hover,
+#navigation #menu-container .navbar.navbar-dark #nav-collapse #teamDropDownSecond a:hover {
+  padding: 0 1em;
+  font-weight: 400;
+  color: #1F1B23;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+#navigation #menu-container .navbar-dark .navbar-toggler {
+  border-color: transparent;
+}
+
 #navigation #menu-container .navbar-nav .nav-item {
   list-style: none;
   margin: 0;
@@ -11167,6 +11193,96 @@ a.text-dark:focus {
   font-size: 30px;
   font-weight: 500;
   margin-bottom: 0.5em;
+}
+
+@media (min-width: 426px) and (max-width: 767px) {
+  #navigation #menu-container .navbar-nav .nav-item a {
+    border-bottom: 1px solid;
+    margin-left: 1em;
+    text-align: left;
+  }
+
+  #headerLogos-container {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  #headerLogos-container > div > div > div > div:nth-child(3) > h1 {
+    font-size: 24px !important;
+  }
+
+  #headerLogos-container > div > div > div > div:nth-child(2) > h1 {
+    font-size: 24px !important;
+  }
+
+  #FcLogo {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  #navbarSupportedContent {
+    margin-left: 15px;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 425px) {
+  #navigation #menu-container .navbar-nav .nav-item a {
+    border-bottom: 1px solid;
+    margin-left: 1em;
+    text-align: left;
+  }
+
+  #headerLogos-container {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  #headerLogos-container > div > div > div > div:nth-child(3) > h1 {
+    font-size: 21px !important;
+  }
+
+  #headerLogos-container > div > div > div > div:nth-child(2) > h1 {
+    font-size: 21px !important;
+  }
+
+  #FcLogo {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  #navbarSupportedContent {
+    margin-left: 15px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+  #navigation #menu-container .navbar-nav .nav-item a {
+    border-bottom: 1px solid;
+    margin-left: 1em;
+    text-align: left;
+  }
+
+  #headerLogos-container {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  #headerLogos-container > div > div > div > div:nth-child(3) > h1 {
+    font-size: 17px !important;
+  }
+
+  #headerLogos-container > div > div > div > div:nth-child(2) > h1 {
+    font-size: 17px !important;
+  }
+
+  #FcLogo {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  #navbarSupportedContent {
+    margin-left: 15px;
+  }
 }
 
 .navbar-laravel {
