@@ -15,7 +15,7 @@
                     <b-form @submit="onSubmit">
                         <b-form-group
                                 id="input-fullName-group"
-                                label="Full Name"
+                                label="Vornamem, Name"
                                 label-for="input-fullName"
                         >
                             <b-form-input
@@ -24,7 +24,7 @@
                                     type="text"
                                     name="fullName"
                                     required
-                                    placeholder="Enter your full name"
+                                    placeholder="Vorname, Name editiern"
                             ></b-form-input>
                         </b-form-group>
 
@@ -39,7 +39,7 @@
                                     type="email"
                                     name="email"
                                     required
-                                    placeholder="Enter your email"
+                                    placeholder="Email editieren"
                             ></b-form-input>
                         </b-form-group>
 
@@ -54,13 +54,13 @@
                                     v-model="form.fax"
                                     type="text"
                                     name="fax"
-                                    placeholder="Enter your email"
+                                        placeholder="Enter your email"
                             ></b-form-input>
                         </b-form-group>
 
                         <b-form-group
                                 id="input-mobileNumber-group"
-                                label="Mobile Number"
+                                label="Mobile Nummer"
                                 label-for="input-mobileNumber"
                         >
                             <b-form-input
@@ -69,13 +69,13 @@
                                     type="number"
                                     required
                                     name="mobileNumber"
-                                    placeholder="Enter your mobile number"
+                                    placeholder="Mobile Nummer editieren"
                             ></b-form-input>
                         </b-form-group>
 
                         <b-form-group
                                 id="input-purposeOfContact-group"
-                                label="Purpose of contact"
+                                label="Grund für Kontaktaufnahme"
                                 label-for="input-purposeOfContact"
                         >
                             <select name="purposeOfContact"  v-model="form.purposeOfContact" class="form-control" id="input-purposeOfContact">
@@ -105,7 +105,7 @@
 
                         <b-form-group  v-if="form.purposeOfContact === 3"
                                 id="input-joinEvent-group"
-                                label="Reason of joining"
+                                label="Art der Teilnahme"
                                 label-for="input-joinEvent"
                         >
                             <select name="joinEvent" v-model="form.joinEventSelection" class="form-control" id="input-joinEvent">
@@ -115,12 +115,12 @@
 
                         <b-form-group
                                 id="input-message-Group"
-                                label="Message"
+                                label="Nachricht"
                                 label-for="input-message"
                         >
                             <b-form-textarea
                                     id="input-message"
-                                    placeholder="Enter something..."
+                                    placeholder="Schreibe hier..."
                                     rows="3"
                                     name="message"
                                     max-rows="6"
@@ -132,7 +132,7 @@
                         <!--</vue-recaptcha>-->
 
                         <b-alert variant="success" v-show="success" show>Message sent Successfully</b-alert>
-                        <b-button type="submit" variant="primary">Submit</b-button>
+                        <b-button type="submit" variant="primary">Eingabe</b-button>
                     </b-form>
                 </div>
             </div>
@@ -165,21 +165,22 @@
                     message: ''
                 },
                 purposeOfContact: [
-                    {value:1, text: 'Got a question?'},
-                    {value:2, text: 'Join our teams'},
-                    {value:3, text: 'Join an event'}
+                    {value:1, text: 'Auswählen'},
+                    {value:2, text: 'Haben Sie eine Frage?'},
+                    {value:3, text: 'Beitritsanfrage'},
+                    {value:4, text: 'Teilnahme Veranstalltung'}
                 ],
                 teamsOptions: [
-                    {value:1, text: 'First team'},
-                    {value:2, text: 'Junior C'},
-                    {value:3, text:'Junior D'},
-                    {value:4, text:'Junior E'},
-                    {value:5, text:'Junior F'}
+                    {value:1, text: 'Aktive'},
+                    {value:2, text: 'C Junioren'},
+                    {value:3, text:'D Junioren'},
+                    {value:4, text:'E Junioren'},
+                    {value:5, text:'F+G Junioren'}
                 ],
                 eventsOptions: [],
                 joinEventOptions: [
-                    {value:1 , text:'Participant'},
-                    {value:2 , text:'Volunteer'}
+                    {value:1 , text:'Teilnehmer'},
+                    {value:2 , text:'Helfer'}
 
                 ]
             }

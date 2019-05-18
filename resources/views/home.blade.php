@@ -122,7 +122,7 @@
         <div class="container-fluid">
             <div class="container">
                 <div id="timeline-section-header-container">
-                    <h1 class="timeline-section-header">Upcoming Events</h1>
+                    <h1 class="timeline-section-header">Veranstalltungen</h1>
                 </div>
                 <div id="timeline">
                     <home-timeline></home-timeline>

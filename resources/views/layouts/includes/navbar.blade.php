@@ -43,18 +43,18 @@
                 <b-navbar-nav class="ml-auto mr-auto">
                     <b-nav-item  href="{{route('home')}}" class="{{Request::is('/') ? 'active-link' : ''}}">Home</b-nav-item>
 
-                    <b-nav-item-dropdown text="Team" left>
+                    <b-nav-item-dropdown text="Teams" left>
                         <div class="d-flex">
                             <div id="teamDropdownFirst" class="pr-4 pl-4" style="border-right: 1px solid lightgray">
-                                <b-dropdown-item href="{{url('/team/first-team')}}">First Team</b-dropdown-item>
-                                <b-dropdown-item href="{{url('/team/junior-c')}}">Junior C</b-dropdown-item>
-                                <b-dropdown-item href="{{url('/team/junior-d')}}">Junior D</b-dropdown-item>
-                                <b-dropdown-item href="{{url('/team/junior-e')}}">Junior E</b-dropdown-item>
-                                <b-dropdown-item href="{{url('/team/junior-f')}}">Junior F</b-dropdown-item>
+                                <b-dropdown-item href="{{url('/team/first-team')}}">Aktive</b-dropdown-item>
+                                <b-dropdown-item href="{{url('/team/junior-c')}}">C Junioren</b-dropdown-item>
+                                <b-dropdown-item href="{{url('/team/junior-d')}}">D Junioren</b-dropdown-item>
+                                <b-dropdown-item href="{{url('/team/junior-e')}}">E Junioren</b-dropdown-item>
+                                <b-dropdown-item href="{{url('/team/junior-f')}}">F+G Junioren</b-dropdown-item>
                             </div>
 
                             <div id="teamDropDownSecond" class="ml-4 mr-4">
-                                <b-dropdown-item href="{{url('/team/board-of-directors')}}">Board of directors</b-dropdown-item>
+                                <b-dropdown-item href="{{url('/team/board-of-directors')}}">Vorstand</b-dropdown-item>
                             </div>
                         </div>
                     </b-nav-item-dropdown>
@@ -62,18 +62,18 @@
                     <b-nav-item  href="{{route('live_ticker')}}" class="{{Request::is('live_ticker') ? 'active-link' : ''}}">Live Ticker</b-nav-item>
                     <b-nav-item  href="{{route('agenda')}}" class="{{Request::is('agenda') ? 'active-link' : ''}}">Agenda</b-nav-item>
                     <b-nav-item  href="{{route('news')}}" class="{{Request::is('news') ? 'active-link' : ''}}">News</b-nav-item>
-                    <b-nav-item  href="{{route('events')}}" class="{{Request::is('events') ? 'active-link' : ''}}">Events</b-nav-item>
+                    <b-nav-item  href="{{route('events')}}" class="{{Request::is('events') ? 'active-link' : ''}}">Veranstalltungen</b-nav-item>
 
-                    <b-nav-item-dropdown text="Scoreboard" left>
+                    <b-nav-item-dropdown text="Tabelle" left>
                         <div id="teamDropdownFirst" class="pr-4 pl-4" style="border-right: 1px solid lightgray">
-                            <b-dropdown-item href="">First Team Scoreboard</b-dropdown-item>
-                            <b-dropdown-item href="">Junior C Scoreboard</b-dropdown-item>
-                            <b-dropdown-item href="">Junior D Scoreboard</b-dropdown-item>
-                            <b-dropdown-item href="">Junior E Scoreboard</b-dropdown-item>
-                            <b-dropdown-item href="">Junior F Scoreboard</b-dropdown-item>
+                            <b-dropdown-item href="">FC Kollbrunn-Rikon 1</b-dropdown-item>
+                            <b-dropdown-item href="">C Junioren</b-dropdown-item>
+                            <b-dropdown-item href="">D Junioren</b-dropdown-item>
+                            <b-dropdown-item href="">E Junioren</b-dropdown-item>
+                            <b-dropdown-item href="">F Junioren</b-dropdown-item>
                         </div>
                     </b-nav-item-dropdown>
-                    <b-nav-item  href="{{route('contact_us')}}" class="{{Request::is('contact_us') ? 'active-link' : ''}}">Contact</b-nav-item>
+                    <b-nav-item  href="{{route('contact_us')}}" class="{{Request::is('contact_us') ? 'active-link' : ''}}">Kontakt</b-nav-item>
 
                 </b-navbar-nav>
             </b-collapse>

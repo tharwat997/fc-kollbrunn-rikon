@@ -4,20 +4,20 @@
             <div class="col-sm-4">
                 <b-card>
                     <div class="mb-4">
-                        <h3 class="text-center">Filter matches</h3>
+                        <h3 class="text-center">Spielfilter</h3>
                     </div>
                     <div id="matchesFilterContainer">
                         <div class="mb-2">
-                            <a href="#" class="btn btn-primary btn-block" @click="filterMatches('all')"> All</a>
+                            <a href="#" class="btn btn-primary btn-block" @click="filterMatches('all')"> Alle</a>
                         </div>
                         <div class="mb-2">
-                            <a  href="#" class="btn btn-primary btn-block" @click="filterMatches('upcoming')"> Upcoming</a>
+                            <a  href="#" class="btn btn-primary btn-block" @click="filterMatches('upcoming')"> Bevorstehende</a>
                         </div>
                         <div class="mb-2">
-                            <a href="#" class="btn btn-primary btn-block" @click="filterMatches('current')">Current</a>
+                            <a href="#" class="btn btn-primary btn-block" @click="filterMatches('current')">Laufende</a>
                         </div>
                         <div class="mb-2">
-                            <a  href="#" class="btn btn-primary btn-block" @click="filterMatches('previous')"> Previous</a>
+                            <a  href="#" class="btn btn-primary btn-block" @click="filterMatches('previous')">Vergangene</a>
                         </div>
                     </div>
                 </b-card>

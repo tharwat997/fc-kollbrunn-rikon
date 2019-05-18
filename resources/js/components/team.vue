@@ -82,19 +82,19 @@
         data(){
             return {
                 playerPositionsTabsArray:[
-                    {name:'All', selected:true},
-                    {name:'Goal Keepers', selected:false, id:"goalkeeper"},
-                    {name:'Defenders', selected:false, id:"defender"},
-                    {name:'Midfielders' ,selected:false, id:"midfielder"},
-                    {name:'Attackers', selected:false, id:"attacker"}
+                    {name:'Alle', selected:true},
+                    {name:'Torwart', selected:false, id:"goalkeeper"},
+                    {name:'Verteidigung', selected:false, id:"defender"},
+                    {name:'Mittelfeld' ,selected:false, id:"midfielder"},
+                    {name:'Sturm', selected:false, id:"attacker"}
 
                 ],
                playerPositions:[
-                   {name:'All', selected:true, id:"all"},
-                   {name:'Goal Keepers', selected:false, id:"goalkeeper"},
-                   {name:'Defenders', selected:false, id:"defender"},
-                   {name:'Midfielders' ,selected:false, id:"midfielder"},
-                   {name:'Attackers', selected:false, id:"attacker"}
+                   {name:'Alle', selected:true, id:"all"},
+                   {name:'Torwart', selected:false, id:"goalkeeper"},
+                   {name:'Verteidigung', selected:false, id:"defender"},
+                   {name:'Mittelfeld' ,selected:false, id:"midfielder"},
+                   {name:'Sturm', selected:false, id:"attacker"}
                ],
                 viewAllPositions:true
             }

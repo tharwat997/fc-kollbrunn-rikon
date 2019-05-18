@@ -31,7 +31,7 @@ class MessageController extends Controller
            $message->read = 0;
            $message->assigned_id = 1 ;
 
-           if ($data['purposeOfContact'] === 2){
+           if ($data['purposeOfContact'] === 3){
                $message->join_team = $data['teamSelected'];
                $team = Team::find($data['teamSelected']);
                $teamName = $team->name;
@@ -65,9 +65,9 @@ class MessageController extends Controller
                    Mail::to($adminUser->email)->send(new ContactUsMessage($data));
                }
 
-           } else if( $data['purposeOfContact'] === 3){
+           } else if( $data['purposeOfContact'] === 4){
                $message->join_event = $data['eventSelected'];
-               $message->reason_of_joining_event = $data['joinEventSelection'] === 1 ? 'Participant' : 'Volunteer' ;
+               $message->reason_of_joining_event = $data['joinEventSelection'] === 1 ? 'Teilnehmer' : 'Helfer' ;
 
                $event = Event::find($data['eventSelected']);
                $eventName = $event->name;
@@ -82,7 +82,7 @@ class MessageController extends Controller
                        'sender_number' =>  $message->sender_number,
                        'purpose_of_contact' =>  'Join event',
                        'event' => $eventName,
-                       'reason_of_joining_event' =>  $data['joinEventSelection'] === 1 ? 'Participant' : 'Volunteer' ,
+                       'reason_of_joining_event' =>  $data['joinEventSelection'] === 1 ? 'Teilnehmer' : 'Helfer' ,
                        'message' => $message->message,
                    ]);
 
@@ -97,11 +97,41 @@ class MessageController extends Controller
                        'sender_number' =>  $message->sender_number,
                        'purpose_of_contact' =>  'Join event',
                        'event' => $eventName,
-                       'reason_of_joining_event' =>  $data['joinEventSelection'] === 1 ? 'Participant' : 'Volunteer' ,
+                       'reason_of_joining_event' =>  $data['joinEventSelection'] === 1 ? 'Teilnehmer' : 'Helfer' ,
                        'message' => $message->message,
                    ]);
 
                    Mail::to($adminUser->email)->send(new ContactUsMessage($data2));
+               }
+
+           } else if ($data['purposeOfContact'] === 2){
+
+               $this->users = User::where('assigned_message_subject', '=', 'questions')->get();
+
+               foreach ($this->users as $user){
+
+                   $data = ([
+                       'sender_name' =>$message->sender_name,
+                       'sender_email' => $message->sender_email,
+                       'sender_number' =>  $message->sender_number,
+                       'purpose_of_contact' =>  'Question',
+                       'message' => $message->message,
+                   ]);
+
+                   Mail::to($user->email)->send(new ContactUsMessage($data));
+               }
+
+               foreach ($adminUsers as $admin){
+                   $adminUser = User::find($admin->user_id);
+                   $data = ([
+                       'sender_name' =>$message->sender_name,
+                       'sender_email' => $message->sender_email,
+                       'sender_number' =>  $message->sender_number,
+                       'purpose_of_contact' =>  'Question',
+                       'message' => $message->message,
+                   ]);
+
+                   Mail::to($adminUser->email)->send(new ContactUsMessage($data));
                }
 
            } else if ($data['purposeOfContact'] === 1){
