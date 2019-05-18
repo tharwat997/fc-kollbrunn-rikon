@@ -83,7 +83,7 @@
                             </select>
                         </b-form-group>
 
-                        <b-form-group v-if="form.purposeOfContact === 2"
+                        <b-form-group v-if="form.purposeOfContact === 3"
                                 id="input-selectTeam-group"
                                 label="Select team"
                                 label-for="input-selectTeam"
@@ -93,7 +93,7 @@
                             </select>
                         </b-form-group>
 
-                        <b-form-group  v-if="form.purposeOfContact === 3"
+                        <b-form-group  v-if="form.purposeOfContact === 4"
                                        id="input-joinEventName-group"
                                        label="Event name"
                                        label-for="input-joinEventName"
@@ -103,7 +103,7 @@
                             </select>
                         </b-form-group>
 
-                        <b-form-group  v-if="form.purposeOfContact === 3"
+                        <b-form-group  v-if="form.purposeOfContact === 4"
                                 id="input-joinEvent-group"
                                 label="Art der Teilnahme"
                                 label-for="input-joinEvent"
