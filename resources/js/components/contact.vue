@@ -85,7 +85,7 @@
 
                         <b-form-group v-if="form.purposeOfContact === 3"
                                 id="input-selectTeam-group"
-                                label="Select team"
+                                label="Wähle Team aus"
                                 label-for="input-selectTeam"
                         >
                             <select name="selectTeam" v-model="form.teamSelected" class="form-control" id="input-selectTeam">
@@ -95,7 +95,7 @@
 
                         <b-form-group  v-if="form.purposeOfContact === 4"
                                        id="input-joinEventName-group"
-                                       label="Event name"
+                                       label="Wähle Veranstalltung"
                                        label-for="input-joinEventName"
                         >
                             <select name="joinEvent" v-model="form.eventSelected" class="form-control" id="input-joinEventName">
