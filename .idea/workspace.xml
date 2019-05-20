@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="14f08b3d-5735-4e7d-b4ac-4d4113d5cfa0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-    </list>
+    <list default="true" id="14f08b3d-5735-4e7d-b4ac-4d4113d5cfa0" name="Default Changelist" comment="" />
     <manually-removed-from-ignored>
       <directory path="public/storage/" />
       <directory path="storage/app/public/" />
@@ -34,11 +31,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/contact.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1785">
-              <caret line="105" column="72" selection-start-line="105" selection-start-column="72" selection-end-line="105" selection-end-column="72" />
+            <state relative-caret-position="274">
+              <caret line="90" column="31" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="57" column="35" selection-start-line="57" selection-end-line="58" />
             </state>
           </provider>
         </entry>
@@ -46,7 +52,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
+            <state relative-caret-position="1411">
               <caret line="94" column="49" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="49" />
               <folding>
                 <element signature="e#7#389#0#PHP" expanded="true" />
@@ -139,7 +145,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/database/migrations/2019_04_26_184121_create_messages_table.php" />
         <option value="$PROJECT_DIR$/app/Message.php" />
         <option value="$PROJECT_DIR$/resources/views/contact_us.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/messages/message_detail_view.blade.php" />
@@ -190,6 +195,7 @@
         <option value="$PROJECT_DIR$/resources/js/components/ticker.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/contact.vue" />
+        <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
       </list>
     </option>
   </component>
@@ -306,6 +312,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -394,7 +401,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -490,6 +496,7 @@
       <workItem from="1557679884568" duration="7437000" />
       <workItem from="1557695948052" duration="731000" />
       <workItem from="1558151407986" duration="3765000" />
+      <workItem from="1558274405438" duration="100000" />
     </task>
     <task id="LOCAL-00001" summary="deployment file">
       <created>1557309176628</created>
@@ -526,16 +533,24 @@
       <option name="project" value="LOCAL" />
       <updated>1558204799530</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="forgot password removed">
+      <created>1558274471125</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1558274471125</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="560667000" />
+    <option name="totallyTimeSpent" value="560767000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34795764" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.35325265" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -592,16 +607,10 @@
     <MESSAGE value="git ignore now working" />
     <MESSAGE value="translation" />
     <MESSAGE value="contact form dropdown fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="contact form dropdown fix" />
+    <MESSAGE value="forgot password removed" />
+    <option name="LAST_COMMIT_MESSAGE" value="forgot password removed" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -925,9 +934,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/contact.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="90" column="31" selection-start-line="90" selection-start-column="31" selection-end-line="90" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
+        <state relative-caret-position="1411">
           <caret line="94" column="49" selection-start-line="94" selection-start-column="32" selection-end-line="94" selection-end-column="49" />
           <folding>
             <element signature="e#7#389#0#PHP" expanded="true" />
@@ -936,10 +952,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/contact.vue">
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="105" column="72" selection-start-line="105" selection-start-column="72" selection-end-line="105" selection-end-column="72" />
+        <state relative-caret-position="280">
+          <caret line="57" column="35" selection-start-line="57" selection-end-line="58" />
         </state>
       </provider>
     </entry>
