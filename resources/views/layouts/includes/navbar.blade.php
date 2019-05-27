@@ -62,7 +62,7 @@
                     <b-nav-item  href="{{route('live_ticker')}}" class="{{Request::is('live_ticker') ? 'active-link' : ''}}">Live Ticker</b-nav-item>
                     <b-nav-item  href="{{route('agenda')}}" class="{{Request::is('agenda') ? 'active-link' : ''}}">Agenda</b-nav-item>
                     <b-nav-item  href="{{route('news')}}" class="{{Request::is('news') ? 'active-link' : ''}}">News</b-nav-item>
-                    <b-nav-item  href="{{route('events')}}" class="{{Request::is('events') ? 'active-link' : ''}}">Veranstalltungen</b-nav-item>
+                    <b-nav-item  href="{{route('events')}}" class="{{Request::is('events') ? 'active-link' : ''}}">Veranstaltungen</b-nav-item>
 
                     <b-nav-item-dropdown text="Tabelle" left>
                         <div id="teamDropdownFirst" class="pr-4 pl-4" style="border-right: 1px solid lightgray">

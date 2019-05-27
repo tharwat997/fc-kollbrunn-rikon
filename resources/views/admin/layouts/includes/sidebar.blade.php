@@ -172,10 +172,6 @@
                             <i class="material-icons">control_camera</i>
                             Manage users
                         </a>
-                        <a class="dropdown-item {{request()->is('user/manage') ? 'active' : ''}}" href="{{route('user_manage')}}">
-                            <i class="material-icons">control_camera</i>
-                            Profile
-                        </a>
                     </div>
                 </li>
             @endif
