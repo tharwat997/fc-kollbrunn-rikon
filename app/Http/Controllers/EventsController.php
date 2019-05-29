@@ -73,20 +73,17 @@ class EventsController extends Controller
     }
 
     public function eventsManage(){
-        $eventsNumber = Event::all()->count();
-        $events = [];
+        $events = Event::all();
+        $newEvents = [];
 
-        for ($x = 0; $x <= $eventsNumber; $x++) {
-            $event = Event::find($x);
-            if ($event != null){
-                $eventImage = $event->getMedia('eventsImages');
-                $event->image = $eventImage;
-                $event->creator_id = User::find($event->creator_id)->name;
-                array_push($events, $event);
-            }
+        foreach($events as $event){
+            $eventImage = $event->getMedia('eventsImages');
+            $event->image = $eventImage;
+            $event->creator_id = User::find($event->creator_id)->name;
+            array_push($newEvents, $event);
         }
 
-        return view('admin.events.manage_events' , compact('events'));
+        return view('admin.events.manage_events' , ['events' => $newEvents]);
     }
 
     public function update(Request $request){
