@@ -103,6 +103,7 @@ class LiveTickerController extends Controller
                     'teamB_name' => $request->awayTeam,
                     'teamB_score' => $request->awayTeamScore,
                     'start_date_time' => $request->startDateTime,
+                    'completed' => 0,
                     'reporter_id' => $request->reportId
                 ]
             ]);
@@ -118,6 +119,7 @@ class LiveTickerController extends Controller
                     'teamB_name' => $request->awayTeam,
                     'teamB_score' => $request->awayTeamScore,
                     'start_date_time' => $request->startDateTime,
+                    'completed' => 0,
                     'reporter_id' => Auth::user()->id,
                 ]
             ]);

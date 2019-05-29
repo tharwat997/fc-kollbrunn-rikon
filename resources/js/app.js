@@ -15,6 +15,10 @@ Vue.use(BootstrapVue);
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+// Vue agenda language
+
+require('@fullcalendar/core/locales/de');
+
 //Vue carousel
 import VueCarousel from 'vue-carousel';
 Vue.use(VueCarousel);

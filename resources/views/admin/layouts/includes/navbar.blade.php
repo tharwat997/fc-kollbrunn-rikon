@@ -11,13 +11,8 @@
                     <span class="d-none d-md-inline-block">{{Auth::user()->name}}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-small">
-                    <form action="{{url('/logout')}}" method="post">
-                        @csrf
-                        <div class="d-flex align-items-center mr-3 ml-3">
-                            <i class="material-icons text-danger">&#xE879;</i>
-                            <button class="dropdown-item text-danger ml-0" type="submit">Logout</button>
-                        </div>
-                    </form>
+                    <a class="dropdown-item text-danger" href="{{url('/logout')}}">
+                        <i class="material-icons text-danger">&#xE879;</i> Logout </a>
                 </div>
             </li>
         </ul>

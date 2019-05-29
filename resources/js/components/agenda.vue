@@ -43,6 +43,7 @@
                 calendarView:'dayGridMonth',
                 calendarPlugins: [ timeGridPlugin, dayGridPlugin ],
                 timeZone: 'Europe/Zurich',
+                locale: 'de',
                 unFormattedEvents:[],
                 events:[
 

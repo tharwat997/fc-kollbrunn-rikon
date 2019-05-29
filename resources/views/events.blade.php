@@ -12,8 +12,7 @@
             <div class="row">
                 <b-card>
                     <div class="card-title">
-                        <h1>Events</h1>
-                        <h5>Some text here</h5>
+                        <h1>Veranstaltungen</h1>
                     </div>
                         <div class="row">
                             @foreach($events as $event)
