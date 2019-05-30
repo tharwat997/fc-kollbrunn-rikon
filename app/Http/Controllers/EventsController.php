@@ -22,7 +22,7 @@ class EventsController extends Controller
             array_push($newEvents, $event);
         }
 
-        return view('admin.events.manage_events' , ['events' => $newEvents]);
+        return view('events' , ['events' => $newEvents]);
     }
 
     public function eventsCreate(){

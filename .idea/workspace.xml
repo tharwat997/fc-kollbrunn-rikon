@@ -4,8 +4,6 @@
     <list default="true" id="14f08b3d-5735-4e7d-b4ac-4d4113d5cfa0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EventsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EventsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
     </list>
     <manually-removed-from-ignored>
       <directory path="public/storage/" />
@@ -84,8 +82,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EventsController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="86" column="5" lean-forward="true" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
+            <state relative-caret-position="323">
+              <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -139,7 +137,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>count</find>
       <find>messages</find>
       <find>messageUpdateAssignedUser</find>
       <find>eventsOptions</find>
@@ -169,6 +166,7 @@
       <find>events-ajax</find>
       <find>eventsAjax</find>
       <find>eventsManage</find>
+      <find>eventsMana</find>
     </findStrings>
     <replaceStrings>
       <replace>000136</replace>
@@ -461,19 +459,19 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2018.3.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public\storage" />
+      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public\images" />
+      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public\summernote" />
+      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public\css" />
+      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public\js" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public\storage\1" />
       <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\resources\js\components" />
       <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\resources\js\components\agenda" />
       <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public" />
       <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\resources\views" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public\images" />
-      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public\summernote" />
-      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public\css" />
-      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public\js" />
-      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\resources\views\admin\news" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -567,7 +565,7 @@
       <workItem from="1559004063077" duration="614000" />
       <workItem from="1559052119917" duration="3054000" />
       <workItem from="1559079595341" duration="547000" />
-      <workItem from="1559100068988" duration="2768000" />
+      <workItem from="1559100068988" duration="3850000" />
     </task>
     <task id="LOCAL-00001" summary="deployment file">
       <created>1557309176628</created>
@@ -646,14 +644,29 @@
       <option name="project" value="LOCAL" />
       <updated>1559106432037</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="events fix">
+      <created>1559174202807</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1559174202807</updated>
+    </task>
+    <task id="LOCAL-00013" summary="events page fix">
+      <created>1559177413556</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1559177413556</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="573436000" />
+    <option name="totallyTimeSpent" value="574518000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49756098" visible="true" weight="0.31694403" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -695,7 +708,9 @@
     <MESSAGE value="logout adjusted" />
     <MESSAGE value="logout 2" />
     <MESSAGE value="match controller match create fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="match controller match create fix" />
+    <MESSAGE value="events fix" />
+    <MESSAGE value="events page fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="events page fix" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/resources/views/admin/agenda/create_agenda.blade.php">
@@ -1048,8 +1063,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/EventsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="86" column="5" lean-forward="true" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
+        <state relative-caret-position="323">
+          <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
         </state>
       </provider>
     </entry>
