@@ -49,6 +49,9 @@
         #newsSectionOne > div > div.VueCarousel-wrapper > div > div.VueCarousel-slide > div > a:hover{
             color:lightgray;
         }
+        #newsTickerContainer > div > div.VueCarousel-wrapper > div > div.VueCarousel-slide.VueCarousel-slide-center > div > div > h2{
+            font-size: 5em !important;
+        }
     </style>
 @endsection
 @section('content')
