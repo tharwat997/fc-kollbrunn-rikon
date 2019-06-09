@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>
-            Minute of match: {{time}}
+            {{time}}
         </h2>
     </div>
 </template>

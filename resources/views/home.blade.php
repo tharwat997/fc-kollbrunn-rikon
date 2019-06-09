@@ -74,42 +74,45 @@
                     <carousel :autoplay="true" pagination-active-color="#FFD950" :per-page="1">
                         @foreach($matches as $match)
                         <slide>
-                            <div class="tickerMatch d-flex p-4 flex-column">
-                                <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <div>{{$match['match_type']}}</div>
-                                    <div>{{$match['start_date_time']}}</div>
-                                </div>
-                                <div>
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <h3>{{$match['teamA_name']}}</h3>
+                            <a href="{{route('live_ticker_details', ['id' => $match['id']])}}">
+                                <div class="tickerMatch d-flex p-4 flex-column">
+                                    <div class="d-flex align-items-center justify-content-between mb-2">
+                                        <div>{{$match['match_type']}}</div>
+                                        <div>{{$match['start_date_time']}}</div>
+                                    </div>
+                                    <div>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <h3>{{$match['teamA_name']}}</h3>
+                                            </div>
+                                            <div>
+                                                <h3>{{$match['teamA_score']}}</h3>
+                                            </div>
                                         </div>
-                                        <div>
-                                            <h3>{{$match['teamA_score']}}</h3>
+                                        <hr>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <h3>{{$match['teamB_name']}}</h3>
+                                            </div>
+                                            <div>
+                                                <h3>{{$match['teamB_score']}}</h3>
+                                            </div>
                                         </div>
                                     </div>
-                                    <hr>
-                                    <div class="d-flex align-items-center justify-content-between">
-                                        <div>
-                                            <h3>{{$match['teamB_name']}}</h3>
-                                        </div>
-                                        <div>
-                                            <h3>{{$match['teamB_score']}}</h3>
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
-                            <div class="h-100 d-flex align-items-center justify-content-center">
+                            </a>
+                                <div class="h-100 d-flex align-items-center justify-content-center">
 
-                                @if($match['start_date_time2'] <= \Illuminate\Support\Carbon::now()->setTimezone('Europe/Zurich')
-                                && $match['start_date_time3'] <= 150)
-                                    <count :matches="{{json_encode($matches2)}}" :match="{{json_encode($match['id'])}}"></count>
-                                @elseif (\Illuminate\Support\Carbon::parse($match['start_date_time']) > \Carbon\Carbon::today())
-                                    <Countdown end="{{$match['start_date_time']}}"></Countdown>
-                                @else
-                                    <h2>Match has ended</h2>
-                                @endif
-                            </div>
+                                    @if($match['start_date_time2'] <= \Illuminate\Support\Carbon::now()->setTimezone('Europe/Zurich')
+                                    && $match['start_date_time3'] <= 150)
+                                        <count :matches="{{json_encode($matches2)}}" :match="{{json_encode($match['id'])}}"></count>
+                                    @elseif (\Illuminate\Support\Carbon::parse($match['start_date_time']) > \Carbon\Carbon::today())
+                                        <Countdown end="{{$match['start_date_time']}}"></Countdown>
+                                    @else
+                                        <h2>Match has ended</h2>
+                                    @endif
+                                </div>
+
                         </slide>
                         @endforeach
                     </carousel>

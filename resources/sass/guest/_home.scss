@@ -28,7 +28,13 @@
       }
     }
     #newsTickerContainer{
+      a{
+        text-decoration: none !important;
+      }
       padding:0;
+      .tickerMatch{
+        color:#212529;
+      }
       #tickerSection{
         width: 100%;
         display: flex;
@@ -58,7 +64,7 @@
     margin: 3em 0;
     .timeline-section-header {
       text-align: center;
-      font-size: 3.3rem;
+      font-size: 3rem;
       color: $dark-shades;
       font-weight: 400;
     }

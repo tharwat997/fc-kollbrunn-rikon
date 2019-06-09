@@ -32,7 +32,7 @@ Vue.component('v-icon', Icon);
 import * as VueGoogleMaps from 'vue2-google-maps'
 Vue.use(VueGoogleMaps, {
     load: {
-        key: ''
+        key: 'AIzaSyAvHc6H9PFceItMpBay5Njk4Fmt6Y7A-ys'
     }
 });
 
