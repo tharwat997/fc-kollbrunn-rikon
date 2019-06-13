@@ -9,19 +9,22 @@ use Illuminate\Support\Facades\Validator;
 
 class BoardMemberController extends Controller
 {
-    public function boardCreate(){
+    public function boardCreate()
+    {
         return view('admin.board.create_board_member', compact('boardMembers'));
     }
-    public function store(Request $request){
 
-        $validator = Validator::make($request->all(),[
+    public function store(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
             "image" => "required|image|mimes:jpeg,png,jpg,webp|dimensions:ratio=1/1,min_width=320,min_height=320|max:300000",
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return redirect()->back()->with('message', 'Image must be .jpeg, .png, .jpg type, under 30MB, minimum width and height 320, aspect ratio 1:1')->withInput();
         } else {
-            if ($request->image === null){
+            if ($request->image === null) {
                 $boardMember = new BoardMember([
                     'name' => $request->name,
                     'title' => $request->title,
@@ -49,32 +52,33 @@ class BoardMemberController extends Controller
         }
 
     }
-    public function boardManage(){
-        $boardMembersNumber = BoardMember::all()->count();
-        $members = [];
 
-        for ($x = 0; $x <= $boardMembersNumber; $x++) {
-            $member = BoardMember::find($x);
-            if ($member != null){
-                $memberImage = $member->getMedia('boardMembersImages');
-                $member->image = $memberImage;
-                array_push($members, $member);
-            }
+    public function boardManage()
+    {
+        $boardMembers = BoardMember::all();
+        $newMembers = [];
+
+        foreach ($boardMembers as $boardMember) {
+            $memberImage = $boardMember->getMedia('boardMembersImages');
+            $boardMember->image = $memberImage;
+            array_push($newMembers, $boardMember);
         }
 
-        return view('admin.board.manage_board_members', compact('members'));
+        return view('admin.board.manage_board_members', ['members' => $newMembers]);
     }
-    public function update(Request $request){
 
-        if ($request->updateBtn != null){
+    public function update(Request $request)
+    {
 
-            if ($request->image != null){
+        if ($request->updateBtn != null) {
 
-                $validator = Validator::make($request->all(),[
+            if ($request->image != null) {
+
+                $validator = Validator::make($request->all(), [
                     "image" => "required|image|mimes:jpeg,png,jpg,webp|dimensions:ratio=1/1,min_width=320,min_height=320|max:300000",
                 ]);
 
-                if($validator->fails()){
+                if ($validator->fails()) {
                     return redirect()->back()->with('message', 'Image must be .jpeg, .png, .jpg type, under 30MB, minimum width and height 320, aspect ratio 1:1');
                 } else {
 

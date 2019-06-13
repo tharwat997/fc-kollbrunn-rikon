@@ -65,20 +65,17 @@ class PlayerController extends Controller
 
     public function playersManage(){
         $teams = Team::all();
-        $playersNumber = Player::all()->count();
-        $players = [];
+        $players = Player::all();
+        $newPlayers = [];
 
-        for ($x = 0; $x <= $playersNumber; $x++) {
-            $player = Player::find($x);
-            if ($player != null){
-                $playerImage = $player->getMedia('playersImages');
-                $player->image = $playerImage;
-                $player->team_id = Team::find($player->team_id)->name;
-                array_push($players, $player);
-            }
+        foreach ($players as $player) {
+            $playerImage = $player->getMedia('playersImages');
+            $player->image = $playerImage;
+            $player->team_id = Team::find($player->team_id)->name;
+            array_push($newPlayers, $player);
         }
 
-        return view('admin.players.manage_players', compact('players', 'teams'));
+        return view('admin.players.manage_players', ['players' => $newPlayers, 'teams' => $teams] );
     }
 
     public function update(Request $request){
