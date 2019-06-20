@@ -190,8 +190,7 @@
                 evt.preventDefault();
                 let data = JSON.stringify(this.form);
                 axios.post('./message/submit', this.form).then(
-                    this.success = true)
-                location.reload();
+                    this.success = true);
             },
             getEvents(){
                 axios.get('contact-us/events').then( (response) => {
