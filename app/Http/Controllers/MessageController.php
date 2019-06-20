@@ -189,12 +189,17 @@ class MessageController extends Controller
 
             if ($message->purpose_of_contact === "2"){
 
-                $message->purpose_of_contact = "Join Team";
-                $team = Team::find($message->join_team);
-                $message->join_team = $team['name'];
+                $message->purpose_of_contact = "Question";
             }
 
             if ($message->purpose_of_contact === "3"){
+
+                $message->purpose_of_contact = "Join Team";
+                $team = Team::find($message->join_team);
+                $message->join_team = $team->name;
+            }
+
+            if ($message->purpose_of_contact === "4"){
 
                 $message->purpose_of_contact = "Join Event";
                 $eventId = (int) $message->join_event;
