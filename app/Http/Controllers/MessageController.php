@@ -210,7 +210,8 @@ class MessageController extends Controller
             }
 
             $assignedTo = User::find($message->assigned_id);
-            $message->assigned_id = $assignedTo->name;
+
+            $message->assigned_id = $assignedTo['name'];
             array_push($messages, $message);
         }
 
