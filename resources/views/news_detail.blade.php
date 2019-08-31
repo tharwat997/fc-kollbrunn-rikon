@@ -54,8 +54,8 @@
                                 <h3>Information</h3>
                             </div>
                             <div>
-                                <div class="mb-4"><h5>Created: {{$post->created_at}}</h5></div>
-                                <div class="mb-4"><h5>Last updated: {{$post->updated_at}}</h5></div>
+                                <div class="mb-4"><h5>Erstellt: {{$post->created_at}}</h5></div>
+                                <div class="mb-4"><h5>Letzte Änderung: {{$post->updated_at}}</h5></div>
                             </div>
 
                         </div>
@@ -64,7 +64,7 @@
                     <div class="row pl-5 pr-5 pt-4 pb-4" id="matchReporterInformation">
                         <div class="col-sm-12">
                             <div class="mb-4">
-                                <h3>Author</h3>
+                                <h3>Autor</h3>
                             </div>
                             <div>
                                 <div class="mb-4"><h5>Name: {{$post->author_id}}</h5></div>

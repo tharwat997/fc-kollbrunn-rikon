@@ -25,9 +25,9 @@
                                 <span class="input-group-text">Match type</span>
                             </div>
                             <select name="matchType" class="form-control" required id="">
-                                <option value="league">League</option>
-                                <option value="cup">Cup</option>
-                                <option value="friendly">Friendly</option>
+                                <option value="Liga">Liga</option>
+                                <option value="Cup">Cup</option>
+                                <option value="Freundschaftsspiel">Freundschaftsspiel</option>
                             </select>
                         </div>
                         <div class="input-group mb-3">

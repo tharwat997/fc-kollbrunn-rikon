@@ -34,8 +34,8 @@
                                             </div>
                                         </div>
                                         <div class="eventCardBottom">
-                                            <a href="{{route('contact_us')}}" class="btn btn-primary">Volunteer</a>
-                                            <a href="{{route('contact_us')}}" class="btn btn-primary">Participate</a>
+                                            <a href="{{route('contact_us')}}" class="btn btn-primary">Freiwillige</a>
+                                            <a href="{{route('contact_us')}}" class="btn btn-primary">Teilnehmen</a>
                                         </div>
                                     </b-card>
                                 </div>

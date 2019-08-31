@@ -120,7 +120,7 @@
                         <div class="col-sm-12">
                             <a href="#" onclick="event.preventDefault()" v-b-toggle.accordion-1 class="d-flex align-items-center justify-content-center">
                                 <h4 class="numberOfComments">{{count($comments)}}</h4>
-                                <h3>Comments</h3>
+                                <h3>Kommentare</h3>
                             </a>
                         </div>
                         <div class="col-sm-12">
@@ -128,7 +128,7 @@
                                 <b-card-body>
                                     <div id="commentSectionForm">
                                        <div>
-                                           <h4 class="mb-3">Add your comment below</h4>
+                                           <h4 class="mb-3">Kommentiere hier</h4>
                                        </div>
                                         <div>
                                             <form action="{{route('comments_store')}}" method="post">
@@ -136,13 +136,13 @@
                                                 @honeypot
                                                 <div>
                                                     <div class="mb-1">
-                                                        <input type="text" autocomplete="off" required name="commentName" class="form-control" placeholder="Enter your name">
+                                                        <input type="text" autocomplete="off" required name="commentName" class="form-control" placeholder="Name">
                                                         <input type="hidden"  name="matchId" value="{{$match['id']}}">
                                                     </div>
 
                                                     <b-form-textarea
                                                             id="textarea-no-resize"
-                                                            placeholder="Enter your comment here"
+                                                            placeholder="Kommentiere hier"
                                                             rows="3"
                                                             no-resize
                                                             class="status-box"
@@ -183,9 +183,9 @@
                                <h3>Information</h3>
                            </div>
                            <div>
-                               <div class="mb-4"><h5>Starts: {{$match['start_date_time']}}</h5></div>
-                               <div class="mb-4"><h5>Match type: {{$match['match_type']}}</h5></div>
-                               <div class="mb-4"><h5>Last updated: {{$match['updated_at']}}</h5></div>
+                               <div class="mb-4"><h5>Start: {{$match['start_date_time']}}</h5></div>
+                               <div class="mb-4"><h5>Typ: {{$match['match_type']}}</h5></div>
+                               <div class="mb-4"><h5>Letzte Aktuallisierung: {{$match['updated_at']}}</h5></div>
                            </div>
 
                         </div>

@@ -18,7 +18,7 @@
                     @if(Session::has('message'))
                         <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
                     @endif
-                    <form  action="{{route('teams_store')}}" method="POST">
+                    <form  action="{{route('teams_store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="input-group mb-3">
                             <div class="input-group-append">
@@ -49,6 +49,12 @@
                                 <span class="input-group-text">Total loses</span>
                             </div>
                             <input type="number" name="totalLosses" class="form-control" required aria-label="" aria-describedby="basic-addon2" value="0">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span class="input-group-text">Image</span>
+                            </div>
+                            <input type="file" class="form-control" name="image">
                         </div>
                         <div class="input-group d-flex align-items-center justify-content-end">
                             <button type="submit" class="btn btn-primary">Submit</button>

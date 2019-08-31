@@ -59,20 +59,20 @@
                                 <span class="input-group-text">Recursive day</span>
                             </div>
                             <select name="dayOfWeek" id="dayOfWeek" class="form-control">
-                                <option value="0">Monday</option>
-                                <option value="1">Tuesday</option>
-                                <option value="2">Wednesday</option>
-                                <option value="3">Thursday</option>
-                                <option value="4">Friday</option>
-                                <option value="5">Saturday</option>
-                                <option value="6">Sunday</option>
+                                <option value="1">Monday</option>
+                                <option value="2">Tuesday</option>
+                                <option value="3">Wednesday</option>
+                                <option value="4">Thursday</option>
+                                <option value="5">Friday</option>
+                                <option value="6">Saturday</option>
+                                <option value="0">Sunday</option>
                             </select>
                         </div>
                         <div class="input-group mb-3" style="display: none">
                             <div class="input-group-append">
                                 <span class="input-group-text">Duration of event</span>
                             </div>
-                            <input type="number" class="form-control" id="durationOfEvent" name="durationOfEvent">
+                            <input type="number" class="form-control" id="durationOfEvent" placeholder="Duration in hours" name="durationOfEvent">
                         </div>
                         <div class="input-group d-flex align-items-center justify-content-end">
                             <button type="submit" class="btn btn-primary">Submit</button>

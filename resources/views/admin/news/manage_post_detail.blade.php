@@ -139,6 +139,7 @@
 @endsection
 @section('js')
     <script src="{{asset('summernote/summernote-bs4.min.js')}}"></script>
+    <script src="{{asset('summernote/summernote-de-DE.min.js')}}"></script>
     <script>
         $(document).ready(function() {
             $('#summernote').summernote({
@@ -146,6 +147,7 @@
                 maxHeight: 2000,             // set maximum height of editor
                 focus: true,
                 tabsize: 2,
+                lang: 'de-DE'
             });
 
             $('.summernote').summernote('code', {!! json_encode($post->body) !!});

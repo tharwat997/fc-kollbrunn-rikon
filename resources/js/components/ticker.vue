@@ -8,10 +8,10 @@
                     </div>
                     <div id="matchesFilterContainer">
                         <div class="mb-2">
-                            <a href="#" class="btn btn-primary btn-block" @click="filterMatches('all')"> Alle</a>
+                            <a href="#" class="btn btn-primary btn-block" @click="filterMatches('all')">Alle</a>
                         </div>
                         <div class="mb-2">
-                            <a  href="#" class="btn btn-primary btn-block" @click="filterMatches('upcoming')"> Bevorstehende</a>
+                            <a  href="#" class="btn btn-primary btn-block" @click="filterMatches('upcoming')">Bevorstehende</a>
                         </div>
                         <div class="mb-2">
                             <a href="#" class="btn btn-primary btn-block" @click="filterMatches('current')">Laufende</a>

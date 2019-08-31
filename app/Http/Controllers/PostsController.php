@@ -54,7 +54,7 @@ class PostsController extends Controller
                 $detail = $request->description;
 
                 $dom = new \domdocument();
-                $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+                $dom->loadHtml('<?xml encoding="utf-8" ?>'. $detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
                 $detail = $dom->savehtml();
 
                 $summernote = new Post();
@@ -68,7 +68,7 @@ class PostsController extends Controller
                 $detail = $request->description;
 
                 $dom = new \domdocument();
-                $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+                $dom->loadHtml('<?xml encoding="utf-8" ?>'. $detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
                 $detail = $dom->savehtml();
 
                 $summernote = new Post();
@@ -123,7 +123,7 @@ class PostsController extends Controller
 
                     $dom = new \domdocument();
                     libxml_use_internal_errors(true);
-                    $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+                    $dom->loadHtml('<?xml encoding="utf-8" ?>'. $detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
                     $detail = $dom->savehtml();
 
                     $post = Post::find($request->postId);
@@ -144,7 +144,7 @@ class PostsController extends Controller
                 $detail = $request->description;
                 libxml_use_internal_errors(true);
                 $dom = new \domdocument();
-                $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+                $dom->loadHtml('<?xml encoding="utf-8" ?>'. $detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
                 $detail = $dom->savehtml();
 
                 $post = Post::find($request->postId);

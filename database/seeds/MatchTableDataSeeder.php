@@ -16,7 +16,7 @@ class MatchTableDataSeeder extends Seeder
         $dateNow = $dt->toDateTimeString();
 
         $sampleMatch = \App\Match::create([
-            'match_type' => 'League',
+            'match_type' => 'Freundschaftsspiel',
             'type_name' => 'Testing League',
             'teamA_name' => 'FC-Kollbrunn-Rikon',
             'teamA_score' => 0,
@@ -28,7 +28,7 @@ class MatchTableDataSeeder extends Seeder
         ]);
 
         $sampleMatch = \App\Match::create([
-            'match_type' => 'League',
+            'match_type' => 'Cup',
             'type_name' => 'Testing League',
             'teamA_name' => 'FC-Kollbrunn-Rikon',
             'teamA_score' => 0,
@@ -39,7 +39,7 @@ class MatchTableDataSeeder extends Seeder
             'completed' => 0,
         ]);
         $sampleMatch = \App\Match::create([
-            'match_type' => 'League',
+            'match_type' => 'Liga',
             'type_name' => 'Testing League',
             'teamA_name' => 'FC-Kollbrunn-Rikon',
             'teamA_score' => 0,

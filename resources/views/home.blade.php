@@ -1,55 +1,67 @@
 @extends('layouts.app')
 @section('css')
     <style type="text/css">
-        #newsSectionOne img{
+        #newsSectionOne img {
             object-fit: cover;
             height: auto !important;
             vertical-align: top;
         }
-        .VueCarousel-pagination{
+
+        .VueCarousel-pagination {
             background: #000136;
         }
-        .vuejs-countdown{
+
+        .vuejs-countdown {
             text-align: center;
         }
-        .vuejs-countdown .text{
+
+        .vuejs-countdown .text {
             font-size: 2em !important;
         }
-        .vuejs-countdown .digit{
+
+        .vuejs-countdown .digit {
             font-size: 5em !important;
         }
-        .vuejs-countdown li:after{
+
+        .vuejs-countdown li:after {
             font-size: 4em !important;
         }
-        #newsTickerContainer > div{
+
+        #newsTickerContainer > div {
             height: 100%;
         }
-        #newsTickerContainer > div > div.VueCarousel-wrapper > div{
+
+        #newsTickerContainer > div > div.VueCarousel-wrapper > div {
             height: 100% !important;
         }
-        #newsTickerContainer > div > div.VueCarousel-wrapper{
+
+        #newsTickerContainer > div > div.VueCarousel-wrapper {
             height: 100% !important;
         }
-        #newsTickerContainer .VueCarousel-slide{
+
+        #newsTickerContainer .VueCarousel-slide {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
-        #newsSectionOne > div > div.VueCarousel-wrapper > div > div.VueCarousel-slide > div > a{
+
+        #newsSectionOne > div > div.VueCarousel-wrapper > div > div.VueCarousel-slide > div > a {
             width: 100%;
             position: absolute;
             font-size: 3em;
             bottom: 20%;
             text-align: center;
             height: unset;
-            color:white;
+            color: white;
             text-decoration: none;
             z-index: 999999;
         }
-        #newsSectionOne > div > div.VueCarousel-wrapper > div > div.VueCarousel-slide > div > a:hover{
-            color:lightgray;
+
+        #newsSectionOne > div > div.VueCarousel-wrapper > div > div.VueCarousel-slide > div > a:hover {
+            color: lightgray;
         }
-        #newsTickerContainer > div > div.VueCarousel-wrapper > div > div.VueCarousel-slide.VueCarousel-slide-center > div > div > h2{
+
+        #newsTickerContainer > div > div.VueCarousel-wrapper > div > div.VueCarousel-slide.VueCarousel-slide-center > div > div > h2 {
             font-size: 5em !important;
         }
     </style>
@@ -64,7 +76,7 @@
                             @foreach($post->getMedia('postsImages') as $image)
                                 <slide>
                                     <div class="d-flex newsImageContainer">
-                                        <img alt="ca" class="img-fluid" srcset="{{$image->getUrl('newsHome')}}" />
+                                        <img alt="ca" class="img-fluid" srcset="{{$image->getUrl('newsHome')}}"/>
                                         <a href="{{route('news_show', ['id' => $post->id])}}">{{$post->title}}</a>
                                     </div>
 
@@ -76,47 +88,47 @@
                 <div class="col-sm-6" id="newsTickerContainer">
                     <carousel :autoplay="true" pagination-active-color="#FFD950" :per-page="1">
                         @foreach($matches as $match)
-                        <slide>
-                            <a href="{{route('live_ticker_details', ['id' => $match['id']])}}">
-                                <div class="tickerMatch d-flex p-4 flex-column">
-                                    <div class="d-flex align-items-center justify-content-between mb-2">
-                                        <div>{{$match['match_type']}}</div>
-                                        <div>{{$match['start_date_time']}}</div>
-                                    </div>
-                                    <div>
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <div>
-                                                <h3>{{$match['teamA_name']}}</h3>
+                            <slide>
+                                <a href="{{route('live_ticker_details', ['id' => $match['id']])}}">
+                                    <div class="tickerMatch d-flex p-4 flex-column">
+                                        <div class="d-flex align-items-center justify-content-between mb-2">
+                                            <div>{{$match['match_type']}}</div>
+                                            <div>{{$match['start_date_time']}}</div>
+                                        </div>
+                                        <div>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div>
+                                                    <h3>{{$match['teamA_name']}}</h3>
+                                                </div>
+                                                <div>
+                                                    <h3>{{$match['teamA_score']}}</h3>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <h3>{{$match['teamA_score']}}</h3>
+                                            <hr>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <div>
+                                                    <h3>{{$match['teamB_name']}}</h3>
+                                                </div>
+                                                <div>
+                                                    <h3>{{$match['teamB_score']}}</h3>
+                                                </div>
                                             </div>
                                         </div>
-                                        <hr>
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <div>
-                                                <h3>{{$match['teamB_name']}}</h3>
-                                            </div>
-                                            <div>
-                                                <h3>{{$match['teamB_score']}}</h3>
-                                            </div>
-                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                                <div class="h-100 d-flex align-items-center justify-content-center">
+                                </a>
+                                {{--                                <div class="h-100 d-flex align-items-center justify-content-center">--}}
 
-                                    @if($match['start_date_time2'] <= \Illuminate\Support\Carbon::now()->setTimezone('Europe/Zurich')
-                                    && $match['start_date_time3'] <= 150)
-                                        <count :matches="{{json_encode($matches2)}}" :match="{{json_encode($match['id'])}}"></count>
-                                    @elseif (\Illuminate\Support\Carbon::parse($match['start_date_time']) > \Carbon\Carbon::today())
-                                        <Countdown end="{{$match['start_date_time']}}"></Countdown>
-                                    @else
-                                        <h2>Match has ended</h2>
-                                    @endif
-                                </div>
+                                {{--                                    @if($match['start_date_time2'] <= \Illuminate\Support\Carbon::now()->setTimezone('Europe/Zurich')--}}
+                                {{--                                    && $match['start_date_time3'] <= 150)--}}
+                                {{--                                        <count :matches="{{json_encode($matches2)}}" :match="{{json_encode($match['id'])}}"></count>--}}
+                                {{--                                    @elseif (\Illuminate\Support\Carbon::parse($match['start_date_time']) > \Carbon\Carbon::today())--}}
+                                {{--                                        <Countdown end="{{$match['start_date_time']}}"></Countdown>--}}
+                                {{--                                    @else--}}
+                                {{--                                        <h2>Match has ended</h2>--}}
+                                {{--                                    @endif--}}
+                                {{--                                </div>--}}
 
-                        </slide>
+                            </slide>
                         @endforeach
                     </carousel>
                 </div>

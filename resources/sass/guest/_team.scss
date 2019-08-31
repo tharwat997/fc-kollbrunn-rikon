@@ -1,33 +1,40 @@
-#teamSection{
-  margin-bottom:2em;
-  .playerCard{
-    margin-right: 1em;
-  }
-  .VueCarousel-navigation-button{
-    top: 40%;
-  }
-  #teamImageContainer{
-    img{
-      border-radius: 4px;
-      border: 0.5em solid white;
+#teamSection {
+    margin-bottom: 2em;
+
+    .playerCard {
+        margin-right: 1em;
     }
-  }
-  #teamPlayersContainer{
-    #allPlayers{
-      .playerName,
-      .playerNumber{
-        font-size: 20px;
-        color: #1F1B23;
-      }
-      #goalKeepers,
-      #attackers,
-      #defenders,
-      #midfielders{
-        margin:1em 0;
-        .nav.nav-tabs{
-          margin: 0.5em 0;
+
+    .VueCarousel-navigation-button {
+        top: 40%;
+    }
+
+    #teamImageContainer {
+
+        img {
+            border-radius: 4px;
+            border: 0.5em solid white;
         }
-      }
     }
-  }
+
+    #teamPlayersContainer {
+        #allPlayers {
+            .playerName,
+            .playerNumber {
+                font-size: 20px;
+                color: #1F1B23;
+            }
+
+            #goalKeepers,
+            #attackers,
+            #defenders,
+            #midfielders {
+                margin: 1em 0;
+
+                .nav.nav-tabs {
+                    margin: 0.5em 0;
+                }
+            }
+        }
+    }
 }
