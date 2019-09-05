@@ -83,10 +83,14 @@ class TeamController extends Controller
                 $firstTeamUnformattedCount++;
             }
 
-            $teamIModel = Team::where('name', '=' , 'First Team')->first();
-            $image = $teamIModel->getFirstMediaUrl('teamsImages');
+            $teamIModel = Team::where('name', '=', 'Aktive')->first();
+            $image = null;
+            if ($teamIModel) {
+                $image = $teamIModel->getFirstMediaUrl('teamsImages');
+            }
 
-            return view('team')->with(['firstTeamUnformatted' => $firstTeamUnformatted, 'image', $image]);
+
+            return view('team', compact('firstTeamUnformatted', 'image'));
         } else if ($team === 'junior-c') {
 
             $juniorC = Player::where('team_id', '=', 2)->get();
@@ -100,8 +104,12 @@ class TeamController extends Controller
                 $juniorCCount++;
             }
 
-            $teamIModel = Team::where('name', '=' , 'Junior C')->first();
-            $image = $teamIModel->getFirstMediaUrl('teamsImages');
+            $teamIModel = Team::where('name', '=', 'C Junioren')->first();
+            $image = null;
+            if ($teamIModel) {
+                $image = $teamIModel->getFirstMediaUrl('teamsImages');
+            }
+
 
             return view('team', compact('juniorC', 'image'));
         } else if ($team === 'junior-d') {
@@ -115,8 +123,12 @@ class TeamController extends Controller
                 $juniorDCount++;
             }
 
-            $teamIModel = Team::where('name', '=' , 'Junior D')->first();
-            $image = $teamIModel->getFirstMediaUrl('teamsImages');
+            $teamIModel = Team::where('name', '=', 'D Junioren')->first();
+            $image = null;
+            if ($teamIModel) {
+                $image = $teamIModel->getFirstMediaUrl('teamsImages');
+            }
+
 
             return view('team', compact('juniorD', 'image'));
         } else if ($team === 'junior-e') {
@@ -130,9 +142,13 @@ class TeamController extends Controller
                 $juniorECount++;
             }
 
-            $teamIModel = Team::where('name', '=' , 'Junior E')->first();
+            $teamIModel = Team::where('name', '=', 'E Junioren')->first();
+            $image = null;
+            if ($teamIModel) {
+                $image = $teamIModel->getFirstMediaUrl('teamsImages');
+            }
 
-            $image = $teamIModel->getFirstMediaUrl('teamsImages');
+
             return view('team', compact('juniorE', 'image'));
         } else if ($team === 'junior-f') {
             $juniorF = Player::where('team_id', '=', 5)->get();
@@ -145,8 +161,12 @@ class TeamController extends Controller
                 $juniorFCount++;
             }
 
-            $teamIModel = Team::where('name', '=' , 'Junior F')->first();
-            $image = $teamIModel->getFirstMediaUrl('teamsImages');
+            $teamIModel = Team::where('name', '=', 'F+G Junioren')->first();
+            $image = null;
+            if ($teamIModel) {
+                $image = $teamIModel->getFirstMediaUrl('teamsImages');
+            }
+
 
             return view('team', compact('juniorF', 'image'));
         } else if ($team === 'board-of-directors') {
@@ -168,3 +188,4 @@ class TeamController extends Controller
     }
 
 }
+
