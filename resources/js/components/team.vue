@@ -19,7 +19,7 @@
                                 <div class="mt-4 d-flex flex-wrap align-items-center">
 
                                     <div v-for="(member, index)  in playersArray" :key="index"
-                                         class=" flex-column align-items-center justify-content-center playerCard">
+                                         class="flex-column align-items-center justify-content-center col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                         <div class="mb-2 d-flex justify-content-center">
                                             <img v-for="x in member.image" class="img-fluid w-50 h-50"
                                                  :src="'../storage' + '/' + x.order_column + '/' + x.file_name"/>

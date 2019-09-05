@@ -54,10 +54,6 @@
                 axios.get('agenda-events-ajax').then((response) => {
                     this.unFormattedEvents = response.data;
                     this.unFormattedEvents.forEach((event) => {
-                        event.start_date = new Date(Date.parse(event.start_date.replace('-', '/', 'g')));
-                        event.end_date = new Date(Date.parse(event.end_date.replace('-', '/', 'g')));
-                        event.start_date = event.start_date.toISOString().slice(0, 19);
-                        event.end_date = event.end_date.toISOString().slice(0, 19);
                         let eventObject = {
                             title: event.title,
                             start: event.start_date,
