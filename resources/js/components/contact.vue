@@ -12,7 +12,7 @@
             <div id="formSection">
                 <div class="d-flex flex-column">
                     <h2 class="text-center">Contact Us</h2>
-                    <b-form @submit="onSubmit">
+                    <b-form @submit.prevent="onSubmit">
                         <b-form-group
                             id="input-fullName-group"
                             label="Vornamem, Name"
@@ -137,7 +137,10 @@
                         <!--</vue-recaptcha>-->
 
                         <b-alert variant="success" v-show="success" show>Nachricht versendet</b-alert>
-                        <b-button type="submit" variant="primary">Eingabe</b-button>
+                        <b-button type="submit" variant="primary" class="d-flex align-items-center">
+                            Eingabe
+                            <b-spinner label="Loading..." small class="ml-2" v-if="isLoading"></b-spinner>
+                        </b-button>
                     </b-form>
                 </div>
             </div>
@@ -158,6 +161,7 @@
         },
         data() {
             return {
+                isLoading: false,
                 success: false,
                 form: {
                     email: '',
@@ -192,14 +196,27 @@
             }
         },
         methods: {
-            onSubmit(evt) {
-                evt.preventDefault();
-                let data = JSON.stringify(this.form);
-                axios.post('./message/submit', this.form).then(
-                    this.success = true);
+            onSubmit() {
+                this.isLoading = true;
+                axios.post('./message/submit', this.form).then(() => {
+                    this.success = true;
+                    this.form.email = '';
+                    this.form.name = '';
+                    this.form.fax = '';
+                    this.form.mobileNumber = '';
+                    this.form.purposeOfContact = 1;
+                    this.form.teamSelected = 1;
+                    this.form.joinEventSelection = 1;
+                    this.form.eventSelected = 1;
+                    this.form.message = '';
+                    this.isLoading = false;
+                }).catch(onerror => {
+                    console.log(onerror);
+                    this.isLoading = false;
+                });
             },
             getEvents() {
-                axios.get('contact-us/events').then((response) => {
+                axios.get('contact-us/events', {withCredentials: true}).then((response) => {
                     this.eventsOptions = response.data;
                 });
             }
