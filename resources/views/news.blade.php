@@ -14,7 +14,6 @@
                 <div class="row mb-4">
                     <div class="col-sm-12">
                         <h2 class="mb-3">News</h2>
-                        <h6>Something here about news</h6>
                     </div>
                 </div>
                 <div class="row">

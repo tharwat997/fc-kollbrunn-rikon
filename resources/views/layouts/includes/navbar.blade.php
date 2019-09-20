@@ -66,10 +66,10 @@
 
                     <b-nav-item-dropdown text="Tabelle" left>
                         <div id="teamDropdownFirst" class="pr-4 pl-4" style="border-right: 1px solid lightgray">
-                            <b-dropdown-item href="https://www.fvrz.ch/Fussballverband-Region-Zuerich/Vereine-FVRZ/Verein-FVRZ.aspx/v-1488/t-37912/ls-17246/sg-50922/a-trr/">FC Kollbrunn-Rikon 1</b-dropdown-item>
-                            <b-dropdown-item href="https://www.fvrz.ch/Fussballverband-Region-Zuerich/Vereine-FVRZ/Verein-FVRZ.aspx/v-1488/t-49364/ls-17812/sg-52400/a-trr/">C Junioren</b-dropdown-item>
-                            <b-dropdown-item href="https://www.fvrz.ch/Fussballverband-Region-Zuerich/Vereine-FVRZ/Verein-FVRZ.aspx/v-1488/t-56096/ls-17830/sg-52448/a-trr/">D Junioren</b-dropdown-item>
-                            <b-dropdown-item href="https://www.fvrz.ch/Fussballverband-Region-Zuerich/Vereine-FVRZ/Verein-FVRZ.aspx/v-1488/t-37924/ls-17868/sg-52549/a-trr/">E Junioren</b-dropdown-item>
+                            <b-dropdown-item href="https://www.fvrz.ch/Fussballverband-Region-Zuerich/Vereine-FVRZ/Verein-FVRZ.aspx/v-1488/t-37912/ls-18110/sg-52960/a-trr/">FC Kollbrunn-Rikon 1</b-dropdown-item>
+                            <b-dropdown-item href="https://www.fvrz.ch/Fussballverband-Region-Zuerich/Vereine-FVRZ/Verein-FVRZ.aspx/v-1488/t-49364/ls-18253/sg-53273/a-trr/">C Junioren</b-dropdown-item>
+                            <b-dropdown-item href="https://www.fvrz.ch/Fussballverband-Region-Zuerich/Vereine-FVRZ/Verein-FVRZ.aspx/v-1488/t-56096/ls-18387/sg-53641/a-trr/">D Junioren</b-dropdown-item>
+                            <b-dropdown-item href="https://www.fvrz.ch/Fussballverband-Region-Zuerich/Vereine-FVRZ/Verein-FVRZ.aspx/v-1488/t-37924/ls-18418/sg-53751/a-trr/">E Junioren</b-dropdown-item>
                             <b-dropdown-item href="https://www.fvrz.ch/Fussballverband-Region-Zuerich/Vereine-FVRZ/Verein-FVRZ.aspx/v-1488/t-37925/ls-0/sg-0/a-trr/">F Junioren</b-dropdown-item>
                         </div>
                     </b-nav-item-dropdown>

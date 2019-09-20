@@ -27,7 +27,7 @@
                             <div  class="mb-2">
                                 <strong>Purpose of Contact:</strong> Question
                             </div>
-                        @elseif ($message->purpose_of_contact === "2")
+                        @elseif ($message->purpose_of_contact === "3")
                             <div  class="mb-2">
                                 <strong>Purpose of Contact:</strong> Join Team
                             </div>
@@ -53,7 +53,7 @@
                                     <strong>Team:</strong> Junior F
                                 </div>
                             @endif
-                        @elseif ($message->purpose_of_contact === "3")
+                        @elseif ($message->purpose_of_contact === "4")
                             <div  class="mb-2">
                                 <strong>Purpose of Contact:</strong> Join event
                             </div>

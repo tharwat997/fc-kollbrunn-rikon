@@ -59,7 +59,7 @@
 			<div class="d-flex flex-column">
 				<div><h5 class="text-center text-white">Ausrüster</h5></div>
 				<div><h5 class="text-center text-white">Mario's-Choli-Sport, Kollbrunn</h5></div>
-				<div><h5 class="text-center text-white">052-383-28-12 / 079-420-30-02</h5></div>
+				<div><h5 class="text-center text-white">052-383-28-13 / 079-420-30-02</h5></div>
 			</div>
         </div>
     </div>

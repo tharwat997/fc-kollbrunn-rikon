@@ -136,7 +136,7 @@
                         <!--<vue-recaptcha sitekey="6LcMFKAUAAAAACN1KArylMkZd-lIaZWuHlb5APVl">-->
                         <!--</vue-recaptcha>-->
 
-                        <b-alert variant="success" v-show="success" show>Message sent Successfully</b-alert>
+                        <b-alert variant="success" v-show="success" show>Nachricht versendet</b-alert>
                         <b-button type="submit" variant="primary">Eingabe</b-button>
                     </b-form>
                 </div>

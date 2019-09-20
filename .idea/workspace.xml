@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14f08b3d-5735-4e7d-b4ac-4d4113d5cfa0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TeamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TeamController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/agenda.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/agenda.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/team.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/team.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/contact.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/contact.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/messages/message_detail_view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/messages/message_detail_view.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/includes/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/includes/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/includes/sponsors.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/includes/sponsors.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/news.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/news.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -151,7 +155,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Routing/Router.php" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images/sponsors" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../brillianz" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -159,19 +163,19 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2018.3.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public\storage\1" />
-      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\resources\js\components" />
-      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\resources\js\components\agenda" />
-      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public" />
-      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\resources\views" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public\images\sponsors" />
       <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public\storage" />
       <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public\images" />
       <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public\summernote" />
       <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public\css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public\storage\1" />
+      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\resources\js\components" />
+      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\resources\js\components\agenda" />
+      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\public" />
+      <recent name="C:\xampp\htdocs\FC-Kollbrunn-Rikon\resources\views" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -293,7 +297,11 @@
       <workItem from="1567254389440" duration="5569000" />
       <workItem from="1567495877435" duration="377000" />
       <workItem from="1567526285052" duration="1038000" />
-      <workItem from="1567619263112" duration="2926000" />
+      <workItem from="1567619263112" duration="3385000" />
+      <workItem from="1568649928408" duration="75000" />
+      <workItem from="1568650451447" duration="1038000" />
+      <workItem from="1568662809807" duration="20000" />
+      <workItem from="1568968352290" duration="3241000" />
     </task>
     <task id="LOCAL-00001" summary="deployment file">
       <created>1557309176628</created>

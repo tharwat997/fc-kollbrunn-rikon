@@ -240,7 +240,7 @@ class MessageController extends Controller
 
         $users = User::all();
 
-        if ($message->purpose_of_contact === "3"){
+        if ($message->purpose_of_contact === "4"){
             $event = Event::find( (int) $message->join_event);
             $message->join_event = $event->title;
         }

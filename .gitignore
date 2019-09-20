@@ -1,5 +1,6 @@
 /node_modules
 !/node_modules/vue-horizontal-timeline
+!/node_modules/@fullcalendar
 /public/hot
 /storage/*.key
 /vendor
